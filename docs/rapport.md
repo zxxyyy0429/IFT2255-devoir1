@@ -1,5 +1,6 @@
-#Rapport du projet IFT2255
-1. Cadre du projet
+# Rapport du projet IFT2255
+
+## 1. Cadre du projet
 
 Description du projet 
 Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au Département d’informatique et de recherche opérationnelle (DIRO). La structure des programmes est parfois complexe et les sources d’information disponibles sont fragmentées : les données officielles partielles (Planifium, résultats globaux) et les avis étudiants éparpillés (forums, Discord).
@@ -63,7 +64,6 @@ Ressources humaines : auxiliaires responsables de l’import des fichiers CSV, d
 
 
 Ruoxuan Hu (20304027) , username Discord : rx_04
-
 
 Ziyue Wang (20308297) , username Discord : ZY
 
