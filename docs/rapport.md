@@ -61,8 +61,14 @@ Ressources humaines : auxiliaires responsables de l’import des fichiers CSV, d
 
 Équipe : 
 Ruoxuan Hu (20304027) , username Discord : rx_04
+
+
 Ziyue Wang (20308297) , username Discord : ZY
+
+
 Xinyan Zhang (20264873) , username Discord : Xinyan
+
+
 Yutong Zhu (20310738) , username Discord : yutong
 
 Distribution de tache : 
