@@ -2,7 +2,7 @@
 
 ## 1. Cadre du projet
 
-Description du projet 
+### Description du projet 
 Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au Département d’informatique et de recherche opérationnelle (DIRO). La structure des programmes est parfois complexe et les sources d’information disponibles sont fragmentées : les données officielles partielles (Planifium, résultats globaux) et les avis étudiants éparpillés (forums, Discord).
 Afin de faciliter la prise de décision et d’offrir une vue plus transparente et centralisée, le projet vise à concevoir une plateforme web basée sur une API REST, combinant les données officielles et les opinions des étudiants. Cette plateforme permettra aux étudiants de :
 rechercher et comparer des cours,
@@ -11,8 +11,9 @@ rechercher et comparer des cours,
 - personnaliser l’affichage selon leur profil et leurs contraintes.
 - Ce document présente une première analyse des besoins, les cas d’utilisation principaux ainsi qu’une identification des risques, afin de préparer les prochaines étapes de conception et d’implémentation.
 
-Fonctionnement du système
+### Fonctionnement du système
 Le système proposé vise à assister les étudiants de l’Université de Montréal dans la prise de décision pour le choix de cours.
+
 Son fonctionnement suit un processus interactif et incrémental, conforme au modèle de développement enseigné (modèle en V / itératif-incrémental) :
 Authentification et profil utilisateur
 - Connexion via SSO UdeM ; création automatique du profil étudiant.
@@ -38,7 +39,7 @@ Des tâches d’import (ETL) périodiques assurent la synchronisation avec Plani
 Tous les échanges sont sécurisés via HTTPS ; les données sont sauvegardées automatiquement .
 
 
-Dépendances du système
+### Dépendances du système
 1. Dépendances externes
 API Planifium : source officielle pour les programmes et horaires ; dépendance critique pour la recherche et la validation des prérequis.
 Bot Discord / API Discord : collecteur des avis étudiants en format JSON ; dépendance asynchrone et soumise à la disponibilité du service Discord.
@@ -60,163 +61,136 @@ Services informatiques de l’UdeM : hébergement, certificats HTTPS, maintenanc
 Cycle académique : contraintes temporelles (périodes d’inscription, début de session) influençant la charge du système.
 Ressources humaines : auxiliaires responsables de l’import des fichiers CSV, de la modération des avis et de la vérification de conformité.
 
-Équipe : 
-
+### Équipe : 
 
 Ruoxuan Hu (20304027) , username Discord : rx_04
 
 Ziyue Wang (20308297) , username Discord : ZY
 
-
 Xinyan Zhang (20264873) , username Discord : Xinyan
-
 
 Yutong Zhu (20310738) , username Discord : yutong
 
-Distribution de tache : 
 
+### Distribution de tache : 
 
-Premier submission ( Septembre 26):
+#### Première soumission ( Septembre 26 ):
 
 Ziyue et Ruoxuan : 
-Description du domaine : acteurs
-description du projet
-Glossaire : liste des termes et expressions utilises lors de la premier submission
-Risque : au moins 5 risque
-Besoins de materiel ( sans le solution )
+
+- Description du domaine : acteurs
+- Description du projet
+- Glossaire : liste des termes et expressions utilises lors de la premier submission
+- Risque : au moins 5 risque
+- Besoins de materiel ( sans le solution )
 
 Xinyan : 
-Diagram de cas utilisation
+- Diagram de cas utilisation
 
-- Version final ( October 10 )
+#### Version final ( October 10 ):
+
 Ziyue et Ruoxuan : 
-Les coordonees des membres
-Hypothese 
-Solution de stockage et solution d’integration
-Besoin non fonctionels
-Git hub
-Brouillon pour le modele C4 ( niveau 1 et 2 )
-Finaliser rapport HTML
+
+- Les coordonees des membres
+- Hypothese 
+- Solution de stockage et solution d’integration
+- Besoin non fonctionels
+- Git hub
+- Brouillon pour le modele C4 ( niveau 1 et 2 )
+- Finaliser rapport HTML
 
 Xinyan : 
-Echeancier
-Diagramme de cas d’utilisation
-Diagramme d’activite
-Brouillon pour le modele C4 ( niveau 1 et 2 )
-Git hub
-Finaliser rapport HTML
+- Echeancier
+- Diagramme de cas d’utilisation
+- Diagramme d’activite
+- Brouillon pour le modele C4 ( niveau 1 et 2 )
+- Git hub
+- Finaliser rapport HTML
 
 Yutong : 
-Modèle C4 
+- Modèle C4 
 
-Échéancier : 
+### Échéancier : 
 
 
-2. Analyse des exigences 
+## 2. Analyse des exigences 
 
-Description du domaine 
+### Description du domaine 
 Utilisateurs visés
 - Nouveaux étudiants (manque de repères académiques)
 
-
 - Étudiants en fin de parcours (diplomation, optimisation de la moyenne)
-
 
 - Étudiants internationaux (adaptation au système académique québécois)
 
-
 - Étudiants travailleurs (charge de travail limitée)
 
-
 - Étudiants parents (équilibre vie familiale et études)
-
 
 - Étudiants à temps plein / temps partiel
 
 
-Facteurs académiques
+### Facteurs académiques
 - Moyenne de la classe
-
 
 - Taux de réussite / échec / abandon 
 
-
 - Nombre d’inscription 
-
 
 - Préalables et co-requis
 
-
 - Nombre de crédits attribués
 
-
 - Dates des examens 
-
 
 - Description officielle du cours
 
 
-Facteurs personnels
+### Facteurs personnels
 - Charge de travail (devoirs, projets, lectures)
-
 
 - Rythme du cours
 
-
 - Intérêts académiques et orientation professionnelle
-
 
 - Préférence théorie / pratique
 
-
-Facteurs logistiques
+### Facteurs logistiques
 - Mode d’enseignement (présentiel, hybride, en ligne)
 
-
 - Compatibilité horaire
-
 
 - Contraintes de transport
 
 
-Facteurs sociaux
+### Facteurs sociaux
 - Avis étudiants (forums, Discord, bouche-à-oreille)
-
 
 - Réputation des enseignants
 
-
 - Niveau de stress perçu
 
-
-Sources de données
+### Sources de données
 - Planifium API : catalogue officiel (codes, titres, crédits, horaires, préalables).
 
-
 - Résultats académiques agrégés : CSV (moyenne, inscrits, échecs).
-
 
 - Avis étudiants (Discord) : JSON via bot (difficulté perçue, charge de travail, commentaires).
 
 
 
-3. Hypothèses
+## 3. Hypothèses
 Ces hypothèses permettent de clarifier le cadre du projet et d’éviter les ambiguïtés lors de la conception.
 Dans l’élaboration du projet, certaines hypothèses de travail ont été émises afin de délimiter le périmètre du système :
 - Tous les étudiants disposent d’un accès Internet stable et d’un navigateur moderne compatible (Chrome, Firefox, Edge, Safari).
 
-
 - Les données fournies par l’API Planifium sont fiables et mises à jour régulièrement par l’Université.
-
 
 - Les étudiants savent utiliser une interface web basique et sont capables de naviguer sur une plateforme en ligne.
 
-
 - L’authentification institutionnelle (SSO UdeM) est disponible et fonctionnelle pour identifier les utilisateurs.
 
-
 - Les avis étudiants collectés via Discord sont anonymisés et représentatifs d’un nombre suffisant de participants. (les étudiants sont avisés de la collecte des données et sont d’accord).
-
 
 - Le volume d’utilisateurs simultanés reste raisonnable (quelques milliers) et ne dépasse pas la capacité initiale prévue.
 
@@ -227,43 +201,46 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 - Les échanges avec l’API Planifium et les services internes sont sécurisés (HTTPS) et certains, sans pertes de données pendant les transferts.
 
 
-4. Glossaire
+## 4. Glossaire
 - Planifium API : Service fournissant les données officielles des cours/programmes de l’UdeM.
+  
 - Format CSV : Format de fichier tabulaire utilisé pour stocker les résultats académiques agrégés.
-- Résultats académiques agrégés (CSV) : Données statistiques globales d’un cours (moyenne, inscrits, échecs). 
+  
+- Résultats académiques agrégés (CSV) : Données statistiques globales d’un cours (moyenne, inscrits, échecs).
+  
 - JSON : Format d’échange de données structurées, utilisé pour stocker et transmettre les avis des étudiants.
+  
 - Avis étudiants : Retours qualitatifs/quantitatifs collectés via Discord (JSON).
-
 
 - Loi 25 : Loi québécoise sur la protection des renseignements personnels (préserver la confidentialité).
 
-
 - Mot-clé (Recherche) : Code, titre ou fragment de texte utilisé par l’étudiant pour retrouver un cours.
+  
 - Bloc d’horaire : bloc du cours - matin (8:30-13:30), après-midi (13:30-18:30) et soir (18:30-22:30)
-- Type d’utilisateur : Les étudiants internationaux (12 crédits), les étudiants à temps plein (12-18 crédits), les étudiants à temps partiels (>6 crédits), les étudiants parents et les étudiants qui travaillent (option de bloc d’horaire). 
-- Utilisateur :Les étudiants qui veulent obtenir des informations académiques qui les aident dans leur cheminement académique. 
-- Numéro d’utilisateur : la matricule attribuée à chacun des étudiants de la part de l’institution (UDEM). 
-- Service : fournir les informations à propos d’un cours et de ses informations complémentaires (ex : notes, avis sur les profs, taux d’échec, moyenne, etc.). 
+  
+- Type d’utilisateur : Les étudiants internationaux (12 crédits), les étudiants à temps plein (12-18 crédits), les étudiants à temps partiels (>6 crédits), les étudiants parents et les étudiants qui travaillent (option de bloc d’horaire).
+  
+- Utilisateur :Les étudiants qui veulent obtenir des informations académiques qui les aident dans leur cheminement académique.
+  
+- Numéro d’utilisateur : la matricule attribuée à chacun des étudiants de la part de l’institution (UDEM).
+  
+- Service : fournir les informations à propos d’un cours et de ses informations complémentaires (ex : notes, avis sur les profs, taux d’échec, moyenne, etc.).
+  
 - Administrateur système : maintenance et mise à jour des nouveaux cours.
+  
 - Information personnelle : Les préférences fournies (ex : jour de la semaine des cours, tri des semestres fourni par l’école, bloc de la journée, etc) par les utilisateurs (les étudiants).
-
 
 - Tableau comparatif : Vue synthétique qui regroupe les données de plusieurs cours afin de faciliter leur comparaison.
 
-
 - Panier de cours : Liste temporaire de cours sélectionnés par l’étudiant en vue d’une comparaison.
 
-
 - Préférences (Profil) : Paramètres définis par l’étudiant (théorie/pratique, contraintes personnelles) afin de personnaliser l’affichage des résultats.
-
 
 - Moteur de filtrage : Composant logiciel qui applique les préférences de l’étudiant pour trier et adapter la liste de cours affichée.
 
 
-
-5. Risques du projet
-1. Données incomplètes ou biaisées
-
+## 5. Risques du projet
+### 1. Données incomplètes ou biaisées
 
 - Problème : Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
 - Conséquences : les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
@@ -275,8 +252,7 @@ ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour 
 iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
 
 
-2. Confidentialité et Loi 25
-
+### 2. Confidentialité et Loi 25
 
 - Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
 - Conséquence : cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
@@ -288,8 +264,7 @@ ii. respect des principes de minimisation des données (on collecte seulement ce
 iii. vérification régulière de conformité légale.
 
 
-3. Données obsolètes ou incohérentes
-
+### 3. Données obsolètes ou incohérentes
 
 - Problème : Les informations affichées peuvent différer des données officielles (ex : décalage entre Planifium et résultats réels).
 - Conséquences : L’étudiant peut prendre de mauvaises décisions
@@ -300,8 +275,7 @@ i. synchronisation régulière
 ii. affichage des dates de mise à jour pour chaque donnée
 
 
-4. Accessibilité limitée
-
+### 4. Accessibilité limitée
 
 - Problème : difficulté d’accès pour certains profils (connexion lente, mobile).
 - conséquence : temps de chargement long, interface illisible ou non responsive
@@ -312,7 +286,7 @@ i. conception mobile-first
 ii. respect des normes WCAG.
 
 
-5. Performance et surcharge technique
+### 5. Performance et surcharge technique
 
 
 - Problème : trop de requêtes simultanées peuvent ralentir le plateforme ou causer des interruptions.
@@ -324,7 +298,7 @@ i. mise en place d’un système de cache pour éviter les recalculs inutiles.
 ii. architecture scalable 
 iii. surveillance en temps réel des performances avec alertes proactives.
 
-6. Accessibilité limitée pour les étudiants handicapé
+### 6. Accessibilité limitée pour les étudiants handicapé
 - Problème : difficulté d’accès pour des étudiants en handicap qui sont des personnes aveugles, sourdes ou ayant des troubles cognitifs.
 - Conséquence : exclusion d’une partie de la communauté étudiante.
 
@@ -333,28 +307,31 @@ iii. surveillance en temps réel des performances avec alertes proactives.
 i. Intègre les lecteurs d'écran 
 ii. option de personnalisation de l’affichage (agrandir la taille du texte, simplifier la mise en page)
 
-6. Besoins non fonctionnels
+## 6. Besoins non fonctionnels
 Au-delà des fonctionnalités principales, la plateforme doit répondre aux exigences de qualité suivantes :
 - Performance : Chaque requête (recherche, comparaison, consultation) doit être traitée en moins de 2 secondes afin de garantir une navigation fluide.
 
-
 - Sécurité : Les données personnelles doivent être protégées conformément à la Loi 25, avec chiffrement des échanges et anonymisation stricte.
 
-
 - Fiabilité : La plateforme doit assurer une disponibilité de 99 % pendant les périodes critiques (inscriptions, début de session).
+  
 - Évolutivité : L’architecture doit permettre l’intégration future d’autres sources de données (ex. évaluations professorales, API supplémentaires).
+  
 - Utilisabilité : Accessibilité aux personnes à handicap, bon affichage sur mobile, tablette et PC.
-- Mémoire : N’utilise pas trop d’espace sur l'ordinateur. 
+  
+- Mémoire : N’utilise pas trop d’espace sur l'ordinateur.
+  
 - Maintenabilité: Le code et l’architecture doivent être bien documentés pour faciliter les mises à jour, la correction de bugs et l’ajout de nouvelles fonctionnalités. Système capable de recevoir des mise à jour logicielles à distance.
+  
 - Multilinguisme: La plateforme peut être utilisée en français et en anglais pour soutenir les étudiants internationaux.
 
-7. Besoins matériels, solution de stockage et solution d’intégration (Conformité et sécurité)
+## 7. Besoins matériels, solution de stockage et solution d’intégration (Conformité et sécurité)
 Les besoins matériels définissent les ressources physiques et logicielles nécessaires au bon fonctionnement de la plateforme.
 Le système repose sur une architecture client-serveur hébergée sur une infrastructure virtuelle. 
 Cette configuration vise à garantir la performance, la sécurité et la capacité d’évolution du système, conformément aux exigences physiques vues en cours.
 
 
-Besoins matériels et solutions proposées
+#### Besoins matériels et solutions proposées
 - Serveur d’application (Backend) :
 Hébergé sur un serveur virtuel (cloud UdeM ou infonuagique public) doté de processeurs virtuels (vCPU), suffisamment de mémoire vive et de stockage SSD. 
 Le système d’exploitation recommandé est Linux, configuré pour le déploiement.
@@ -364,6 +341,7 @@ Le système d’exploitation recommandé est Linux, configuré pour le déploiem
 Hébergé séparément pour assurer la sécurité et l’intégrité des données.
 Une base de données relationnelle est utilisée pour enregistrer les résultats académiques. Elle permet de stocker les moyennes, les taux d’échec et le nombre d’inscriptions pour chaque cours.
 Des sauvegardes automatiques sont faites régulièrement pour éviter toute perte d’information.
+
 - Postes clients :
 Utilisation possible à partir de navigateurs récents tels que Chrome, Firefox, Edge ou Safari.
 Le design est responsive, permettant un accès fluide sur ordinateur, tablette ou mobile, y compris hors campus.
@@ -378,7 +356,7 @@ Un cache local est mis en place afin de réduire les appels redondants et d’op
 L’interface est accessible et adaptée à différents types d’appareils et d’utilisateurs.
 
 
-Solution de stockage et sécurité
+### Solution de stockage et sécurité
 La solution de stockage combine des technologies relationnelles et non relationnelles pour gérer différents types de données et assurer leur intégrité, leur sécurité et leur évolutivité.
 - Résultats académiques :
 Les fichiers CSV fournis par l’administration sont importés dans une base de données relationnelle.
@@ -404,7 +382,7 @@ Les avis étudiants sont anonymisés avant publication, en conformité avec la L
 Des sauvegardes quotidiennes avec rétention de 30 jours sont réalisées, et l’architecture est scalable horizontalement (via CDN et cache Redis) pour absorber la charge.
 
 
-Solution d’intégration
+### Solution d’intégration
 La solution d’intégration garantit la cohérence des échanges entre les différents services internes et externes de la plateforme.
 - API Planifium (Université de Montréal) :
 L’API REST de Planifium est utilisée pour obtenir les informations officielles sur les programmes, cours, horaires, crédits et prérequis.
@@ -429,7 +407,7 @@ Le déploiement est automatisé via GitHub Actions.
 La performance et la stabilité sont surveillées en continu, et des alertes sont envoyées en cas d’erreur ou de lenteur du système.
 
 
-Solutions techniques globales
+### Solutions techniques globales
 L’architecture générale de la plateforme suit le modèle itératif et incrémental (I&I) enseigné en cours.
 Chaque incrément (ex. recherche, avis, comparaison) est développé, testé et intégré progressivement, ce qui permet des retours fréquents et une amélioration continue.
 L’approche repose sur une architecture composée de plusieurs parties qui communiquent entre elles.
@@ -451,8 +429,9 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 
 
 
-8. Cas d’utilisation principaux
-CU1 – Rechercher un cours
+## 8. Cas d’utilisation principaux
+
+### CU1 – Rechercher un cours
 
 - But : Un étudiant qui désire s’informer sur un cours spécifique (prérequis, nombre de crédits, description officielle du cours,etc.)
 - Précondition : L’étudiant est connecté et a accès à la plateforme.
@@ -490,7 +469,7 @@ Le système indique si l’étudiant est éligible (ou non) à suivre chaque cou
 
 
 
-CU2 – Consulter les résultats académiques d’un cours
+### CU2 – Consulter les résultats académiques d’un cours
 - But : Permettre à l’étudiant de consulter des statistiques d’un cours (moyenne, nombre d’inscrits, taux d’échec, etc.) afin d’évaluer sa difficulté.
 Précondition : Des résultats agrégés (format CSV) sont disponibles pour le cours sélectionné.
 - Acteur : Étudiant (principal), Système (plateforme qui récupère et affiche les résultats) (secondaire)
@@ -530,7 +509,7 @@ L’étudiant accède à un cours via une autre fonctionnalité (ex : CU3 “Lir
 
 
 
-CU3 – Lire les avis des étudiants
+### CU3 – Lire les avis des étudiants
 - But : Un étudiant souhaite consulter les avis de ses pairs sur un cours afin de mieux évaluer sa charge de travail et sa difficulté.
 - Acteur : Étudiant (principal), Système, service d’avis (secondaire)
 - Déclencheur : L’étudiant ouvre la fiche d’un cours et sélectionne l’onglet « Avis étudiants ».
@@ -577,7 +556,7 @@ Cu5 : l’étudiant peut décider de trier par pertinence, par date ou de filtre
 
 
 
-CU4 – Comparer plusieurs cours
+### CU4 – Comparer plusieurs cours
 - But : Un étudiant souhaite comparer plusieurs cours afin d’évaluer leur comptabilité et la charge globale.
 - Acteur : Étudiant (principal), Système (secondaire)
 - Déclencheur : L’étudiant sélectionne plusieurs cours dans son panier et clique sur « Comparer ».
@@ -624,7 +603,7 @@ CU5 : ce n’est pas obligatoire, mais cela permet à l’étudiant d'adapter la
 - Postcondition : L’étudiant peut visualiser la compatibilité et la charge globale de ses choix.
 
 
-CU5 – Personnaliser l’affichage
+### CU5 – Personnaliser l’affichage
 - But : Un étudiant souhaite obtenir des résultats adaptés à ses préférences personnelles.
 - Acteur : Étudiant (principal), Système (secondaire)
 - Déclencheur : L’étudiant accède à la section « Préférences » et active la personnalisation.
