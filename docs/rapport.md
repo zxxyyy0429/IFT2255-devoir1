@@ -107,5 +107,566 @@ Git hub
 Finaliser rapport HTML
 
 Yutong : 
-Modele C4 
+Modèle C4 
+
+Échéancier : 
+
+
+2. Analyse des exigences 
+
+Description du domaine 
+Utilisateurs visés
+- Nouveaux étudiants (manque de repères académiques)
+
+
+- Étudiants en fin de parcours (diplomation, optimisation de la moyenne)
+
+
+- Étudiants internationaux (adaptation au système académique québécois)
+
+
+- Étudiants travailleurs (charge de travail limitée)
+
+
+- Étudiants parents (équilibre vie familiale et études)
+
+
+- Étudiants à temps plein / temps partiel
+
+
+Facteurs académiques
+- Moyenne de la classe
+
+
+- Taux de réussite / échec / abandon 
+
+
+- Nombre d’inscription 
+
+
+- Préalables et co-requis
+
+
+- Nombre de crédits attribués
+
+
+- Dates des examens 
+
+
+- Description officielle du cours
+
+
+Facteurs personnels
+- Charge de travail (devoirs, projets, lectures)
+
+
+- Rythme du cours
+
+
+- Intérêts académiques et orientation professionnelle
+
+
+- Préférence théorie / pratique
+
+
+Facteurs logistiques
+- Mode d’enseignement (présentiel, hybride, en ligne)
+
+
+- Compatibilité horaire
+
+
+- Contraintes de transport
+
+
+Facteurs sociaux
+- Avis étudiants (forums, Discord, bouche-à-oreille)
+
+
+- Réputation des enseignants
+
+
+- Niveau de stress perçu
+
+
+Sources de données
+- Planifium API : catalogue officiel (codes, titres, crédits, horaires, préalables).
+
+
+- Résultats académiques agrégés : CSV (moyenne, inscrits, échecs).
+
+
+- Avis étudiants (Discord) : JSON via bot (difficulté perçue, charge de travail, commentaires).
+
+
+
+3. Hypothèses
+Ces hypothèses permettent de clarifier le cadre du projet et d’éviter les ambiguïtés lors de la conception.
+Dans l’élaboration du projet, certaines hypothèses de travail ont été émises afin de délimiter le périmètre du système :
+- Tous les étudiants disposent d’un accès Internet stable et d’un navigateur moderne compatible (Chrome, Firefox, Edge, Safari).
+
+
+- Les données fournies par l’API Planifium sont fiables et mises à jour régulièrement par l’Université.
+
+
+- Les étudiants savent utiliser une interface web basique et sont capables de naviguer sur une plateforme en ligne.
+
+
+- L’authentification institutionnelle (SSO UdeM) est disponible et fonctionnelle pour identifier les utilisateurs.
+
+
+- Les avis étudiants collectés via Discord sont anonymisés et représentatifs d’un nombre suffisant de participants. (les étudiants sont avisés de la collecte des données et sont d’accord).
+
+
+- Le volume d’utilisateurs simultanés reste raisonnable (quelques milliers) et ne dépasse pas la capacité initiale prévue.
+
+- Les fichiers CSV des résultats académiques sont complets et mis à jour à la fin de chaque session.
+
+- La plateforme est utilisée sur des appareils compatibles et le design responsive fonctionne correctement.
+
+- Les échanges avec l’API Planifium et les services internes sont sécurisés (HTTPS) et certains, sans pertes de données pendant les transferts.
+
+
+4. Glossaire
+- Planifium API : Service fournissant les données officielles des cours/programmes de l’UdeM.
+- Format CSV : Format de fichier tabulaire utilisé pour stocker les résultats académiques agrégés.
+- Résultats académiques agrégés (CSV) : Données statistiques globales d’un cours (moyenne, inscrits, échecs). 
+- JSON : Format d’échange de données structurées, utilisé pour stocker et transmettre les avis des étudiants.
+- Avis étudiants : Retours qualitatifs/quantitatifs collectés via Discord (JSON).
+
+
+- Loi 25 : Loi québécoise sur la protection des renseignements personnels (préserver la confidentialité).
+
+
+- Mot-clé (Recherche) : Code, titre ou fragment de texte utilisé par l’étudiant pour retrouver un cours.
+- Bloc d’horaire : bloc du cours - matin (8:30-13:30), après-midi (13:30-18:30) et soir (18:30-22:30)
+- Type d’utilisateur : Les étudiants internationaux (12 crédits), les étudiants à temps plein (12-18 crédits), les étudiants à temps partiels (>6 crédits), les étudiants parents et les étudiants qui travaillent (option de bloc d’horaire). 
+- Utilisateur :Les étudiants qui veulent obtenir des informations académiques qui les aident dans leur cheminement académique. 
+- Numéro d’utilisateur : la matricule attribuée à chacun des étudiants de la part de l’institution (UDEM). 
+- Service : fournir les informations à propos d’un cours et de ses informations complémentaires (ex : notes, avis sur les profs, taux d’échec, moyenne, etc.). 
+- Administrateur système : maintenance et mise à jour des nouveaux cours.
+- Information personnelle : Les préférences fournies (ex : jour de la semaine des cours, tri des semestres fourni par l’école, bloc de la journée, etc) par les utilisateurs (les étudiants).
+
+
+- Tableau comparatif : Vue synthétique qui regroupe les données de plusieurs cours afin de faciliter leur comparaison.
+
+
+- Panier de cours : Liste temporaire de cours sélectionnés par l’étudiant en vue d’une comparaison.
+
+
+- Préférences (Profil) : Paramètres définis par l’étudiant (théorie/pratique, contraintes personnelles) afin de personnaliser l’affichage des résultats.
+
+
+- Moteur de filtrage : Composant logiciel qui applique les préférences de l’étudiant pour trier et adapter la liste de cours affichée.
+
+
+
+5. Risques du projet
+1. Données incomplètes ou biaisées
+
+
+- Problème : Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
+- Conséquences : les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
+
+
+- Atténuation :
+i. seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
+ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
+iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
+
+
+2. Confidentialité et Loi 25
+
+
+- Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
+- Conséquence : cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
+
+
+- Atténuation : 
+i. mise à jour d’une anonymisation stricte des données
+ii. respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
+iii. vérification régulière de conformité légale.
+
+
+3. Données obsolètes ou incohérentes
+
+
+- Problème : Les informations affichées peuvent différer des données officielles (ex : décalage entre Planifium et résultats réels).
+- Conséquences : L’étudiant peut prendre de mauvaises décisions
+
+
+- Atténuation : 
+i. synchronisation régulière 
+ii. affichage des dates de mise à jour pour chaque donnée
+
+
+4. Accessibilité limitée
+
+
+- Problème : difficulté d’accès pour certains profils (connexion lente, mobile).
+- conséquence : temps de chargement long, interface illisible ou non responsive
+
+
+- Atténuation : 
+i. conception mobile-first
+ii. respect des normes WCAG.
+
+
+5. Performance et surcharge technique
+
+
+- Problème : trop de requêtes simultanées peuvent ralentir le plateforme ou causer des interruptions.
+- Conséquence : expérience des utilisateurs dégradée, risque d’abandon de la plateforme.
+
+
+- Atténuation : 
+i. mise en place d’un système de cache pour éviter les recalculs inutiles.
+ii. architecture scalable 
+iii. surveillance en temps réel des performances avec alertes proactives.
+
+6. Accessibilité limitée pour les étudiants handicapé
+- Problème : difficulté d’accès pour des étudiants en handicap qui sont des personnes aveugles, sourdes ou ayant des troubles cognitifs.
+- Conséquence : exclusion d’une partie de la communauté étudiante.
+
+
+- Atténuation : 
+i. Intègre les lecteurs d'écran 
+ii. option de personnalisation de l’affichage (agrandir la taille du texte, simplifier la mise en page)
+
+6. Besoins non fonctionnels
+Au-delà des fonctionnalités principales, la plateforme doit répondre aux exigences de qualité suivantes :
+- Performance : Chaque requête (recherche, comparaison, consultation) doit être traitée en moins de 2 secondes afin de garantir une navigation fluide.
+
+
+- Sécurité : Les données personnelles doivent être protégées conformément à la Loi 25, avec chiffrement des échanges et anonymisation stricte.
+
+
+- Fiabilité : La plateforme doit assurer une disponibilité de 99 % pendant les périodes critiques (inscriptions, début de session).
+- Évolutivité : L’architecture doit permettre l’intégration future d’autres sources de données (ex. évaluations professorales, API supplémentaires).
+- Utilisabilité : Accessibilité aux personnes à handicap, bon affichage sur mobile, tablette et PC.
+- Mémoire : N’utilise pas trop d’espace sur l'ordinateur. 
+- Maintenabilité: Le code et l’architecture doivent être bien documentés pour faciliter les mises à jour, la correction de bugs et l’ajout de nouvelles fonctionnalités. Système capable de recevoir des mise à jour logicielles à distance.
+- Multilinguisme: La plateforme peut être utilisée en français et en anglais pour soutenir les étudiants internationaux.
+
+7. Besoins matériels, solution de stockage et solution d’intégration (Conformité et sécurité)
+Les besoins matériels définissent les ressources physiques et logicielles nécessaires au bon fonctionnement de la plateforme.
+Le système repose sur une architecture client-serveur hébergée sur une infrastructure virtuelle. 
+Cette configuration vise à garantir la performance, la sécurité et la capacité d’évolution du système, conformément aux exigences physiques vues en cours.
+
+
+Besoins matériels et solutions proposées
+- Serveur d’application (Backend) :
+Hébergé sur un serveur virtuel (cloud UdeM ou infonuagique public) doté de processeurs virtuels (vCPU), suffisamment de mémoire vive et de stockage SSD. 
+Le système d’exploitation recommandé est Linux, configuré pour le déploiement.
+
+
+- Serveur de base de données :
+Hébergé séparément pour assurer la sécurité et l’intégrité des données.
+Une base de données relationnelle est utilisée pour enregistrer les résultats académiques. Elle permet de stocker les moyennes, les taux d’échec et le nombre d’inscriptions pour chaque cours.
+Des sauvegardes automatiques sont faites régulièrement pour éviter toute perte d’information.
+- Postes clients :
+Utilisation possible à partir de navigateurs récents tels que Chrome, Firefox, Edge ou Safari.
+Le design est responsive, permettant un accès fluide sur ordinateur, tablette ou mobile, y compris hors campus.
+
+
+- Réseau et bande passante :
+Une connexion minimale de 10 Mo/s est requise pour interroger l’API Planifium et Discord.
+Un cache local est mis en place afin de réduire les appels redondants et d’optimiser les performances.
+
+
+- Accessibilité et hébergement :
+L’interface est accessible et adaptée à différents types d’appareils et d’utilisateurs.
+
+
+Solution de stockage et sécurité
+La solution de stockage combine des technologies relationnelles et non relationnelles pour gérer différents types de données et assurer leur intégrité, leur sécurité et leur évolutivité.
+- Résultats académiques :
+Les fichiers CSV fournis par l’administration sont importés dans une base de données relationnelle.
+Cette base permet d’effectuer des requêtes structurées, d’assurer la cohérence des statistiques et de gérer les agrégations par session ou trimestre.
+
+
+- Avis étudiants :
+Collectés via un bot Discord et enregistrés dans une base de données qui peut gérer des avis et des commentaires d’étudiants. Ce modèle permet de traiter des données semi-structurées et évolutives (commentaires, évaluations, métadonnées).
+
+
+- Profils étudiants et préférences :
+Les données des utilisateurs (cheminement, préférences de cours, contraintes personnelles) sont enregistrées dans une section sécurisée, liée à leur identifiant institutionnel via le SSO (authentification unique) UdeM.
+
+
+- Fichiers journaux et statistiques :
+Les journaux d’activité et les mesures de performance sont sauvegardés dans des fichiers JSON structurés pour assurer la traçabilité, la supervision et la maintenance proactive du système.
+
+
+- Sécurité et confidentialité :
+Toutes les données sensibles sont protégées lorsqu’elles sont enregistrées et lorsqu’elles sont transmises sur le réseau.
+Les accès sont contrôlés par rôles (étudiant, auxiliaire, administrateur).
+Les avis étudiants sont anonymisés avant publication, en conformité avec la Loi 25.
+Des sauvegardes quotidiennes avec rétention de 30 jours sont réalisées, et l’architecture est scalable horizontalement (via CDN et cache Redis) pour absorber la charge.
+
+
+Solution d’intégration
+La solution d’intégration garantit la cohérence des échanges entre les différents services internes et externes de la plateforme.
+- API Planifium (Université de Montréal) :
+L’API REST de Planifium est utilisée pour obtenir les informations officielles sur les programmes, cours, horaires, crédits et prérequis.
+Les données sont synchronisées quotidiennement via un processus automatisé et mises en cache localement pour réduire le délai d’attente.
+
+
+- Bot Discord (Avis étudiants) :
+Le bot recueille automatiquement les avis et notes des étudiants.
+Les messages sont filtrés pour que toute information personnelle (PII) soient supprimés avant leur transformation en JSON et leur insertion dans la base NoSQL.
+
+
+- Authentification SSO UdeM :
+L’accès au système est protégé par une authentification institutionnelle, garantissant un lien unique entre les préférences et l’identité de l’étudiant.
+
+
+- API interne REST (backend) :
+ Le système expose plusieurs points d’accès (/courses, /results, /compare, /reviews, /profile) permettant à l’interface utilisateur et aux services internes de communiquer en format JSON sur protocole HTTPS.
+
+
+- CI/CD et supervision technique :
+Le déploiement est automatisé via GitHub Actions.
+La performance et la stabilité sont surveillées en continu, et des alertes sont envoyées en cas d’erreur ou de lenteur du système.
+
+
+Solutions techniques globales
+L’architecture générale de la plateforme suit le modèle itératif et incrémental (I&I) enseigné en cours.
+Chaque incrément (ex. recherche, avis, comparaison) est développé, testé et intégré progressivement, ce qui permet des retours fréquents et une amélioration continue.
+L’approche repose sur une architecture composée de plusieurs parties qui communiquent entre elles.
+Chaque partie du système a un rôle précis (recherche, affichage, gestion des données) et elles échangent des informations de manière organisée et sécurisée.
+ Cette solution assure :
+- la modularité et la faible dépendance entre les composants,
+
+
+- la sécurité et la conformité légale (Loi 25, chiffrement complet),
+
+
+- la scalabilité et la résilience du système,
+
+
+- et la maintenabilité à long terme grâce à une documentation claire et un déploiement automatisé.
+
+
+Dans son ensemble, cette configuration matérielle et logicielle soutient les objectifs pédagogiques du projet : offrir une plateforme performante, transparente et évolutive, conforme aux standards de génie logiciel enseignés à l’Université de Montréal.
+
+
+
+8. Cas d’utilisation principaux
+CU1 – Rechercher un cours
+
+- But : Un étudiant qui désire s’informer sur un cours spécifique (prérequis, nombre de crédits, description officielle du cours,etc.)
+- Précondition : L’étudiant est connecté et a accès à la plateforme.
+- Acteurs : Étudiants (principal), professeur API (secondaire)
+- Déclencheur : L’étudiant saisit un mot-clé (ex. “IFT2255”) dans la barre de recherche.
+L’étudiant clique sur la barre de recherche.
+L’étudiant sélectionne un filtre ou une catégorie avant le mot-clé.
+- Dépendances : 
+1. Dépendances techniques : 
+       - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations. 
+       - Dépend de la connexion Internet stable de l’étudiant.
+2. Dépendances logiques (UML):
+Le CU “Rechercher un cours” peut être utilisé comme prérequis pour d'autres CU.
+       Ex : Pour CU2 : “Consulter les résultats académiques d’un cours”
+       Ex : Pour CU3 : “Lire les avis des étudiants”
+- Scénario principal :
+
+
+L’étudiant entre un mot-clé, un titre (ex : “IFT2255” ou “IFT”).
+Le système interroge l’API Planifium avec la requête.
+Le système récupère la liste des cours correspondants.
+Le système comme les prérequis, le nombre de crédits, la description officielle du cours, etc.
+Le système indique si l’étudiant est éligible (ou non) à suivre chaque cours en fonction de son cheminement actuel. 
+- Scénario alternatif : 
+4.a : Aucun cours trouvé : Le système affiche un message indiquant qu’aucun cours ne correspond à la recherche.
+4.a.1 Le système reprend à l’étape 1.
+4.b : L’API Planifium est indisponible : Le système affiche un message d’erreur et propose à l’étudiant de réessayer plus tard (peut-être dû à un problème de connexion d’internet ou problème du site web).
+4.b.1 : Le scénario se termine.
+4.c : Requête invalide : Si la recherche contient des caractères invalides ou des saisies trop courtes, le système va demander à l’étudiant de reformuler sa recherche.
+4.c.1 : Le système n’a pas trouvé de cours.
+4.c.2 : Le système affiche Numéro non valide à l’écran.
+4.c.3 : Le scénario reprend à l’étape 1.
+
+- Postcondition : La liste des cours est affichée avec toutes les informations pertinentes et l’indication d’éligibilité.
+
+
+
+CU2 – Consulter les résultats académiques d’un cours
+- But : Permettre à l’étudiant de consulter des statistiques d’un cours (moyenne, nombre d’inscrits, taux d’échec, etc.) afin d’évaluer sa difficulté.
+Précondition : Des résultats agrégés (format CSV) sont disponibles pour le cours sélectionné.
+- Acteur : Étudiant (principal), Système (plateforme qui récupère et affiche les résultats) (secondaire)
+- Déclencheur : L’étudiant clique sur l’option « Consulter les résultats » pour un cours donné.
+L’étudiant recherche un cours (CU1) puis clique sur “Consulter les résultats”.
+L’étudiant accède à un cours via une autre fonctionnalité (ex : CU3 “Lire les avis des étudiants”) et choisit ensuite de voir les résultats.
+- Dépendances :
+1. Dépendances techniques : 
+     - Dépend de la disponibilité des fichiers CSV de résultats académiques. 
+     - Dépend de la base de données interne pour charger les statistiques.
+     - Dépend d’une connexion internet stable.
+2. Dépendances logiques (UML) : 
+- CU1 est “include”, car pour consulter les résultats d’un cours, l’étudiant doit d’abord rechercher le cours.
+- CU3, CU4 et CU5 sont “exclude”. 
+        CU3 : cela est optionnel parce que l’étudiant peut décider de lire les avis ou non après avoir consulté les résultats académiques.
+        CU4 : cela est optionnel, car l’étudiant peut choisir de prolonger l’action en comparant les résultats de plusieurs cours.
+        CU5 : cela est optionnel, car l'étudiant peut choisir la forme d’affichage des résultats (ex : sous forme de tableau, avec certains filtres (par session, par année, etc). selon ses préférences.
+- Scénario principal :
+
+
+1. L’étudiant accède à la fonctionnalité “Consulter les résultats”.
+2. L’étudiant sélectionne un cours dans la liste proposée.
+3. Le système interroge la base de données (CSV).
+4. Le système charge les données pertinentes (moyenne, nombre d’inscrits, taux d’échec, etc).
+5. Le système affiche les résultats sous forme de tableau.
+6. L’étudiant consulte les résultats.
+
+
+- Scénario alternatif : 
+4.a Les résultats ne sont pas disponibles pour le cours sélectionné (cours trop récent ou données manquantes)
+4.a.1 Le système affiche Aucun résultat disponible pour ce cours.
+4.a.2 Le scénario reprend à l’étape 2.
+4.b Le fichier CSV ou la connexion à la base de données est inaccessible.
+4.b.1 Le système affiche Erreur de chargement des résultats, veuillez réessayer plus tard.
+4.b.2 Le scénario se termine.
+- Postcondition : L’étudiant visualise les statistiques du cours et peut estimer la difficulté du cours à partir de données objectives.
+
+
+
+CU3 – Lire les avis des étudiants
+- But : Un étudiant souhaite consulter les avis de ses pairs sur un cours afin de mieux évaluer sa charge de travail et sa difficulté.
+- Acteur : Étudiant (principal), Système, service d’avis (secondaire)
+- Déclencheur : L’étudiant ouvre la fiche d’un cours et sélectionne l’onglet « Avis étudiants ».
+         L'étudiant sélectionne un bouton “Voir les avis” associé à un cours dans la liste des résultats.
+
+
+- Dépendances : 
+1. Dépendances techniques : 
+Dépend de la base de données des avis (JSON) mise à jour via le bot Discord. 
+Dépend de la disponibilité du service d’agrégation des avis.
+2. Dépendances logiques (UML) : 
+CU1 est “include” parce que l’étudiant doit d’abord trouver le cours avant de pouvoir lire les avis des autres.
+CU2, CU4, CU5 sont “exclude”
+CU2 : après avoir consulté les avis, l’étudiant peut choisir de prendre sa décision avec des données quantitatives (moyenne, taux d’échec, etc).
+CU4 : les avis lus peuvent être intégrés dans une comparaison entre plusieurs cours.
+Cu5 : l’étudiant peut décider de trier par pertinence, par date ou de filtrer par des critères (ex : années, type d'étudiant, etc.)
+- Précondition : Au moins 5 avis sont disponibles pour le cours.
+
+
+- Scénario principal :
+
+
+1. L’étudiant ouvre la fiche d’un cours.
+
+
+2. Le système interroge la base des avis (JSON).
+
+
+3. Le système affiche les avis agrégés (charge de travail, difficulté, commentaires).
+4. l’étudiant consulte les avis affichés.
+
+
+- Scénarios alternatifs 
+4.a : Moins de 5 avis disponibles pour le cours.
+4.a.1 : Le système affiche Avis insuffisant pour ce cours.
+4.a.2 : Le scénario se termine.
+4.b : La base des avis est inaccessible (erreur technique)
+4.b.1 : Le système affiche Erreur de chargement des avis, veuillez réessayer plus tard.
+4.b.2 : Le scénario se termine.
+4.c : Aucun avis trouvé (cours très récent)
+4.c.1 : Le système affiche Aucun avis n’a encore été publié pour ce cours.
+4.c.2 : Le scénario reprend à l’étape 1 si l’étudiant veut consulter un autre cours.
+- Postcondition : L’étudiant visualise un retour qualitatif (commentaires) et quantitatif (charge de travail, difficulté) sur ce cours. 
+
+
+
+CU4 – Comparer plusieurs cours
+- But : Un étudiant souhaite comparer plusieurs cours afin d’évaluer leur comptabilité et la charge globale.
+- Acteur : Étudiant (principal), Système (secondaire)
+- Déclencheur : L’étudiant sélectionne plusieurs cours dans son panier et clique sur « Comparer ».
+       L’étudiant clique sur l’option “Ajouter à la comparaison”, puis répète l’action pour un ou plusieurs cours avant de lancer la comparaison.
+       L’étudiant a ajouté plusieurs cours dans son panier de sélection et clique sur le bouton “Comparer”. 
+
+
+- Dépendances : 
+1. Dépendances techniques : 
+Dépend des données académiques (crédits, résultats) et des avis étudiants pour chaque cours sélectionné. 
+Dépend du module de compilation des comparaisons.
+2. Dépendances logiques : 
+CU1 et CU2 sont “include”
+CU1 : cela est indispensable, car l’étudiant doit avoir trouvé les cours avant de pouvoir les comparer.
+CU2 : cela est inclus, car la comparaison nécessite toujours des statistiques académiques.
+CU3 et CU5 sont “exclude”
+CU3 : ce n’est pas obligatoire, mais cela peut enrichir la comparaison si l’étudiant souhaite consulter les avis des étudiants.
+CU5 : ce n’est pas obligatoire, mais cela permet à l’étudiant d'adapter la forme de la comparaison des cours (ex : sous forme de tableau, filtrer certains éléments, etc) 
+- Précondition : L’étudiant a ajouté au moins deux cours à sa sélection.
+
+
+- Scénario principal :
+
+
+1. L’étudiant sélectionne plusieurs cours (deux cours ou plus).
+
+
+2. Le système récupère les données académiques (crédits, taux d’échec, moyenne) et les avis pour chaque cours.
+3. Le système compile et organise les données.
+
+
+4. Le système présente un tableau comparatif clair.
+5. L’étudiant consulte le tableau pour évaluer ses choix.
+
+
+- Scénario alternatif : 
+4.a : Moins de deux cours sélectionnés
+4.a.1 Le système affiche Veuillez sélectionner au moins deux cours pour comparer.
+4.a.2 : Le scénario reprend à l’étape 1.
+4.b : Les données d’un des cours sont manquantes (avis ou résultats)
+4.b.1 : Le système affiche Certaines informations sont indisponibles pour un ou plusieurs cours. 
+4.b.2 : Le système affiche tout de même le tableau avec les données disponibles.
+4.b.3 : Le scénario reprend à l’étape 6.
+- Postcondition : L’étudiant peut visualiser la compatibilité et la charge globale de ses choix.
+
+
+CU5 – Personnaliser l’affichage
+- But : Un étudiant souhaite obtenir des résultats adaptés à ses préférences personnelles.
+- Acteur : Étudiant (principal), Système (secondaire)
+- Déclencheur : L’étudiant accède à la section « Préférences » et active la personnalisation.
+         L’étudiant modifie ou active les options de personnalisation (ex : filtrer par type de cours, charge de travail, etc)
+
+
+- Dépendances : 
+1. Dépendances techniques :
+Dépend de la base de données utilisateur pour stocker les préférences. 
+Dépend du moteur de filtrage et de tri pour appliquer ces préférences aux recherches.
+3. Dépendances logiques : 
+CU1 et CU4 sont “include”
+CU1 : à chaque fois que l’étudiant effectue une recherche, les préférences définies (ex : éviter les cours du soir, privilégier les cours pratiques, etc) sont automatiquement appliquées. 
+CU4 : la personnalisation est aussi appliquée dans le tableau comparatif (ex : trier par charge de travail, n’affiche que certains critères, etc). 
+CU2 et CU3 sont “extend”
+CU2 : un étudiant peut demander à ce que ses préférences influencent la manière dont les statistiques sont présentées (ex : n’affiche que la moyenne, masquer le taux d’échec si jugé non pertinent, etc)
+CU3 : l’étudiant peut personnaliser les avis qu’il souhaite voir (ex : avis de cours pratique, avis récents uniquement, etc).
+- Précondition : L’étudiant a renseigné ses préférences dans son profil.
+
+
+- Scénario principal :
+
+
+L’étudiant accède à la section Préférences.
+L’étudiant configure ses préférences (pratique/théorie, intérêts, contraintes).
+Le système enregistre ces préférences dans le profil de l’étudiant.
+Lors de la recherche, le système trie et filtre les résultats en fonction du profil.
+Le système affiche la liste personnalisée des cours. 
+L’étudiant consulte les résultats adaptés.
+
+
+- Scénario alternatif : 
+4.a : L'étudiant n'a défini aucune préférence.
+4.a.1 : Le système affiche Aucune préférence trouvée. Veuillez configurer votre profil pour activer la personnalisation.
+4.a.2 : Le scénario reprend à l’étape 1.
+4.b : Les préférences de l’étudiant sont incohérentes ou trop restrictives (aucun cours compatibles)
+4.b.1: Le système affiche Aucun cours ne correspond à vos critères.
+4.b.2 : Le système propose d’élargir les préférences.
+4.b.3 : Le scénario reprend à l’étape 2.
+- Postcondition : L’étudiant obtient une expérience personnalisée et adaptée à son profil.
+
+
+
+
 
