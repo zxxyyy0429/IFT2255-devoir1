@@ -60,6 +60,8 @@ Cycle académique : contraintes temporelles (périodes d’inscription, début d
 Ressources humaines : auxiliaires responsables de l’import des fichiers CSV, de la modération des avis et de la vérification de conformité.
 
 Équipe : 
+
+
 Ruoxuan Hu (20304027) , username Discord : rx_04
 
 
@@ -72,6 +74,8 @@ Xinyan Zhang (20264873) , username Discord : Xinyan
 Yutong Zhu (20310738) , username Discord : yutong
 
 Distribution de tache : 
+
+
 Premier submission ( Septembre 26):
 
 Ziyue et Ruoxuan : 
