@@ -17,11 +17,11 @@ Ce document présente une première analyse des besoins, les cas d’utilisation
 
 ## Organisation du répertoire
 ```
-.
-|-Documentation
-|  |- Rapport
-|-Diagramme
-|  |- Diagramme de cas d'utilisation
-|  |- Diagramme d'activités
-|  |- Modèle C4
-|-README.md
+IFT2255-devoir1/
+  ├── docs/
+  │  └── rapport.md
+  ├── diagrams/
+  │  ├── Diagramme de cas d'utilisation
+  │  ├── Diagramme d'activités
+  │  └── Modèle C4
+  └── README.md
