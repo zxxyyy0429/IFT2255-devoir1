@@ -252,28 +252,26 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 
 ## 5. Risques du projet
-    ### **1. Données incomplètes ou biaisées**
+ ### 1. Données incomplètes ou biaisées
 
-          - **Problème** : Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
-          - **Conséquences** : les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
+- Problème: Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
+ - Conséquences : les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
 
-
-          - Atténuation :
-               i. seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
-               ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
-               iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
-
-
-     ### **2. Confidentialité et Loi 25**
-
-         - Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
-         - Conséquence : cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
+- Atténuation :
+   i. seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
+   ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
+   iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
 
 
-         - Atténuation : 
-               i. mise à jour d’une anonymisation stricte des données
-               ii. respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
-               iii. vérification régulière de conformité légale.
+ ### 2. Confidentialité et Loi 25
+
+- Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
+- Conséquence : cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
+
+- Atténuation : 
+   i. mise à jour d’une anonymisation stricte des données
+   ii. respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
+   iii. vérification régulière de conformité légale.
 
 
 ### 3. Données obsolètes ou incohérentes
@@ -283,8 +281,8 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 
 - Atténuation : 
-i. synchronisation régulière 
-ii. affichage des dates de mise à jour pour chaque donnée
+   i. synchronisation régulière 
+   ii. affichage des dates de mise à jour pour chaque donnée
 
 
 ### 4. Accessibilité limitée
@@ -294,8 +292,8 @@ ii. affichage des dates de mise à jour pour chaque donnée
 
 
 - Atténuation : 
-i. conception mobile-first
-ii. respect des normes WCAG.
+   i. conception mobile-first
+   ii. respect des normes WCAG.
 
 
 ### 5. Performance et surcharge technique
@@ -306,9 +304,9 @@ ii. respect des normes WCAG.
 
 
 - Atténuation : 
-i. mise en place d’un système de cache pour éviter les recalculs inutiles.
-ii. architecture scalable 
-iii. surveillance en temps réel des performances avec alertes proactives.
+   i. mise en place d’un système de cache pour éviter les recalculs inutiles.
+   ii. architecture scalable 
+   iii. surveillance en temps réel des performances avec alertes proactives.
 
 ### 6. Accessibilité limitée pour les étudiants handicapé
 - Problème : difficulté d’accès pour des étudiants en handicap qui sont des personnes aveugles, sourdes ou ayant des troubles cognitifs.
@@ -316,8 +314,8 @@ iii. surveillance en temps réel des performances avec alertes proactives.
 
 
 - Atténuation : 
-i. Intègre les lecteurs d'écran 
-ii. option de personnalisation de l’affichage (agrandir la taille du texte, simplifier la mise en page)
+   i. Intègre les lecteurs d'écran 
+   ii. option de personnalisation de l’affichage (agrandir la taille du texte, simplifier la mise en page)
 
 ## 6. Besoins non fonctionnels
 Au-delà des fonctionnalités principales, la plateforme doit répondre aux exigences de qualité suivantes :
