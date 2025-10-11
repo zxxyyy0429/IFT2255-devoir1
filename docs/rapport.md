@@ -728,10 +728,10 @@ Moteur de recommandations
    - Analyse des similarités entre cours
 
 ## Modèle C4 niveau 1
-![Modèle_C4_niveau_1](diagrams/Modèle_C4_niveau_1.jpg)
+![Modèle C4 niveau 1](diagrams/Modèle_C4_niveau_1.jpg)
 
 ## Modèle C4 niveau 2
-![Modèle_C4_niveau_2](diagrams/Modèle_C4_niveau_2.jpg)
+![Modèle C4 niveau 2](diagrams/Modèle_C4_niveau_2.jpg)
 
 
 
