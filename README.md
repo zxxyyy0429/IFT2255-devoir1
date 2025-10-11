@@ -14,8 +14,8 @@ IFT2255-devoir1/
   │    ├── Echeancier.png
   │    ├── Diagramme_de_cas_d'utilisation.jpg
   │    ├── Diagramme_d'activités.jpg
-  │    ├── Modèle_C4_Niveau1.jpg
-  │    └── Modèle_C4_Niveau2.jpg
+  │    ├── Modèle_C4_niveau_1.jpg
+  │    └── Modèle_C4_niveau_2.jpg
   ├── code/
   │    └── Bonus
   │      ├── app.js
