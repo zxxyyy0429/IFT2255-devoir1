@@ -19,31 +19,31 @@ Son fonctionnement suit un processus interactif et incrémental, conforme au mod
 
 1. **Authentification et profil utilisateur**
 
- - Connexion via **SSO UdeM** ; création automatique du profil étudiant.
- - Le profil contient les **préférences** (théorie/pratique, charge de travail souhaitée, plages d’horaires, contraintes personnelles).
+   - Connexion via **SSO UdeM** ; création automatique du profil étudiant.
+   - Le profil contient les **préférences** (théorie/pratique, charge de travail souhaitée, plages d’horaires, contraintes personnelles).
 
 2. **Recherche de cours**
- - L’étudiant saisit le mot-clé ou le code du cours.
- - Le système interroge **l’API Planifium** pour obtenir les informations officielles : code, titre, crédits, cycle, horaires, pré- et co-requis.
- - Les résultats sont présentés avec l’indicateur d’**éligibilité** calculé selon le cheminement de l’étudiant.
+   - L’étudiant saisit le mot-clé ou le code du cours.
+   - Le système interroge **l’API Planifium** pour obtenir les informations officielles : code, titre, crédits, cycle, horaires, pré- et co-requis.
+   - Les résultats sont présentés avec l’indicateur d’**éligibilité** calculé selon le cheminement de l’étudiant.
 
 3. **Consultation des résultats académiques**
- - Le système charge les données agrégées depuis les fichiers **CSV** (moyenne, nombre d’inscrits, échecs).
- - L’information est stockée dans une base de données relationnelle et présentée sous forme de tableaux statistiques clairs.
+   - Le système charge les données agrégées depuis les fichiers **CSV** (moyenne, nombre d’inscrits, échecs).
+   - L’information est stockée dans une base de données relationnelle et présentée sous forme de tableaux statistiques clairs.
 
 4. **Lecture des avis étudiants**
- - Un **bot Discord** recueille les évaluations (difficulté, charge, commentaire).
- - Les avis sont agrégés automatiquement et ne sont affichés que lorsque **n ≥ 5**, conformément à la règle métier.
- - Le système calcule des indicateurs synthétiques (moyenne, dispersion, mots-clés dominants).
+   - Un **bot Discord** recueille les évaluations (difficulté, charge, commentaire).
+   - Les avis sont agrégés automatiquement et ne sont affichés que lorsque **n ≥ 5**, conformément à la règle métier.
+   - Le système calcule des indicateurs synthétiques (moyenne, dispersion, mots-clés dominants).
 
 5. **Comparaison et personnalisation**
- - L’étudiant ajoute plusieurs cours à un **panier de comparaison**.
- - Le moteur de comparaison combine les données officielles (Planifium / CSV) et les avis étudiants.
- - Les résultats sont **filtrés** et **classés** selon les préférences du profil pour offrir une expérience personnalisée.
+   - L’étudiant ajoute plusieurs cours à un **panier de comparaison**.
+   - Le moteur de comparaison combine les données officielles (Planifium / CSV) et les avis étudiants.
+   - Les résultats sont **filtrés** et **classés** selon les préférences du profil pour offrir une expérience personnalisée.
 
 6. **Mise à jour et sauvegarde**
- - Des **tâches d’import (ETL)** périodiques assurent la synchronisation avec Planifium, l’actualisation des CSV et la modération des avis Discord.
- - Tous les échanges sont sécurisés via HTTPS ; les données sont sauvegardées automatiquement.
+   - Des **tâches d’import (ETL)** périodiques assurent la synchronisation avec Planifium, l’actualisation des CSV et la modération des avis Discord.
+   - Tous les échanges sont sécurisés via HTTPS ; les données sont sauvegardées automatiquement.
 
 
 ### Dépendances du système
