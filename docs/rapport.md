@@ -259,7 +259,9 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - Atténuation :
    i. seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
+  
    ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
+  
    iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
 
 
@@ -270,7 +272,9 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - Atténuation : 
    i. mise à jour d’une anonymisation stricte des données
+  
    ii. respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
+  
    iii. vérification régulière de conformité légale.
 
 
