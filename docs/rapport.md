@@ -730,22 +730,24 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 Objectif: Décrire les limites externes du système et ses principales interactions avec les utilisateurs et systèmes externes.
 
 Système principal:
-- Plateforme d’aide aux choix de cours
-- Centralise les informations sur les cours et aide les étudiants dans leur processus de sélection.
+   - Plateforme d’aide aux choix de cours
+     - Centralise les informations sur les cours et aide les étudiants dans leur processus de sélection.
+     
 Acteurs principaux:
-- Étudiants [Personne]
-- Utilisateur principal de la plateforme
-- Consulte les informations sur les cours 
-- Administrateurs système [Personne]
-- Gère la plateforme et la maintenance
+   - Étudiants [Personne]
+     - Utilisateur principal de la plateforme
+     - Consulte les informations sur les cours 
+   - Administrateurs système [Personne]
+     - Gère la plateforme et la maintenance
 
 Système externes:
-- API Planifium [API]
-- Donne les données officielles des cours, programmes et horaires
-- Service d’avis Discord [Système]
-- Collecte les avis étudiants avec un bot Discord
-- Résultats académiques [Base de données CSV]
-- Données agrégées des résultats
+   - API Planifium [API]
+     
+     - Donne les données officielles des cours, programmes et horaires
+   - Service d’avis Discord [Système]
+     - Collecte les avis étudiants avec un bot Discord
+   - Résultats académiques [Base de données CSV]
+     - Données agrégées des résultats
 
 ### Niveau 2: Diagramme des conteneurs
 Objectif: Détailler l’architecture interne principale du système et les interactions entre les conteneurs
