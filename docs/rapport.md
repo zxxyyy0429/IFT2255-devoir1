@@ -473,7 +473,10 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 - **Déclencheur** : L’étudiant saisit un mot-clé (ex. “IFT2255”) dans la barre de recherche.
      - L’étudiant clique sur la barre de recherche.
      - L’étudiant sélectionne un filtre ou une catégorie avant le mot-clé.
-- **Dépendances** : 
+ 
+
+- **Dépendances** :
+  
       1. Dépendances techniques :
   
         - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations.
