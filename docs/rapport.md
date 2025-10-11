@@ -522,25 +522,29 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 
 
 ### CU2 – Consulter les résultats académiques d’un cours
-- But : Permettre à l’étudiant de consulter des statistiques d’un cours (moyenne, nombre d’inscrits, taux d’échec, etc.) afin d’évaluer sa difficulté.
-Précondition : Des résultats agrégés (format CSV) sont disponibles pour le cours sélectionné.
-- Acteur : Étudiant (principal), Système (plateforme qui récupère et affiche les résultats) (secondaire)
-- Déclencheur : L’étudiant clique sur l’option « Consulter les résultats » pour un cours donné.
-L’étudiant recherche un cours (CU1) puis clique sur “Consulter les résultats”.
-L’étudiant accède à un cours via une autre fonctionnalité (ex : CU3 “Lire les avis des étudiants”) et choisit ensuite de voir les résultats.
-- Dépendances :
-1. Dépendances techniques : 
-     - Dépend de la disponibilité des fichiers CSV de résultats académiques. 
-     - Dépend de la base de données interne pour charger les statistiques.
-     - Dépend d’une connexion internet stable.
-2. Dépendances logiques (UML) : 
-- CU1 est “include”, car pour consulter les résultats d’un cours, l’étudiant doit d’abord rechercher le cours.
-- CU3, CU4 et CU5 sont “exclude”. 
-        CU3 : cela est optionnel parce que l’étudiant peut décider de lire les avis ou non après avoir consulté les résultats académiques.
-        CU4 : cela est optionnel, car l’étudiant peut choisir de prolonger l’action en comparant les résultats de plusieurs cours.
-        CU5 : cela est optionnel, car l'étudiant peut choisir la forme d’affichage des résultats (ex : sous forme de tableau, avec certains filtres (par session, par année, etc). selon ses préférences.
-- Scénario principal :
+- **But** : Permettre à l’étudiant de consulter des statistiques d’un cours (moyenne, nombre d’inscrits, taux d’échec, etc.) afin d’évaluer sa difficulté.
+- **Précondition** : Des résultats agrégés (format CSV) sont disponibles pour le cours sélectionné.
+- **Acteurs** : Étudiant (principal), Système (plateforme qui récupère et affiche les résultats) (secondaire)
+- **Déclencheur** : L’étudiant clique sur l’option « Consulter les résultats » pour un cours donné.
+   - L’étudiant recherche un cours (CU1) puis clique sur “Consulter les résultats”.
+   - L’étudiant accède à un cours via une autre fonctionnalité (ex : CU3 “Lire les avis des étudiants”) et choisit ensuite de voir les résultats.
+ 
+- **Dépendances** :
 
+1. Dépendances techniques : 
+   - Dépend de la disponibilité des fichiers CSV de résultats académiques. 
+   - Dépend de la base de données interne pour charger les statistiques.
+   - Dépend d’une connexion internet stable.
+  
+2. Dépendances logiques (UML) : 
+   - CU1 est “include”, car pour consulter les résultats d’un cours, l’étudiant doit d’abord rechercher le cours.
+   - CU3, CU4 et CU5 sont “exclude”. 
+      - CU3 : cela est optionnel parce que l’étudiant peut décider de lire les avis ou non après avoir consulté les résultats académiques.
+      - CU4 : cela est optionnel, car l’étudiant peut choisir de prolonger l’action en comparant les résultats de plusieurs cours.
+      - CU5 : cela est optionnel, car l'étudiant peut choisir la forme d’affichage des résultats (ex : sous forme de tableau, avec certains filtres (par session, par année, etc). selon ses préférences.
+    
+
+- **Scénario principal** :
 
 1. L’étudiant accède à la fonctionnalité “Consulter les résultats”.
 2. L’étudiant sélectionne un cours dans la liste proposée.
@@ -549,153 +553,169 @@ L’étudiant accède à un cours via une autre fonctionnalité (ex : CU3 “Lir
 5. Le système affiche les résultats sous forme de tableau.
 6. L’étudiant consulte les résultats.
 
-
-- Scénario alternatif : 
-4.a Les résultats ne sont pas disponibles pour le cours sélectionné (cours trop récent ou données manquantes)
+- **Scénario alternatif** : 
+4.a Les résultats ne sont pas disponibles pour le cours sélectionné (cours trop récent ou données manquantes).
+  
 4.a.1 Le système affiche Aucun résultat disponible pour ce cours.
+
 4.a.2 Le scénario reprend à l’étape 2.
+
 4.b Le fichier CSV ou la connexion à la base de données est inaccessible.
+
 4.b.1 Le système affiche Erreur de chargement des résultats, veuillez réessayer plus tard.
+
 4.b.2 Le scénario se termine.
-- Postcondition : L’étudiant visualise les statistiques du cours et peut estimer la difficulté du cours à partir de données objectives.
 
-
+- **Postcondition** : L’étudiant visualise les statistiques du cours et peut estimer la difficulté du cours à partir de données objectives.
 
 ### CU3 – Lire les avis des étudiants
-- But : Un étudiant souhaite consulter les avis de ses pairs sur un cours afin de mieux évaluer sa charge de travail et sa difficulté.
-- Acteur : Étudiant (principal), Système, service d’avis (secondaire)
-- Déclencheur : L’étudiant ouvre la fiche d’un cours et sélectionne l’onglet « Avis étudiants ».
-         L'étudiant sélectionne un bouton “Voir les avis” associé à un cours dans la liste des résultats.
+- **But** : Un étudiant souhaite consulter les avis de ses pairs sur un cours afin de mieux évaluer sa charge de travail et sa difficulté.
+- **Acteurs** : Étudiant (principal), Système, service d’avis (secondaire)
+- **Déclencheur** : L’étudiant ouvre la fiche d’un cours et sélectionne l’onglet « Avis étudiants ».
+    - L'étudiant sélectionne un bouton “Voir les avis” associé à un cours dans la liste des résultats.
 
 
-- Dépendances : 
+- **Dépendances** : 
 1. Dépendances techniques : 
-Dépend de la base de données des avis (JSON) mise à jour via le bot Discord. 
-Dépend de la disponibilité du service d’agrégation des avis.
+   - Dépend de la base de données des avis (JSON) mise à jour via le bot Discord. 
+   - Dépend de la disponibilité du service d’agrégation des avis.
+  
 2. Dépendances logiques (UML) : 
-CU1 est “include” parce que l’étudiant doit d’abord trouver le cours avant de pouvoir lire les avis des autres.
-CU2, CU4, CU5 sont “exclude”
-CU2 : après avoir consulté les avis, l’étudiant peut choisir de prendre sa décision avec des données quantitatives (moyenne, taux d’échec, etc).
-CU4 : les avis lus peuvent être intégrés dans une comparaison entre plusieurs cours.
-Cu5 : l’étudiant peut décider de trier par pertinence, par date ou de filtrer par des critères (ex : années, type d'étudiant, etc.)
-- Précondition : Au moins 5 avis sont disponibles pour le cours.
+   - CU1 est “include” parce que l’étudiant doit d’abord trouver le cours avant de pouvoir lire les avis des autres.
+   - CU2, CU4, CU5 sont “exclude”
+       - CU2 : après avoir consulté les avis, l’étudiant peut choisir de prendre sa décision avec des données quantitatives (moyenne, taux d’échec, etc).
+       - CU4 : les avis lus peuvent être intégrés dans une comparaison entre plusieurs cours.
+       - Cu5 : l’étudiant peut décider de trier par pertinence, par date ou de filtrer par des critères (ex : années, type d'étudiant, etc.)
+    
+         
+- **Précondition** : Au moins 5 avis sont disponibles pour le cours.
 
-
-- Scénario principal :
-
+- **Scénario principal** :
 
 1. L’étudiant ouvre la fiche d’un cours.
-
-
 2. Le système interroge la base des avis (JSON).
-
-
 3. Le système affiche les avis agrégés (charge de travail, difficulté, commentaires).
 4. l’étudiant consulte les avis affichés.
 
-
-- Scénarios alternatifs 
+- **Scénarios alternatifs** :
+ 
 4.a : Moins de 5 avis disponibles pour le cours.
+
 4.a.1 : Le système affiche Avis insuffisant pour ce cours.
+
 4.a.2 : Le scénario se termine.
-4.b : La base des avis est inaccessible (erreur technique)
+
+4.b : La base des avis est inaccessible (erreur technique).
+
 4.b.1 : Le système affiche Erreur de chargement des avis, veuillez réessayer plus tard.
+
 4.b.2 : Le scénario se termine.
-4.c : Aucun avis trouvé (cours très récent)
+
+4.c : Aucun avis trouvé (cours très récent).
+
 4.c.1 : Le système affiche Aucun avis n’a encore été publié pour ce cours.
+
 4.c.2 : Le scénario reprend à l’étape 1 si l’étudiant veut consulter un autre cours.
-- Postcondition : L’étudiant visualise un retour qualitatif (commentaires) et quantitatif (charge de travail, difficulté) sur ce cours. 
 
-
+- **Postcondition** : L’étudiant visualise un retour qualitatif (commentaires) et quantitatif (charge de travail, difficulté) sur ce cours. 
 
 ### CU4 – Comparer plusieurs cours
-- But : Un étudiant souhaite comparer plusieurs cours afin d’évaluer leur comptabilité et la charge globale.
-- Acteur : Étudiant (principal), Système (secondaire)
-- Déclencheur : L’étudiant sélectionne plusieurs cours dans son panier et clique sur « Comparer ».
-       L’étudiant clique sur l’option “Ajouter à la comparaison”, puis répète l’action pour un ou plusieurs cours avant de lancer la comparaison.
-       L’étudiant a ajouté plusieurs cours dans son panier de sélection et clique sur le bouton “Comparer”. 
+- **But** : Un étudiant souhaite comparer plusieurs cours afin d’évaluer leur comptabilité et la charge globale.
+- **Acteurs** : Étudiant (principal), Système (secondaire)
+- **Déclencheur** : L’étudiant sélectionne plusieurs cours dans son panier et clique sur « Comparer ».
+    - L’étudiant clique sur l’option “Ajouter à la comparaison”, puis répète l’action pour un ou plusieurs cours avant de lancer la comparaison.
+    - L’étudiant a ajouté plusieurs cours dans son panier de sélection et clique sur le bouton “Comparer”. 
 
-
-- Dépendances : 
+- **Dépendances** : 
 1. Dépendances techniques : 
-Dépend des données académiques (crédits, résultats) et des avis étudiants pour chaque cours sélectionné. 
-Dépend du module de compilation des comparaisons.
+   - Dépend des données académiques (crédits, résultats) et des avis étudiants pour chaque cours sélectionné. 
+   - Dépend du module de compilation des comparaisons.
 2. Dépendances logiques : 
-CU1 et CU2 sont “include”
-CU1 : cela est indispensable, car l’étudiant doit avoir trouvé les cours avant de pouvoir les comparer.
-CU2 : cela est inclus, car la comparaison nécessite toujours des statistiques académiques.
-CU3 et CU5 sont “exclude”
-CU3 : ce n’est pas obligatoire, mais cela peut enrichir la comparaison si l’étudiant souhaite consulter les avis des étudiants.
-CU5 : ce n’est pas obligatoire, mais cela permet à l’étudiant d'adapter la forme de la comparaison des cours (ex : sous forme de tableau, filtrer certains éléments, etc) 
-- Précondition : L’étudiant a ajouté au moins deux cours à sa sélection.
+   - CU1 et CU2 sont “include”
+     - CU1 : cela est indispensable, car l’étudiant doit avoir trouvé les cours avant de pouvoir les comparer.
+     - CU2 : cela est inclus, car la comparaison nécessite toujours des statistiques académiques.
+   - CU3 et CU5 sont “exclude”
+     - CU3 : ce n’est pas obligatoire, mais cela peut enrichir la comparaison si l’étudiant souhaite consulter les avis des étudiants.
+     - CU5 : ce n’est pas obligatoire, mais cela permet à l’étudiant d'adapter la forme de la comparaison des cours (ex : sous forme de tableau, filtrer certains éléments, etc)
+    
+- **Précondition** : L’étudiant a ajouté au moins deux cours à sa sélection.
 
 
-- Scénario principal :
-
+- **Scénario principal** :
 
 1. L’étudiant sélectionne plusieurs cours (deux cours ou plus).
-
-
 2. Le système récupère les données académiques (crédits, taux d’échec, moyenne) et les avis pour chaque cours.
 3. Le système compile et organise les données.
-
-
 4. Le système présente un tableau comparatif clair.
 5. L’étudiant consulte le tableau pour évaluer ses choix.
 
 
-- Scénario alternatif : 
-4.a : Moins de deux cours sélectionnés
+- **Scénario alternatif** : 
+4.a : Moins de deux cours sélectionnés.
+  
 4.a.1 Le système affiche Veuillez sélectionner au moins deux cours pour comparer.
+
 4.a.2 : Le scénario reprend à l’étape 1.
-4.b : Les données d’un des cours sont manquantes (avis ou résultats)
-4.b.1 : Le système affiche Certaines informations sont indisponibles pour un ou plusieurs cours. 
+
+4.b : Les données d’un des cours sont manquantes (avis ou résultats).
+
+4.b.1 : Le système affiche Certaines informations sont indisponibles pour un ou plusieurs cours.
+
 4.b.2 : Le système affiche tout de même le tableau avec les données disponibles.
+
 4.b.3 : Le scénario reprend à l’étape 6.
-- Postcondition : L’étudiant peut visualiser la compatibilité et la charge globale de ses choix.
+
+- **Postcondition** : L’étudiant peut visualiser la compatibilité et la charge globale de ses choix.
 
 
 ### CU5 – Personnaliser l’affichage
-- But : Un étudiant souhaite obtenir des résultats adaptés à ses préférences personnelles.
-- Acteur : Étudiant (principal), Système (secondaire)
-- Déclencheur : L’étudiant accède à la section « Préférences » et active la personnalisation.
-         L’étudiant modifie ou active les options de personnalisation (ex : filtrer par type de cours, charge de travail, etc)
+- **But** : Un étudiant souhaite obtenir des résultats adaptés à ses préférences personnelles.
+- **Acteurs** : Étudiant (principal), Système (secondaire)
+- **Déclencheur** : L’étudiant accède à la section « Préférences » et active la personnalisation.
+    - L’étudiant modifie ou active les options de personnalisation (ex : filtrer par type de cours, charge de travail, etc)
 
 
-- Dépendances : 
+- **Dépendances** : 
 1. Dépendances techniques :
-Dépend de la base de données utilisateur pour stocker les préférences. 
-Dépend du moteur de filtrage et de tri pour appliquer ces préférences aux recherches.
-3. Dépendances logiques : 
-CU1 et CU4 sont “include”
-CU1 : à chaque fois que l’étudiant effectue une recherche, les préférences définies (ex : éviter les cours du soir, privilégier les cours pratiques, etc) sont automatiquement appliquées. 
-CU4 : la personnalisation est aussi appliquée dans le tableau comparatif (ex : trier par charge de travail, n’affiche que certains critères, etc). 
-CU2 et CU3 sont “extend”
-CU2 : un étudiant peut demander à ce que ses préférences influencent la manière dont les statistiques sont présentées (ex : n’affiche que la moyenne, masquer le taux d’échec si jugé non pertinent, etc)
-CU3 : l’étudiant peut personnaliser les avis qu’il souhaite voir (ex : avis de cours pratique, avis récents uniquement, etc).
-- Précondition : L’étudiant a renseigné ses préférences dans son profil.
+   - Dépend de la base de données utilisateur pour stocker les préférences. 
+   - Dépend du moteur de filtrage et de tri pour appliquer ces préférences aux recherches.
+2. Dépendances logiques : 
+   - CU1 et CU4 sont “include”
+     - CU1 : à chaque fois que l’étudiant effectue une recherche, les préférences définies (ex : éviter les cours du soir, privilégier les cours pratiques, etc) sont automatiquement appliquées. 
+     - CU4 : la personnalisation est aussi appliquée dans le tableau comparatif (ex : trier par charge de travail, n’affiche que certains critères, etc). 
+   - CU2 et CU3 sont “extend”
+     - CU2 : un étudiant peut demander à ce que ses préférences influencent la manière dont les statistiques sont présentées (ex : n’affiche que la moyenne, masquer le taux d’échec si jugé non pertinent, etc)
+     - CU3 : l’étudiant peut personnaliser les avis qu’il souhaite voir (ex : avis de cours pratique, avis récents uniquement, etc).
+    
+- **Précondition** : L’étudiant a renseigné ses préférences dans son profil.
 
 
-- Scénario principal :
+- **Scénario principal** :
 
+1. L’étudiant accède à la section Préférences.
+2. L’étudiant configure ses préférences (pratique/théorie, intérêts, contraintes).
+3. Le système enregistre ces préférences dans le profil de l’étudiant.
+4. Lors de la recherche, le système trie et filtre les résultats en fonction du profil.
+5. Le système affiche la liste personnalisée des cours. 
+6. L’étudiant consulte les résultats adaptés.
 
-L’étudiant accède à la section Préférences.
-L’étudiant configure ses préférences (pratique/théorie, intérêts, contraintes).
-Le système enregistre ces préférences dans le profil de l’étudiant.
-Lors de la recherche, le système trie et filtre les résultats en fonction du profil.
-Le système affiche la liste personnalisée des cours. 
-L’étudiant consulte les résultats adaptés.
-
-
-- Scénario alternatif : 
+- **Scénario alternatif** :
+  
 4.a : L'étudiant n'a défini aucune préférence.
+
 4.a.1 : Le système affiche Aucune préférence trouvée. Veuillez configurer votre profil pour activer la personnalisation.
+
 4.a.2 : Le scénario reprend à l’étape 1.
+
 4.b : Les préférences de l’étudiant sont incohérentes ou trop restrictives (aucun cours compatibles)
+
 4.b.1: Le système affiche Aucun cours ne correspond à vos critères.
+
 4.b.2 : Le système propose d’élargir les préférences.
+
 4.b.3 : Le scénario reprend à l’étape 2.
-- Postcondition : L’étudiant obtient une expérience personnalisée et adaptée à son profil.
+
+- **Postcondition** : L’étudiant obtient une expérience personnalisée et adaptée à son profil.
 
 
 ### Diagramme de cas d'utilisation
