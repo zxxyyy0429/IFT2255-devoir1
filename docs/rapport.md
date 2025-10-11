@@ -3,8 +3,11 @@
 ## 1. Cadre du projet
 
 ### Description du projet 
-Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au Département d’informatique et de recherche opérationnelle (DIRO). La structure des programmes est parfois complexe et les sources d’information disponibles sont fragmentées : les données officielles partielles (Planifium, résultats globaux) et les avis étudiants éparpillés (forums, Discord).
-Afin de faciliter la prise de décision et d’offrir une vue plus transparente et centralisée, le projet vise à concevoir une **plateforme web**asée sur une **API REST**, combinant les données officielles et les opinions des étudiants. Cette plateforme permettra aux étudiants de :
+Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au Département d’informatique et de recherche opérationnelle (DIRO). 
+La structure des programmes est parfois complexe et les sources d’information disponibles sont fragmentées : les données officielles partielles (Planifium, résultats globaux) et les avis étudiants éparpillés (forums, Discord).
+Afin de faciliter la prise de décision et d’offrir une vue plus transparente et centralisée, le projet vise à concevoir une **plateforme web**asée sur une **API REST**, combinant les données officielles et les opinions des étudiants. 
+
+Cette plateforme permettra aux étudiants de :
 - rechercher et comparer des cours,
 - consulter des résultats académiques agrégés,
 - accéder à des avis étudiants représentatifs,
