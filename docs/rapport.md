@@ -48,25 +48,25 @@ Son fonctionnement suit un processus interactif et incrémental, conforme au mod
 
 ### Dépendances du système
 1. **Dépendances externes**
-- **API Planifium** : source officielle pour les programmes et horaires ; dépendance critique pour la recherche et la validation des prérequis.
-- **Bot Discord / API Discord** : collecteur des avis étudiants en format JSON ; dépendance asynchrone et soumise à la disponibilité du service Discord.
-- **Fichiers CSV fournis par l’administration** : données de résultats agrégées mises à jour à chaque session.
-- **SSO UdeM** : service d’authentification institutionnel obligatoire pour accéder au profil.
+   - **API Planifium** : source officielle pour les programmes et horaires ; dépendance critique pour la recherche et la validation des prérequis.
+   - **Bot Discord / API Discord** : collecteur des avis étudiants en format JSON ; dépendance asynchrone et soumise à la disponibilité du service Discord.
+   - **Fichiers CSV fournis par l’administration** : données de résultats agrégées mises à jour à chaque session.
+   - **SSO UdeM** : service d’authentification institutionnel obligatoire pour accéder au profil.
 
 2. **Dépendances internes (techniques)**
-- Base SQL : stockage des résultats académiques (moyennes, taux d’échec, nombre d’inscrits).
-- Base NoSQL (JSON/Document Store) : stockage des avis étudiants et métadonnées.
-- Moteur de filtrage et de personnalisation : applique les préférences utilisateurs aux recherches et comparaisons.
-- Service API interne (REST) : gère la communication entre l’interface web, la logique métier et les bases de données.
-- Module de cache : optimise les temps de réponse (objectif P95 < 2 s).
-- Système de journalisation et surveillance : collecte des métriques (latence, taux d’erreur) et déclenchement d’alertes.
+   - **Base SQL** : stockage des résultats académiques (moyennes, taux d’échec, nombre d’inscrits).
+   - **Base NoSQL (JSON/Document Store)** : stockage des avis étudiants et métadonnées.
+   - **Moteur de filtrage et de personnalisation** : applique les préférences utilisateurs aux recherches et comparaisons.
+   - **Service API interne (REST)** : gère la communication entre l’interface web, la logique métier et les bases de données.
+   - **Module de cache** : optimise les temps de réponse (objectif P95 < 2 s).
+   - **Système de journalisation et surveillance** : collecte des métriques (latence, taux d’erreur) et déclenchement d’alertes.
 
 
-3. Dépendances organisationnelles et légales
-Loi 25 (Québec) : encadrement légal du traitement des données personnelles ; anonymisation et consentement obligatoires.
-Services informatiques de l’UdeM : hébergement, certificats HTTPS, maintenance du SSO.
-Cycle académique : contraintes temporelles (périodes d’inscription, début de session) influençant la charge du système.
-Ressources humaines : auxiliaires responsables de l’import des fichiers CSV, de la modération des avis et de la vérification de conformité.
+3. **Dépendances organisationnelles et légales**
+   - **Loi 25 (Québec)** : encadrement légal du traitement des données personnelles ; anonymisation et consentement obligatoires.
+   - **Services informatiques de l’UdeM** : hébergement, certificats HTTPS, maintenance du SSO.
+   - **Cycle académique** : contraintes temporelles (périodes d’inscription, début de session) influençant la charge du système.
+   - **Ressources humaines** : auxiliaires responsables de l’import des fichiers CSV, de la modération des avis et de la vérification de conformité.
 
 ### Équipe : 
 
@@ -87,27 +87,27 @@ Ziyue et Ruoxuan :
 
 - Description du domaine : acteurs
 - Description du projet
-- Glossaire : liste des termes et expressions utilises lors de la premier submission
-- Risque : au moins 5 risque
-- Besoins de materiel ( sans le solution )
+- Glossaire : liste des termes et expressions utilisés lors de la premier soumission
+- Risque : au moins 5 risques
+- Besoins de matériel ( sans les solutions )
 
 Xinyan : 
-- Diagram de cas utilisation
+- Diagrammes des cas d'utilisation
 
 #### Version final ( October 10 ):
 
 Ziyue et Ruoxuan : 
 
-- Les coordonees des membres
-- Hypothese 
-- Solution de stockage et solution d’integration
+- Les coordonées des membres
+- Hypothèse 
+- Solution de stockage et solution d’intégration
 - Besoin non fonctionels
-- Git hub
-- Brouillon pour le modele C4 ( niveau 1 et 2 )
+- GitHub
+- Brouillon pour le modèle C4 ( niveau 1 et 2 )
 - Finaliser rapport HTML
 
 Xinyan : 
-- Echeancier
+- Echéancier
 - Diagramme de cas d’utilisation
 - Diagramme d’activite
 - Brouillon pour le modele C4 ( niveau 1 et 2 )
