@@ -18,6 +18,6 @@ IFT2255-devoir1/
   │    └── Modèle_C4_Niveau2.jpg
   ├── code/
   │    ├── html
-  │    └──css
+  │    └── css
   └── README.md
 ```
