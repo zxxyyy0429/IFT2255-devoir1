@@ -479,17 +479,17 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
   
 1. Dépendances techniques :
   
-  - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations.
+   - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations.
   
-  - Dépend de la connexion Internet stable de l’étudiant.
+   - Dépend de la connexion Internet stable de l’étudiant.
   
 2. Dépendances logiques (UML):
   
-  - Le CU “Rechercher un cours” peut être utilisé comme prérequis pour d'autres CU.
+   - Le CU “Rechercher un cours” peut être utilisé comme prérequis pour d'autres CU.
 
-   - Ex : Pour CU2 : “Consulter les résultats académiques d’un cours”
+     - Ex : Pour CU2 : “Consulter les résultats académiques d’un cours”
   
-   - Ex : Pour CU3 : “Lire les avis des étudiants”
+     - Ex : Pour CU3 : “Lire les avis des étudiants”
   
 - **Scénario principal** :
 
