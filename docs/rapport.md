@@ -752,8 +752,7 @@ Objectif: Détailler l’architecture interne principale du système et les inte
 
 Application Web [Application Client-Side]
 
-	Communication: API REST avec le backend
-	
+Communication: API REST avec le backend
 	Responsabilités:
 	
       - Interface utilisateur responsive
