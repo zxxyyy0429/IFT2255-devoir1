@@ -726,7 +726,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 ![Diagramme d'activités](diagrams/Diagramme_d'activités.jpg)
 
 ## 10. Modèle C4
-### Niveau 1: Diagramme de contexte
+### Niveau 1 : Diagramme de contexte
 Objectif: Décrire les limites externes du système et ses principales interactions avec les utilisateurs et systèmes externes.
 
 Système principal:
@@ -759,7 +759,7 @@ Système externes:
      
      - Données agrégées des résultats
 
-### Niveau 2: Diagramme des conteneurs
+### Niveau 2 : Diagramme des conteneurs
 Objectif: Détailler l’architecture interne principale du système et les interactions entre les conteneurs
 
 1. Application Web [Application Client-Side]
@@ -811,7 +811,7 @@ Objectif: Détailler l’architecture interne principale du système et les inte
 	  
      - Assurer que chaque étudiant possède les prérequis nécéssaire
 
-### Niveau 3: Diagramme des composants (API Backend)
+### Niveau 3 : Diagramme des composants (API Backend)
 Objectif: Développer le conteneur API Backend pour montrer ses composants internes.
 
 1. Contrôleur d’authentification
