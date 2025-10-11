@@ -79,9 +79,9 @@ Xinyan Zhang (20264873) , username Discord : Xinyan
 Yu Tong Zhu (20310738) , username Discord : yutong
 
 
-### Distribution de tache : 
+### Distribution des tâches : 
 
-#### Première soumission ( Septembre 26 ):
+#### Première soumission ( Septembre 26 ) :
 
 Ziyue et Ruoxuan : 
 
@@ -94,7 +94,7 @@ Ziyue et Ruoxuan :
 Xinyan : 
 - Diagrammes des cas d'utilisation
 
-#### Version final ( October 10 ):
+#### Version final ( October 10 ) :
 
 Ziyue et Ruoxuan : 
 
@@ -107,10 +107,10 @@ Ziyue et Ruoxuan :
 - Finaliser rapport HTML
 
 Xinyan : 
-- Echéancier
+- Échéancier
 - Diagramme de cas d’utilisation
-- Diagramme d’activite
-- Brouillon pour le modele C4 ( niveau 1 et 2 )
+- Diagramme d’activité
+- Brouillon pour le modèle C4 ( niveau 1 et 2 )
 - Git hub
 - Finaliser rapport HTML
 
@@ -127,152 +127,153 @@ Yu Tong :
 ## 2. Analyse des exigences 
 
 ### Description du domaine 
-Utilisateurs visés
-- Nouveaux étudiants (manque de repères académiques)
+**Utilisateurs visés**
+   - Nouveaux étudiants (manque de repères académiques)
 
-- Étudiants en fin de parcours (diplomation, optimisation de la moyenne)
+   - Étudiants en fin de parcours (diplomation, optimisation de la moyenne)
 
-- Étudiants internationaux (adaptation au système académique québécois)
+   - Étudiants internationaux (adaptation au système académique québécois)
 
-- Étudiants travailleurs (charge de travail limitée)
+   - Étudiants travailleurs (charge de travail limitée)
 
-- Étudiants parents (équilibre vie familiale et études)
+   - Étudiants parents (équilibre vie familiale et études)
 
-- Étudiants à temps plein / temps partiel
+   - Étudiants à temps plein / temps partiel
 
 
 ### Facteurs académiques
-- Moyenne de la classe
+   - Moyenne de la classe
 
-- Taux de réussite / échec / abandon 
+   - Taux de réussite / échec / abandon 
 
-- Nombre d’inscription 
+   - Nombre d’inscription 
 
-- Préalables et co-requis
+   - Préalables et co-requis
 
-- Nombre de crédits attribués
+   - Nombre de crédits attribués
 
-- Dates des examens 
+   - Dates des examens 
 
-- Description officielle du cours
+   - Description officielle du cours
 
 
 ### Facteurs personnels
-- Charge de travail (devoirs, projets, lectures)
+   - Charge de travail (devoirs, projets, lectures)
 
-- Rythme du cours
+   - Rythme du cours
 
-- Intérêts académiques et orientation professionnelle
+   - Intérêts académiques et orientation professionnelle
 
-- Préférence théorie / pratique
+   - Préférence théorie / pratique
 
 ### Facteurs logistiques
-- Mode d’enseignement (présentiel, hybride, en ligne)
+   - Mode d’enseignement (présentiel, hybride, en ligne)
 
-- Compatibilité horaire
+   - Compatibilité horaire
 
-- Contraintes de transport
+   - Contraintes de transport
 
 
 ### Facteurs sociaux
-- Avis étudiants (forums, Discord, bouche-à-oreille)
+   - Avis étudiants (forums, Discord, bouche-à-oreille)
 
-- Réputation des enseignants
+   - Réputation des enseignants
 
-- Niveau de stress perçu
+   - Niveau de stress perçu
 
 ### Sources de données
-- Planifium API : catalogue officiel (codes, titres, crédits, horaires, préalables).
+   - **Planifium API** : catalogue officiel (codes, titres, crédits, horaires, préalables).
 
-- Résultats académiques agrégés : CSV (moyenne, inscrits, échecs).
+   - **Résultats académiques agrégés** : CSV (moyenne, inscrits, échecs).
 
-- Avis étudiants (Discord) : JSON via bot (difficulté perçue, charge de travail, commentaires).
+   - **Avis étudiants (Discord)** : JSON via bot (difficulté perçue, charge de travail, commentaires).
 
 
 
 ## 3. Hypothèses
 Ces hypothèses permettent de clarifier le cadre du projet et d’éviter les ambiguïtés lors de la conception.
+
 Dans l’élaboration du projet, certaines hypothèses de travail ont été émises afin de délimiter le périmètre du système :
-- Tous les étudiants disposent d’un accès Internet stable et d’un navigateur moderne compatible (Chrome, Firefox, Edge, Safari).
+   - Tous les étudiants disposent d’un accès Internet stable et d’un navigateur moderne compatible (Chrome, Firefox, Edge, Safari).
 
-- Les données fournies par l’API Planifium sont fiables et mises à jour régulièrement par l’Université.
+   - Les données fournies par l’API Planifium sont fiables et mises à jour régulièrement par l’Université.
 
-- Les étudiants savent utiliser une interface web basique et sont capables de naviguer sur une plateforme en ligne.
+   - Les étudiants savent utiliser une interface web basique et sont capables de naviguer sur une plateforme en ligne.
 
-- L’authentification institutionnelle (SSO UdeM) est disponible et fonctionnelle pour identifier les utilisateurs.
+   - L’authentification institutionnelle (SSO UdeM) est disponible et fonctionnelle pour identifier les utilisateurs.
 
-- Les avis étudiants collectés via Discord sont anonymisés et représentatifs d’un nombre suffisant de participants. (les étudiants sont avisés de la collecte des données et sont d’accord).
+   - Les avis étudiants collectés via Discord sont anonymisés et représentatifs d’un nombre suffisant de participants. (les étudiants sont avisés de la collecte des données et sont d’accord).
 
-- Le volume d’utilisateurs simultanés reste raisonnable (quelques milliers) et ne dépasse pas la capacité initiale prévue.
+   - Le volume d’utilisateurs simultanés reste raisonnable (quelques milliers) et ne dépasse pas la capacité initiale prévue.
 
-- Les fichiers CSV des résultats académiques sont complets et mis à jour à la fin de chaque session.
+   - Les fichiers CSV des résultats académiques sont complets et mis à jour à la fin de chaque session.
 
-- La plateforme est utilisée sur des appareils compatibles et le design responsive fonctionne correctement.
+   - La plateforme est utilisée sur des appareils compatibles et le design responsive fonctionne correctement.
 
-- Les échanges avec l’API Planifium et les services internes sont sécurisés (HTTPS) et certains, sans pertes de données pendant les transferts.
+   - Les échanges avec l’API Planifium et les services internes sont sécurisés (HTTPS) et certains, sans pertes de données pendant les transferts.
 
 
 ## 4. Glossaire
-- Planifium API : Service fournissant les données officielles des cours/programmes de l’UdeM.
+   - **Planifium API** : Service fournissant les données officielles des cours/programmes de l’UdeM.
   
-- Format CSV : Format de fichier tabulaire utilisé pour stocker les résultats académiques agrégés.
+   - **Format CSV** : Format de fichier tabulaire utilisé pour stocker les résultats académiques agrégés.
   
-- Résultats académiques agrégés (CSV) : Données statistiques globales d’un cours (moyenne, inscrits, échecs).
+   - **Résultats académiques agrégés (CSV)** : Données statistiques globales d’un cours (moyenne, inscrits, échecs).
   
-- JSON : Format d’échange de données structurées, utilisé pour stocker et transmettre les avis des étudiants.
+   - **JSON** : Format d’échange de données structurées, utilisé pour stocker et transmettre les avis des étudiants.
   
-- Avis étudiants : Retours qualitatifs/quantitatifs collectés via Discord (JSON).
+   - **Avis étudiants**: Retours qualitatifs/quantitatifs collectés via Discord (JSON).
 
-- Loi 25 : Loi québécoise sur la protection des renseignements personnels (préserver la confidentialité).
+   - **Loi 25** : Loi québécoise sur la protection des renseignements personnels (préserver la confidentialité).
 
-- Mot-clé (Recherche) : Code, titre ou fragment de texte utilisé par l’étudiant pour retrouver un cours.
+   - **Mot-clé (Recherche)** : Code, titre ou fragment de texte utilisé par l’étudiant pour retrouver un cours.
   
-- Bloc d’horaire : bloc du cours - matin (8:30-13:30), après-midi (13:30-18:30) et soir (18:30-22:30)
+   - **Bloc d’horaire** : bloc du cours - matin (8:30-13:30), après-midi (13:30-18:30) et soir (18:30-22:30)
   
-- Type d’utilisateur : Les étudiants internationaux (12 crédits), les étudiants à temps plein (12-18 crédits), les étudiants à temps partiels (>6 crédits), les étudiants parents et les étudiants qui travaillent (option de bloc d’horaire).
+   - **Type d’utilisateur** : Les étudiants internationaux (12 crédits), les étudiants à temps plein (12-18 crédits), les étudiants à temps partiels (>6 crédits), les étudiants parents et les étudiants qui travaillent (option de bloc d’horaire).
   
-- Utilisateur :Les étudiants qui veulent obtenir des informations académiques qui les aident dans leur cheminement académique.
+   - **Utilisateur** :Les étudiants qui veulent obtenir des informations académiques qui les aident dans leur cheminement académique.
   
-- Numéro d’utilisateur : la matricule attribuée à chacun des étudiants de la part de l’institution (UDEM).
+   - **Numéro d’utilisateur** : la matricule attribuée à chacun des étudiants de la part de l’institution (UDEM).
   
-- Service : fournir les informations à propos d’un cours et de ses informations complémentaires (ex : notes, avis sur les profs, taux d’échec, moyenne, etc.).
+   - **Service** : fournir les informations à propos d’un cours et de ses informations complémentaires (ex : notes, avis sur les profs, taux d’échec, moyenne, etc.).
   
-- Administrateur système : maintenance et mise à jour des nouveaux cours.
+   - **Administrateur système** : maintenance et mise à jour des nouveaux cours.
   
-- Information personnelle : Les préférences fournies (ex : jour de la semaine des cours, tri des semestres fourni par l’école, bloc de la journée, etc) par les utilisateurs (les étudiants).
+   - **Information personnelle** : Les préférences fournies (ex : jour de la semaine des cours, tri des semestres fourni par l’école, bloc de la journée, etc) par les utilisateurs (les étudiants).
 
-- Tableau comparatif : Vue synthétique qui regroupe les données de plusieurs cours afin de faciliter leur comparaison.
+   - **Tableau comparatif** : Vue synthétique qui regroupe les données de plusieurs cours afin de faciliter leur comparaison.
 
-- Panier de cours : Liste temporaire de cours sélectionnés par l’étudiant en vue d’une comparaison.
+   - **Panier de cours** : Liste temporaire de cours sélectionnés par l’étudiant en vue d’une comparaison.
 
-- Préférences (Profil) : Paramètres définis par l’étudiant (théorie/pratique, contraintes personnelles) afin de personnaliser l’affichage des résultats.
+   - **Préférences (Profil)** : Paramètres définis par l’étudiant (théorie/pratique, contraintes personnelles) afin de personnaliser l’affichage des résultats.
 
-- Moteur de filtrage : Composant logiciel qui applique les préférences de l’étudiant pour trier et adapter la liste de cours affichée.
+   - **Moteur de filtrage** : Composant logiciel qui applique les préférences de l’étudiant pour trier et adapter la liste de cours affichée.
 
 
 ## 5. Risques du projet
-### 1. Données incomplètes ou biaisées
+    ### **1. Données incomplètes ou biaisées**
 
-- Problème : Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
-- Conséquences : les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
-
-
-- Atténuation :
-i. seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
-ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
-iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
+          - **Problème** : Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
+          - **Conséquences** : les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
 
 
-### 2. Confidentialité et Loi 25
+          - Atténuation :
+               i. seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
+               ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
+               iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
 
-- Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
-- Conséquence : cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
+
+     ### **2. Confidentialité et Loi 25**
+
+         - Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
+         - Conséquence : cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
 
 
-- Atténuation : 
-i. mise à jour d’une anonymisation stricte des données
-ii. respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
-iii. vérification régulière de conformité légale.
+         - Atténuation : 
+               i. mise à jour d’une anonymisation stricte des données
+               ii. respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
+               iii. vérification régulière de conformité légale.
 
 
 ### 3. Données obsolètes ou incohérentes
