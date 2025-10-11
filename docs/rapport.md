@@ -734,83 +734,94 @@ Système principal:
      - Centralise les informations sur les cours et aide les étudiants dans leur processus de sélection.
      
 Acteurs principaux:
+
    - Étudiants [Personne]
+     
      - Utilisateur principal de la plateforme
-     - Consulte les informations sur les cours 
+       
+     - Consulte les informations sur les cours
+       
    - Administrateurs système [Personne]
+     
      - Gère la plateforme et la maintenance
 
 Système externes:
+
    - API Planifium [API]
      
      - Donne les données officielles des cours, programmes et horaires
+       
    - Service d’avis Discord [Système]
+     
      - Collecte les avis étudiants avec un bot Discord
+       
    - Résultats académiques [Base de données CSV]
+     
      - Données agrégées des résultats
 
 ### Niveau 2: Diagramme des conteneurs
 Objectif: Détailler l’architecture interne principale du système et les interactions entre les conteneurs
 
-Application Web [Application Client-Side]
-
-Communication: API REST avec le backend
-	Responsabilités:
-	
+1. Application Web [Application Client-Side]
+   
+   - Communication: API REST avec le backend
+   - Responsabilités:
+     
       - Interface utilisateur responsive
 	  
       - Recherche et comparaison de cours
 	  
       - Visualisation des données
 	  
-API Backend [Application Server-Side]
+2. API Backend [Application Server-Side]
 
-	Responsabilités: 
+   - Responsabilités: 
 	
-      - Gestions des profils utilisateurs
+     - Gestions des profils utilisateurs
 	  
-      - Sécurité et authentification
+     - Sécurité et authentification
 	  
-	Communication:
+   - Communication:
 	
       - Application Web (REST)
 	  
       - Services externes
 	  
-Base de données principale [Base de données]
+3. Base de données principale [Base de données]
 
-	Responsabilités:
+   - Responsabilités:
 	
-      - Stockage des profils utilisateurs
+     - Stockage des profils utilisateurs
 	  
-Service d'agrégations des avis [Software System]
+4. Service d'agrégations des avis [Software System]
 
-	Responsabilités:
+   - Responsabilités:
 	
-      - Collecte des avis avec Discord
+     - Collecte des avis avec Discord
 	  
-      - Application des seuils statistiques (n>=5)
+     - Application des seuils statistiques (n>=5)
 	  
-      - Agrégation et traitement des données
+     - Agrégation et traitement des données
 	  
-Résultats académiques [Software System]
+5. Résultats académiques [Software System]
 
-   Responsabilités: 
+   - Responsabilités: 
    
-      - Stocker l’historique des notes et moyennes
+     - Stocker l’historique des notes et moyennes
 	  
-      - Assurer que chaque étudiant possède les prérequis nécéssaire
+     - Assurer que chaque étudiant possède les prérequis nécéssaire
 
 ### Niveau 3: Diagramme des composants (API Backend)
 Objectif: Développer le conteneur API Backend pour montrer ses composants internes.
-Contrôleur d’authentification
+
+1. Contrôleur d’authentification
    - Gestion des sessions utilisateur
-Contrôleur de recherche
+2. Contrôleur de recherche
    - Gestion des paramètres de recherche
-Service Planifium
+3. Service Planifium
    - Client API pour Planifium
    - Gestion des erreurs et retry
-Moteur de recommandations
+4. Moteur de recommandations
    - Algorithmes de suggestion basés sur le profil
    - Analyse des similarités entre cours
 
