@@ -655,6 +655,10 @@ L’étudiant consulte les résultats adaptés.
 
 
 ### Diagramme de cas d'utilisation
+![Diagramme de cas d’utilisation](diagrams/Diagramme_de_cas_d'utilisation.jpg)
+
+## 9. Diagramme d'activités
+![Diagramme d'activités](diagrams/Diagramme_d'activités.jpg)
 
 
 
