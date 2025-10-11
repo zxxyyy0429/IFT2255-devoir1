@@ -123,7 +123,7 @@ Yutong Zhu (20310738):
 - Code bonus
 
 ### Échéancier : 
-![Échéancier](diagrams/Echéancier.png)
+![Échéancier](diagrams/Echéancier.png)
 
 
 ## 2. Analyse des exigences 
