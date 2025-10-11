@@ -585,7 +585,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
    - CU2, CU4, CU5 sont “exclude”
        - CU2 : après avoir consulté les avis, l’étudiant peut choisir de prendre sa décision avec des données quantitatives (moyenne, taux d’échec, etc).
        - CU4 : les avis lus peuvent être intégrés dans une comparaison entre plusieurs cours.
-       - Cu5 : l’étudiant peut décider de trier par pertinence, par date ou de filtrer par des critères (ex : années, type d'étudiant, etc.)
+       - CU5 : l’étudiant peut décider de trier par pertinence, par date ou de filtrer par des critères (ex : années, type d'étudiant, etc.)
     
          
 - **Précondition** : Au moins 5 avis sont disponibles pour le cours.
@@ -650,7 +650,8 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 5. L’étudiant consulte le tableau pour évaluer ses choix.
 
 
-- **Scénario alternatif** : 
+- **Scénario alternatif** :
+  
 4.a : Moins de deux cours sélectionnés.
   
 4.a.1 Le système affiche Veuillez sélectionner au moins deux cours pour comparer.
@@ -750,29 +751,53 @@ Système externes:
 Objectif: Détailler l’architecture interne principale du système et les interactions entre les conteneurs
 
 Application Web [Application Client-Side]
+
 	Communication: API REST avec le backend
+	
 	Responsabilités:
+	
       - Interface utilisateur responsive
+	  
       - Recherche et comparaison de cours
+	  
       - Visualisation des données
+	  
 API Backend [Application Server-Side]
+
 	Responsabilités: 
+	
       - Gestions des profils utilisateurs
+	  
       - Sécurité et authentification
+	  
 	Communication:
+	
       - Application Web (REST)
+	  
       - Services externes
+	  
 Base de données principale [Base de données]
+
 	Responsabilités:
+	
       - Stockage des profils utilisateurs
+	  
 Service d'agrégations des avis [Software System]
+
 	Responsabilités:
+	
       - Collecte des avis avec Discord
+	  
       - Application des seuils statistiques (n>=5)
+	  
       - Agrégation et traitement des données
+	  
 Résultats académiques [Software System]
+
    Responsabilités: 
+   
       - Stocker l’historique des notes et moyennes
+	  
       - Assurer que chaque étudiant possède les prérequis nécéssaire
 
 ### Niveau 3: Diagramme des composants (API Backend)
