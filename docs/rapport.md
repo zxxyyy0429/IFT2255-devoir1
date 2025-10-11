@@ -21,7 +21,6 @@ Le système proposé vise à assister les étudiants de l’Université de Montr
 Son fonctionnement suit un processus interactif et incrémental, conforme au modèle de développement enseigné (modèle en V / itératif-incrémental) :
 
 1. **Authentification et profil utilisateur**
-
    - Connexion via **SSO UdeM** ; création automatique du profil étudiant.
    - Le profil contient les **préférences** (théorie/pratique, charge de travail souhaitée, plages d’horaires, contraintes personnelles).
 
@@ -121,7 +120,7 @@ Yu Tong :
 - Rapport modèle C4
 - Modèle C4
 - GitHub
-- Bonus
+- Code bonus
 
 ### Échéancier : 
 ![Échéancier](diagrams/Echéancier.png)
