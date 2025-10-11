@@ -328,7 +328,8 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - Atténuation :
  
-   i. Intègre les lecteurs d'écran 
+   i. Intègre les lecteurs d'écran
+  
    ii. Option de personnalisation de l’affichage (agrandir la taille du texte, simplifier la mise en page)
 
 ## 6. Besoins non fonctionnels
@@ -391,66 +392,71 @@ La solution de stockage combine des technologies relationnelles et non relationn
      Cette base permet d’effectuer des requêtes structurées, d’assurer la cohérence des statistiques et de gérer les agrégations par session ou trimestre.
 
 
-- Avis étudiants :
-Collectés via un bot Discord et enregistrés dans une base de données qui peut gérer des avis et des commentaires d’étudiants. Ce modèle permet de traiter des données semi-structurées et évolutives (commentaires, évaluations, métadonnées).
+   - **Avis étudiants** :
+     Collectés via un bot Discord et enregistrés dans une base de données qui peut gérer des avis et des commentaires d’étudiants. Ce modèle permet de traiter des données semi-structurées et évolutives (commentaires, évaluations, métadonnées).
 
 
-- Profils étudiants et préférences :
-Les données des utilisateurs (cheminement, préférences de cours, contraintes personnelles) sont enregistrées dans une section sécurisée, liée à leur identifiant institutionnel via le SSO (authentification unique) UdeM.
+   - **Profils étudiants et préférences** :
+     Les données des utilisateurs (cheminement, préférences de cours, contraintes personnelles) sont enregistrées dans une section sécurisée, liée à leur identifiant institutionnel via le SSO (authentification unique) UdeM.
 
 
-- Fichiers journaux et statistiques :
-Les journaux d’activité et les mesures de performance sont sauvegardés dans des fichiers JSON structurés pour assurer la traçabilité, la supervision et la maintenance proactive du système.
+   - **Fichiers journaux et statistiques** :
+     Les journaux d’activité et les mesures de performance sont sauvegardés dans des fichiers JSON structurés pour assurer la traçabilité, la supervision et la maintenance proactive du système.
 
 
-- Sécurité et confidentialité :
-Toutes les données sensibles sont protégées lorsqu’elles sont enregistrées et lorsqu’elles sont transmises sur le réseau.
-Les accès sont contrôlés par rôles (étudiant, auxiliaire, administrateur).
-Les avis étudiants sont anonymisés avant publication, en conformité avec la Loi 25.
-Des sauvegardes quotidiennes avec rétention de 30 jours sont réalisées, et l’architecture est scalable horizontalement (via CDN et cache Redis) pour absorber la charge.
+   - **Sécurité et confidentialité** :
+     Toutes les données sensibles sont protégées lorsqu’elles sont enregistrées et lorsqu’elles sont transmises sur le réseau.
+     Les accès sont contrôlés par rôles (étudiant, auxiliaire, administrateur).
+     Les avis étudiants sont anonymisés avant publication, en conformité avec la Loi 25.
+     Des sauvegardes quotidiennes avec rétention de 30 jours sont réalisées, et l’architecture est scalable horizontalement (via CDN et cache Redis) pour absorber la charge.
 
 
 ### Solution d’intégration
 La solution d’intégration garantit la cohérence des échanges entre les différents services internes et externes de la plateforme.
-- API Planifium (Université de Montréal) :
-L’API REST de Planifium est utilisée pour obtenir les informations officielles sur les programmes, cours, horaires, crédits et prérequis.
-Les données sont synchronisées quotidiennement via un processus automatisé et mises en cache localement pour réduire le délai d’attente.
+
+   - **API Planifium (Université de Montréal)** :
+     L’API REST de Planifium est utilisée pour obtenir les informations officielles sur les programmes, cours, horaires, crédits et prérequis.
+     Les données sont synchronisées quotidiennement via un processus automatisé et mises en cache localement pour réduire le délai d’attente.
 
 
-- Bot Discord (Avis étudiants) :
-Le bot recueille automatiquement les avis et notes des étudiants.
-Les messages sont filtrés pour que toute information personnelle (PII) soient supprimés avant leur transformation en JSON et leur insertion dans la base NoSQL.
+   - **Bot Discord (Avis étudiants)** :
+     Le bot recueille automatiquement les avis et notes des étudiants.
+     Les messages sont filtrés pour que toute information personnelle (PII) soient supprimés avant leur transformation en JSON et leur insertion dans la base NoSQL.
 
 
-- Authentification SSO UdeM :
-L’accès au système est protégé par une authentification institutionnelle, garantissant un lien unique entre les préférences et l’identité de l’étudiant.
+   - **Authentification SSO UdeM** :
+     L’accès au système est protégé par une authentification institutionnelle, garantissant un lien unique entre les préférences et l’identité de l’étudiant.
 
 
-- API interne REST (backend) :
- Le système expose plusieurs points d’accès (/courses, /results, /compare, /reviews, /profile) permettant à l’interface utilisateur et aux services internes de communiquer en format JSON sur protocole HTTPS.
+   - **API interne REST (backend)** :
+     Le système expose plusieurs points d’accès (/courses, /results, /compare, /reviews, /profile) permettant à l’interface utilisateur et aux services internes de communiquer en format JSON sur protocole HTTPS.
 
 
-- CI/CD et supervision technique :
-Le déploiement est automatisé via GitHub Actions.
-La performance et la stabilité sont surveillées en continu, et des alertes sont envoyées en cas d’erreur ou de lenteur du système.
+   - **CI/CD et supervision technique** :
+     Le déploiement est automatisé via GitHub Actions.
+     La performance et la stabilité sont surveillées en continu, et des alertes sont envoyées en cas d’erreur ou de lenteur du système.
 
 
 ### Solutions techniques globales
 L’architecture générale de la plateforme suit le modèle itératif et incrémental (I&I) enseigné en cours.
+
 Chaque incrément (ex. recherche, avis, comparaison) est développé, testé et intégré progressivement, ce qui permet des retours fréquents et une amélioration continue.
+
 L’approche repose sur une architecture composée de plusieurs parties qui communiquent entre elles.
+
 Chaque partie du système a un rôle précis (recherche, affichage, gestion des données) et elles échangent des informations de manière organisée et sécurisée.
  Cette solution assure :
-- la modularité et la faible dépendance entre les composants,
+ 
+   - la **modularité** et la **faible dépendance** entre les composants,
 
 
-- la sécurité et la conformité légale (Loi 25, chiffrement complet),
+   - la **sécurité** et la conformité légale (Loi 25, chiffrement complet),
 
 
-- la scalabilité et la résilience du système,
+   - la **scalabilité** et la **résilience** du système,
 
 
-- et la maintenabilité à long terme grâce à une documentation claire et un déploiement automatisé.
+   - et la **maintenabilité** à long terme grâce à une documentation claire et un déploiement automatisé.
 
 
 Dans son ensemble, cette configuration matérielle et logicielle soutient les objectifs pédagogiques du projet : offrir une plateforme performante, transparente et évolutive, conforme aux standards de génie logiciel enseignés à l’Université de Montréal.
@@ -461,29 +467,30 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 
 ### CU1 – Rechercher un cours
 
-- But : Un étudiant qui désire s’informer sur un cours spécifique (prérequis, nombre de crédits, description officielle du cours,etc.)
-- Précondition : L’étudiant est connecté et a accès à la plateforme.
-- Acteurs : Étudiants (principal), professeur API (secondaire)
-- Déclencheur : L’étudiant saisit un mot-clé (ex. “IFT2255”) dans la barre de recherche.
-L’étudiant clique sur la barre de recherche.
-L’étudiant sélectionne un filtre ou une catégorie avant le mot-clé.
-- Dépendances : 
-1. Dépendances techniques : 
-       - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations. 
-       - Dépend de la connexion Internet stable de l’étudiant.
-2. Dépendances logiques (UML):
-Le CU “Rechercher un cours” peut être utilisé comme prérequis pour d'autres CU.
-       Ex : Pour CU2 : “Consulter les résultats académiques d’un cours”
-       Ex : Pour CU3 : “Lire les avis des étudiants”
-- Scénario principal :
+- **But** : Un étudiant qui désire s’informer sur un cours spécifique (prérequis, nombre de crédits, description officielle du cours,etc.)
+- **Précondition** : L’étudiant est connecté et a accès à la plateforme.
+- **Acteurs** : Étudiants (principal), professeur API (secondaire)
+- **Déclencheur** : L’étudiant saisit un mot-clé (ex. “IFT2255”) dans la barre de recherche.
+     - L’étudiant clique sur la barre de recherche.
+     - L’étudiant sélectionne un filtre ou une catégorie avant le mot-clé.
+- **Dépendances** : 
+      1. Dépendances techniques : 
+        - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations. 
+        - Dépend de la connexion Internet stable de l’étudiant.
+      2. Dépendances logiques (UML):
+           - Le CU “Rechercher un cours” peut être utilisé comme prérequis pour d'autres CU.
+                - Ex : Pour CU2 : “Consulter les résultats académiques d’un cours”
+                - Ex : Pour CU3 : “Lire les avis des étudiants”
+- **Scénario principal** :
 
+1. L’étudiant entre un mot-clé, un titre (ex : “IFT2255” ou “IFT”).
+2. Le système interroge l’API Planifium avec la requête.
+3. Le système récupère la liste des cours correspondants.
+4. Le système comme les prérequis, le nombre de crédits, la description officielle du cours, etc.
+5. Le système indique si l’étudiant est éligible (ou non) à suivre chaque cours en fonction de son cheminement actuel.
 
-L’étudiant entre un mot-clé, un titre (ex : “IFT2255” ou “IFT”).
-Le système interroge l’API Planifium avec la requête.
-Le système récupère la liste des cours correspondants.
-Le système comme les prérequis, le nombre de crédits, la description officielle du cours, etc.
-Le système indique si l’étudiant est éligible (ou non) à suivre chaque cours en fonction de son cheminement actuel. 
-- Scénario alternatif : 
+- **Scénario alternatif** :
+
 4.a : Aucun cours trouvé : Le système affiche un message indiquant qu’aucun cours ne correspond à la recherche.
 4.a.1 Le système reprend à l’étape 1.
 4.b : L’API Planifium est indisponible : Le système affiche un message d’erreur et propose à l’étudiant de réessayer plus tard (peut-être dû à un problème de connexion d’internet ou problème du site web).
@@ -493,7 +500,7 @@ Le système indique si l’étudiant est éligible (ou non) à suivre chaque cou
 4.c.2 : Le système affiche Numéro non valide à l’écran.
 4.c.3 : Le scénario reprend à l’étape 1.
 
-- Postcondition : La liste des cours est affichée avec toutes les informations pertinentes et l’indication d’éligibilité.
+- **Postcondition** : La liste des cours est affichée avec toutes les informations pertinentes et l’indication d’éligibilité.
 
 
 
