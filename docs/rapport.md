@@ -113,7 +113,7 @@ Xinyan :
 - Diagramme de cas d’utilisation
 - Diagramme d’activité
 - Brouillon pour le modèle C4 ( niveau 1 et 2 )
-- Git hub
+- GitHub
 - Finaliser rapport HTML
 
 Yu Tong : 
