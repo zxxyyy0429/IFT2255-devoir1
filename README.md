@@ -9,9 +9,15 @@ Ce système, Plateforme d'aide au choix de cours, est une plateforme web basée 
 ```
 IFT2255-devoir1/
   ├── docs/
-  │  └── rapport.md
-  ├── diagrams/
-  │  ├── Diagramme de cas d'utilisation
-  │  ├── Diagramme d'activités
-  │  └── Modèle C4
+  │  ├── rapport.md
+  │  └── diagrams/
+  │    ├── Echeancier.png
+  │    ├── Diagramme_de_cas_d'utilisation.jpg
+  │    ├── Diagramme_d'activités.jpg
+  │    ├── Modèle_C4_Niveau1.jpg
+  │    └── Modèle_C4_Niveau2.jpg
+  ├── code/
+  │    ├── html
+  │    └──css
   └── README.md
+```
