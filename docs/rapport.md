@@ -474,13 +474,20 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
      - L’étudiant clique sur la barre de recherche.
      - L’étudiant sélectionne un filtre ou une catégorie avant le mot-clé.
 - **Dépendances** : 
-      1. Dépendances techniques : 
-        - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations. 
+      1. Dépendances techniques :
+  
+        - Dépend de l’API Planifium pour la disponibilité et l’exactitude des informations.
+  
         - Dépend de la connexion Internet stable de l’étudiant.
+  
       2. Dépendances logiques (UML):
+  
            - Le CU “Rechercher un cours” peut être utilisé comme prérequis pour d'autres CU.
+
                 - Ex : Pour CU2 : “Consulter les résultats académiques d’un cours”
+  
                 - Ex : Pour CU3 : “Lire les avis des étudiants”
+  
 - **Scénario principal** :
 
 1. L’étudiant entre un mot-clé, un titre (ex : “IFT2255” ou “IFT”).
@@ -492,12 +499,19 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 - **Scénario alternatif** :
 
 4.a : Aucun cours trouvé : Le système affiche un message indiquant qu’aucun cours ne correspond à la recherche.
+
 4.a.1 Le système reprend à l’étape 1.
+
 4.b : L’API Planifium est indisponible : Le système affiche un message d’erreur et propose à l’étudiant de réessayer plus tard (peut-être dû à un problème de connexion d’internet ou problème du site web).
+
 4.b.1 : Le scénario se termine.
+
 4.c : Requête invalide : Si la recherche contient des caractères invalides ou des saisies trop courtes, le système va demander à l’étudiant de reformuler sa recherche.
+
 4.c.1 : Le système n’a pas trouvé de cours.
+
 4.c.2 : Le système affiche Numéro non valide à l’écran.
+
 4.c.3 : Le scénario reprend à l’étape 1.
 
 - **Postcondition** : La liste des cours est affichée avec toutes les informations pertinentes et l’indication d’éligibilité.
