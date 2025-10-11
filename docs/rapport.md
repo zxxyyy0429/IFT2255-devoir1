@@ -182,7 +182,7 @@ Yu Tong :
    - Niveau de stress perçu
 
 ### Sources de données
-   - **Planifium API** : catalogue officiel (codes, titres, crédits, horaires, préalables).
+   - **Planifium API** : Catalogue officiel (codes, titres, crédits, horaires, préalables).
 
    - **Résultats académiques agrégés** : CSV (moyenne, inscrits, échecs).
 
@@ -228,17 +228,17 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
    - **Mot-clé (Recherche)** : Code, titre ou fragment de texte utilisé par l’étudiant pour retrouver un cours.
   
-   - **Bloc d’horaire** : bloc du cours - matin (8:30-13:30), après-midi (13:30-18:30) et soir (18:30-22:30)
+   - **Bloc d’horaire** : Bloc du cours - matin (8:30-13:30), après-midi (13:30-18:30) et soir (18:30-22:30)
   
    - **Type d’utilisateur** : Les étudiants internationaux (12 crédits), les étudiants à temps plein (12-18 crédits), les étudiants à temps partiels (>6 crédits), les étudiants parents et les étudiants qui travaillent (option de bloc d’horaire).
   
    - **Utilisateur** :Les étudiants qui veulent obtenir des informations académiques qui les aident dans leur cheminement académique.
   
-   - **Numéro d’utilisateur** : la matricule attribuée à chacun des étudiants de la part de l’institution (UDEM).
+   - **Numéro d’utilisateur** : La matricule attribuée à chacun des étudiants de la part de l’institution (UDEM).
   
-   - **Service** : fournir les informations à propos d’un cours et de ses informations complémentaires (ex : notes, avis sur les profs, taux d’échec, moyenne, etc.).
+   - **Service** : Fournir les informations à propos d’un cours et de ses informations complémentaires (ex : notes, avis sur les profs, taux d’échec, moyenne, etc.).
   
-   - **Administrateur système** : maintenance et mise à jour des nouveaux cours.
+   - **Administrateur système** : Maintenance et mise à jour des nouveaux cours.
   
    - **Information personnelle** : Les préférences fournies (ex : jour de la semaine des cours, tri des semestres fourni par l’école, bloc de la journée, etc) par les utilisateurs (les étudiants).
 
@@ -255,27 +255,29 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
  ### 1. Données incomplètes ou biaisées
 
 - Problème: Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
- - Conséquences : les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
+- Conséquences : Les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
 
 - Atténuation :
-   i. seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
+
+   i. Seuil minimal (≥ 5 avis) avant d’afficher une évaluation globale
   
-   ii. utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
+   ii. Utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
   
-   iii. ajouter un avertissement visuel quand les données sont jugées insuffisantes.
+   iii. Ajouter un avertissement visuel quand les données sont jugées insuffisantes.
 
 
  ### 2. Confidentialité et Loi 25
 
 - Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
-- Conséquence : cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
+- Conséquence : Cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
 
-- Atténuation : 
-   i. mise à jour d’une anonymisation stricte des données
+- Atténuation :
+
+   i. Mise à jour d’une anonymisation stricte des données
   
-   ii. respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
+   ii. Respect des principes de minimisation des données (on collecte seulement ce qui est nécessaire)
   
-   iii. vérification régulière de conformité légale.
+   iii. Vérification régulière de conformité légale.
 
 
 ### 3. Données obsolètes ou incohérentes
@@ -284,97 +286,109 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 - Conséquences : L’étudiant peut prendre de mauvaises décisions
 
 
-- Atténuation : 
-   i. synchronisation régulière 
-   ii. affichage des dates de mise à jour pour chaque donnée
+- Atténuation :
+
+   i. Synchronisation régulière
+  
+   ii. Affichage des dates de mise à jour pour chaque donnée
 
 
 ### 4. Accessibilité limitée
 
-- Problème : difficulté d’accès pour certains profils (connexion lente, mobile).
-- conséquence : temps de chargement long, interface illisible ou non responsive
+- Problème : Difficulté d’accès pour certains profils (connexion lente, mobile).
+- Conséquence : Temps de chargement long, interface illisible ou non responsive
 
 
-- Atténuation : 
-   i. conception mobile-first
-   ii. respect des normes WCAG.
+- Atténuation :
+
+   i. Conception mobile-first
+  
+   ii. Respect des normes WCAG.
 
 
 ### 5. Performance et surcharge technique
 
 
-- Problème : trop de requêtes simultanées peuvent ralentir le plateforme ou causer des interruptions.
-- Conséquence : expérience des utilisateurs dégradée, risque d’abandon de la plateforme.
+- Problème : Trop de requêtes simultanées peuvent ralentir le plateforme ou causer des interruptions.
+- Conséquence : Expérience des utilisateurs dégradée, risque d’abandon de la plateforme.
 
 
-- Atténuation : 
-   i. mise en place d’un système de cache pour éviter les recalculs inutiles.
-   ii. architecture scalable 
-   iii. surveillance en temps réel des performances avec alertes proactives.
+- Atténuation :
+
+   i. Mise en place d’un système de cache pour éviter les recalculs inutiles.
+  
+   ii. Architecture scalable
+  
+   iii. Surveillance en temps réel des performances avec alertes proactives.
 
 ### 6. Accessibilité limitée pour les étudiants handicapé
-- Problème : difficulté d’accès pour des étudiants en handicap qui sont des personnes aveugles, sourdes ou ayant des troubles cognitifs.
-- Conséquence : exclusion d’une partie de la communauté étudiante.
+- Problème : Difficulté d’accès pour des étudiants en handicap qui sont des personnes aveugles, sourdes ou ayant des troubles cognitifs.
+- Conséquence : Exclusion d’une partie de la communauté étudiante.
 
 
-- Atténuation : 
+- Atténuation :
+ 
    i. Intègre les lecteurs d'écran 
-   ii. option de personnalisation de l’affichage (agrandir la taille du texte, simplifier la mise en page)
+   ii. Option de personnalisation de l’affichage (agrandir la taille du texte, simplifier la mise en page)
 
 ## 6. Besoins non fonctionnels
 Au-delà des fonctionnalités principales, la plateforme doit répondre aux exigences de qualité suivantes :
-- Performance : Chaque requête (recherche, comparaison, consultation) doit être traitée en moins de 2 secondes afin de garantir une navigation fluide.
 
-- Sécurité : Les données personnelles doivent être protégées conformément à la Loi 25, avec chiffrement des échanges et anonymisation stricte.
+   - **Performance** : Chaque requête (recherche, comparaison, consultation) doit être traitée en moins de 2 secondes afin de garantir une navigation fluide.
 
-- Fiabilité : La plateforme doit assurer une disponibilité de 99 % pendant les périodes critiques (inscriptions, début de session).
+   - **Sécurité** : Les données personnelles doivent être protégées conformément à la Loi 25, avec chiffrement des échanges et anonymisation stricte.
+
+   - **Fiabilité** : La plateforme doit assurer une disponibilité de 99 % pendant les périodes critiques (inscriptions, début de session).
   
-- Évolutivité : L’architecture doit permettre l’intégration future d’autres sources de données (ex. évaluations professorales, API supplémentaires).
+   - **Évolutivité** : L’architecture doit permettre l’intégration future d’autres sources de données (ex. évaluations professorales, API supplémentaires).
   
-- Utilisabilité : Accessibilité aux personnes à handicap, bon affichage sur mobile, tablette et PC.
+   - **Utilisabilité** : Accessibilité aux personnes à handicap, bon affichage sur mobile, tablette et PC.
   
-- Mémoire : N’utilise pas trop d’espace sur l'ordinateur.
+   - **Mémoire** : N’utilise pas trop d’espace sur l'ordinateur.
   
-- Maintenabilité: Le code et l’architecture doivent être bien documentés pour faciliter les mises à jour, la correction de bugs et l’ajout de nouvelles fonctionnalités. Système capable de recevoir des mise à jour logicielles à distance.
+   - **Maintenabilité** : Le code et l’architecture doivent être bien documentés pour faciliter les mises à jour, la correction de bugs et l’ajout de nouvelles fonctionnalités. Système capable de recevoir des mise à jour logicielles à distance.
   
-- Multilinguisme: La plateforme peut être utilisée en français et en anglais pour soutenir les étudiants internationaux.
+- **Multilinguisme** : La plateforme peut être utilisée en français et en anglais pour soutenir les étudiants internationaux.
 
 ## 7. Besoins matériels, solution de stockage et solution d’intégration (Conformité et sécurité)
 Les besoins matériels définissent les ressources physiques et logicielles nécessaires au bon fonctionnement de la plateforme.
+
 Le système repose sur une architecture client-serveur hébergée sur une infrastructure virtuelle. 
+
 Cette configuration vise à garantir la performance, la sécurité et la capacité d’évolution du système, conformément aux exigences physiques vues en cours.
 
 
 #### Besoins matériels et solutions proposées
-- Serveur d’application (Backend) :
-Hébergé sur un serveur virtuel (cloud UdeM ou infonuagique public) doté de processeurs virtuels (vCPU), suffisamment de mémoire vive et de stockage SSD. 
-Le système d’exploitation recommandé est Linux, configuré pour le déploiement.
+   - **Serveur d’application (Backend)** :
+     Hébergé sur un serveur virtuel (cloud UdeM ou infonuagique public) doté de processeurs virtuels (vCPU), suffisamment de mémoire vive et de stockage SSD. 
+     Le système d’exploitation recommandé est Linux, configuré pour le déploiement.
 
 
-- Serveur de base de données :
-Hébergé séparément pour assurer la sécurité et l’intégrité des données.
-Une base de données relationnelle est utilisée pour enregistrer les résultats académiques. Elle permet de stocker les moyennes, les taux d’échec et le nombre d’inscriptions pour chaque cours.
-Des sauvegardes automatiques sont faites régulièrement pour éviter toute perte d’information.
+   - **Serveur de base de données** :
+      Hébergé séparément pour assurer la sécurité et l’intégrité des données.
+      Une base de données relationnelle est utilisée pour enregistrer les résultats académiques. Elle permet de stocker les moyennes, les taux d’échec et le nombre d’inscriptions pour chaque cours.
+      Des sauvegardes automatiques sont faites régulièrement pour éviter toute perte d’information.
 
-- Postes clients :
-Utilisation possible à partir de navigateurs récents tels que Chrome, Firefox, Edge ou Safari.
-Le design est responsive, permettant un accès fluide sur ordinateur, tablette ou mobile, y compris hors campus.
-
-
-- Réseau et bande passante :
-Une connexion minimale de 10 Mo/s est requise pour interroger l’API Planifium et Discord.
-Un cache local est mis en place afin de réduire les appels redondants et d’optimiser les performances.
+   - **Postes clients** :
+      Utilisation possible à partir de navigateurs récents tels que Chrome, Firefox, Edge ou Safari.
+      Le design est responsive, permettant un accès fluide sur ordinateur, tablette ou mobile, y compris hors campus.
 
 
-- Accessibilité et hébergement :
-L’interface est accessible et adaptée à différents types d’appareils et d’utilisateurs.
+   - **Réseau et bande passante** :
+     Une connexion minimale de 10 Mo/s est requise pour interroger l’API Planifium et Discord.
+     Un cache local est mis en place afin de réduire les appels redondants et d’optimiser les performances.
+
+
+   - **Accessibilité et hébergement** :
+     L’interface est accessible et adaptée à différents types d’appareils et d’utilisateurs.
 
 
 ### Solution de stockage et sécurité
 La solution de stockage combine des technologies relationnelles et non relationnelles pour gérer différents types de données et assurer leur intégrité, leur sécurité et leur évolutivité.
-- Résultats académiques :
-Les fichiers CSV fournis par l’administration sont importés dans une base de données relationnelle.
-Cette base permet d’effectuer des requêtes structurées, d’assurer la cohérence des statistiques et de gérer les agrégations par session ou trimestre.
+
+   - **Résultats académiques** :
+     Les fichiers CSV fournis par l’administration sont importés dans une base de données relationnelle.
+     Cette base permet d’effectuer des requêtes structurées, d’assurer la cohérence des statistiques et de gérer les agrégations par session ou trimestre.
 
 
 - Avis étudiants :
