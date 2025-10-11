@@ -118,6 +118,7 @@ Yutong :
 - Modèle C4 
 
 ### Échéancier : 
+![Échéancier](diagrams/Echéancier.png)
 
 
 ## 2. Analyse des exigences 
@@ -653,6 +654,7 @@ L’étudiant consulte les résultats adaptés.
 - Postcondition : L’étudiant obtient une expérience personnalisée et adaptée à son profil.
 
 
+### Diagramme de cas d'utilisation
 
 
 
