@@ -83,43 +83,43 @@ Yu Tong Zhu (20310738) , username Discord : yutong
 
 ### Distribution des tâches : 
 
-#### Première soumission ( Septembre 26 ) :
+#### Première soumission (Septembre 26) :
 
-Ziyue et Ruoxuan : 
+Ziyue Wang (20308297) et Ruoxuan Hu (20304027): 
 
 - Description du domaine : acteurs
 - Description du projet
 - Glossaire : liste des termes et expressions utilisés lors de la premier soumission
 - Risque : au moins 5 risques
-- Besoins de matériel ( sans les solutions )
+- Besoins de matériel (sans les solutions)
 
-Xinyan : 
+Xinyan Zhang (20264873): 
 - Diagrammes des cas d'utilisation
 
-#### Version final ( October 10 ) :
+#### Version final (October 10) :
 
-Ziyue et Ruoxuan : 
-
+Ziyue Wang (20308297) et Ruoxuan Hu (20304027):  
 - Les coordonées des membres
 - Hypothèse 
 - Solution de stockage et solution d’intégration
 - Besoin non fonctionels
-- GitHub
-- Brouillon pour le modèle C4 ( niveau 1 et 2 )
+- GitHub (rappport)
+- Brouillon pour le modèle C4 (niveau 1 et 2)
 - Finaliser rapport HTML
+- Rapport modèle C4
 
-Xinyan : 
+Xinyan Zhang (20264873): 
 - Échéancier
 - Diagramme de cas d’utilisation
 - Diagramme d’activité
-- Brouillon pour le modèle C4 ( niveau 1 et 2 )
-- GitHub
+- Brouillon pour le modèle C4 (niveau 1 et 2)
+- GitHub (Rapport, README, Release) 
 - Finaliser rapport HTML
 
-Yu Tong : 
+Yutong Zhu (20310738): 
 - Rapport modèle C4
 - Modèle C4
-- GitHub
+- GitHub (Rapport modèle C4, Modèle C4)
 - Code bonus
 
 ### Échéancier : 
@@ -257,6 +257,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
  ### 1. Données incomplètes ou biaisées
 
 - Problème: Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
+  
 - Conséquences : Les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
 
 - Atténuation :
@@ -265,7 +266,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
   
    ii. Utiliser les méthodes d’agrégation statistique (moyenne, médiane) pour réduire l’effet des avis extrêmes
   
-   iii. Ajouter un avertissement visuel quand les données sont jugées insuffisantes.
+   iii. Ajouter un avertissement visuel et voyant quand les données sont jugées insuffisantes.
 
 
  ### 2. Confidentialité et Loi 25
@@ -285,6 +286,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 ### 3. Données obsolètes ou incohérentes
 
 - Problème : Les informations affichées peuvent différer des données officielles (ex : décalage entre Planifium et résultats réels).
+  
 - Conséquences : L’étudiant peut prendre de mauvaises décisions
 
 
@@ -325,6 +327,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 ### 6. Accessibilité limitée pour les étudiants handicapé
 - Problème : Difficulté d’accès pour des étudiants en handicap qui sont des personnes aveugles, sourdes ou ayant des troubles cognitifs.
+  
 - Conséquence : Exclusion d’une partie de la communauté étudiante.
 
 
@@ -464,7 +467,6 @@ Chaque partie du système a un rôle précis (recherche, affichage, gestion des 
 Dans son ensemble, cette configuration matérielle et logicielle soutient les objectifs pédagogiques du projet : offrir une plateforme performante, transparente et évolutive, conforme aux standards de génie logiciel enseignés à l’Université de Montréal.
 
 
-
 ## 8. Cas d’utilisation principaux
 
 ### CU1 – Rechercher un cours
@@ -576,7 +578,6 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 - **Déclencheur** : L’étudiant ouvre la fiche d’un cours et sélectionne l’onglet « Avis étudiants ».
     - L'étudiant sélectionne un bouton “Voir les avis” associé à un cours dans la liste des résultats.
 
-
 - **Dépendances** : 
 1. Dépendances techniques : 
    - Dépend de la base de données des avis (JSON) mise à jour via le bot Discord. 
@@ -642,7 +643,6 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
     
 - **Précondition** : L’étudiant a ajouté au moins deux cours à sa sélection.
 
-
 - **Scénario principal** :
 
 1. L’étudiant sélectionne plusieurs cours (deux cours ou plus).
@@ -650,7 +650,6 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 3. Le système compile et organise les données.
 4. Le système présente un tableau comparatif clair.
 5. L’étudiant consulte le tableau pour évaluer ses choix.
-
 
 - **Scénario alternatif** :
   
@@ -677,7 +676,6 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 - **Déclencheur** : L’étudiant accède à la section « Préférences » et active la personnalisation.
     - L’étudiant modifie ou active les options de personnalisation (ex : filtrer par type de cours, charge de travail, etc)
 
-
 - **Dépendances** : 
 1. Dépendances techniques :
    - Dépend de la base de données utilisateur pour stocker les préférences. 
@@ -691,7 +689,6 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
      - CU3 : l’étudiant peut personnaliser les avis qu’il souhaite voir (ex : avis de cours pratique, avis récents uniquement, etc).
     
 - **Précondition** : L’étudiant a renseigné ses préférences dans son profil.
-
 
 - **Scénario principal** :
 
