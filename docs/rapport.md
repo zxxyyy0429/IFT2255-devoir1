@@ -259,6 +259,55 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
    - **Moteur de filtrage** : Composant logiciel qui applique les préférences de l’étudiant pour trier et adapter la liste de cours affichée.
 
+- **DIRO (Département d’informatique et de recherche opérationnelle)** ： Département de l’Université de Montréal responsable des programmes en informatique, où se situent la majorité des cours analysés dans ce projet.
+
+- **Programme** ：Ensemble structuré de cours menant à un diplôme (BAC, maîtrise). Chaque programme impose des prérequis, cycles et contraintes.
+
+- **Cycle** ：Niveau d’études auquel appartient un cours (1ᵉ cycle = baccalauréat, 2ᵉ cycle = maîtrise, etc.).
+
+- **Conseiller académique** ：Personnel chargé d’aider les étudiants à planifier leur parcours et à faire des choix de cours appropriés.
+
+- **Le choix de cours** ：Processus par lequel un étudiant sélectionne les cours d’une session en fonction de son cheminement, intérêts et contraintes.
+
+- **Nouveaux étudiants**：Étudiants débutant leur programme et ayant peu de repères académiques.
+
+- **Étudiants en fin de parcours**：Étudiants proches de la diplomation, devant prioriser la complétion des exigences du programme.
+
+- **Étudiants internationaux**：Étudiants provenant d’un autre pays et s’adaptant au système universitaire québécois.
+
+- **Étudiants travailleurs**：Étudiants occupant un emploi en parallèle de leurs études et devant limiter leur charge de travail.
+  
+—— **Étudiants parents** ：Étudiants ayant des responsabilités familiales influençant leur disponibilité.
+
+- **Étudiants à temps plein / temps partiel**：Catégories selon le nombre de crédits suivis par session.
+
+- **Profil académique** ：Informations décrivant le parcours et les besoins d’un étudiant : programme, préférences, contraintes et cheminement.
+
+- **Prérequi (ou Prérequis)**：Cours ou compétence obligatoire avant d’accéder à un autre cours.
+
+- **Cheminement (ou Parcours)** ：Progression académique d’un étudiant dans son programme (cours déjà faits, crédits accumulés, niveau atteint).
+  
+- **Contraintes administratives** ：Règles institutionnelles limitant l’accès à certains cours (cycle, statut, quotas, réservations).
+
+- **Disponibilité** ：Horaire où un cours est offert au moment où un étudiant est libre pour suivre un cours.
+
+-**Conformité légale**：Respect des lois de protection des données personnelles, notamment la Loi 25 au Québec.
+
+-**Évaluation** ：Méthodes utilisées dans un cours pour mesurer la performance des étudiants (examens, travaux, quiz).
+
+-**Taux de réussite / échec / abandon** ：Statistiques indiquant la proportion d’étudiants ayant réussi, échoué ou abandonné un cours durant une session.
+
+-**Intérêts académiques** ：Domaines d’étude ou thématiques qui motivent un étudiant dans le choix de ses cours.
+
+-**Orientation personnelle** ：Objectifs ou préférences individuelles influençant la sélection des cours (ex : carrière, style d’apprentissage).
+
+-**Contrainte de transport** ：Limitations liées au déplacement  vers le campus, influençant l’horaire choisi.
+
+-**Réputation des enseignants**：Perception de la qualité d’un professeur selon les expériences rapportées par les étudiants.
+
+-**Authentification (compte UdeM)**：Processus permettant d’identifier un étudiant avec ses identifiants institutionnels pour personnaliser l’expérience.
+
+-**Préférences (théorie/pratique)** ：Paramètres choisis par l’étudiant indiquant s’il préfère des cours à dominante théorique (concepts, mathématiques, algorithmes) ou pratique (laboratoires, projets, programmation). Ces préférences sont utilisées par l’outil pour personnaliser l’affichage des résultats, recommander certains cours, et filtrer les options lors de la recherche ou de la comparaison.
 
 ## 5. Risques du projet
  ### 1. Données incomplètes ou biaisées
