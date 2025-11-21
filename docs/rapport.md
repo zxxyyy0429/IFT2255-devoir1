@@ -624,218 +624,220 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 - **Postcondition**: Compte créé et un nouveau profil utilisateur est enregistré dans la base.
 
 
-CU2 - Se connecter
+### CU2 - Se connecter
 
-But: Permettre à un utilisateur de s’authentifier pour accéder à ses données et préférences.
+- **But**: Permettre à un utilisateur de s’authentifier pour accéder à ses données et préférences.
+- **Précondition**: L’utilisateur possède un compte valide dans la base.
+- **Acteurs**: Etudiant, TGDE, Professeur (principal), Système (secondaire).
+- **Déclencheur**: L’utilisateur saisit son matricule et son mot de passe.
 
-Précondition: L’utilisateur possède un compte valide dans la base.
+- **Dépendances** : 
+1. Dépendances techniques:
+- Service d’authentification (vérification mots de passe)
+- Gestion de session
+- SSO UdeM si nécessaire
+2. Dépendances logiques:
+- include → CU3 (Modifier le profil)
+- include → CU4 (Rechercher un cours) pour un accès complet.
 
-Acteurs: Etudiant, TGDE, Professeur (principal), Système (secondaire).
+- **Scénario principal**:
+1. L’utilisateur ouvre la page de connexion.
+2. Saisit courriel/matricule et le mot de passe.
+3. Le système vérifie les identifiants dans la base utilisateurs.
+4. Le système crée la session et charge le profil (préférences).
+5. Redirection vers le tableau de bord personnalisé.
 
-Déclencheur: L’utilisateur saisit son matricule et son mot de passe.
-
-Dépendances
-Dépendances techniques:
-Service d’authentification (vérification mots de passe)
-Gestion de session
-SSO UdeM si nécessaire
-Dépendances logiques:
-include → CU3 (Modifier le profil)
-include → CU4 (Rechercher un cours) pour un accès complet.
-
-Scenario principal:
-L’utilisateur ouvre la page de connexion.
-Saisit courriel/matricule et le mot de passe.
-Le système vérifie les identifiants dans la base utilisateurs.
-Le système crée la session et charge le profil (préférences).
-Redirection vers le tableau de bord personnalisé.
-
-Scenario alternatif:
+- **Scénario alternatif**:
 3a. Identifiants invalides: message d’erreur.
+
 3b. Compte inactif/suspendu, message “contactez un TGDE”
+
 2.a||. L’utilisateur choisit “mot de passe oublié” : déclenche processus de réinitialisation.
 
-Postcondition: L’utilisateur est authentifié et redirige vers la page d'accueil
+- **Postcondition**: L’utilisateur est authentifié et redirige vers la page d'accueil
 
 
-CU3 - Modifier le profil
+### CU3 - Modifier le profil
 
-But: Permettre à l'étudiant de modifier ses informations personnelles ou ses préférences.
+- **But**: Permettre à l'étudiant de modifier ses informations personnelles ou ses préférences.
+- **Précondition**: L’utilisateur est connecté.
+- **Acteurs**: Etudiant (principal), Système (secondaire)
+- **Déclencheur**: L’utilisateur clique sur “Modifier profil”.
 
-Précondition: L’utilisateur est connecté.
+- **Dépendances** :
+1. **Dépendances techniques**:
+- Base utilisateurs
+- Validation serveur
+- Journalisation/audit (conformité Loi 25)
+2. Dépendance logiques:
+- include → CU2 (Se connecter)
+- extend → CU8 (Personnaliser affichage)
 
-Acteurs: Etudiant (principal), Système (secondaire)
-
-Déclencheur: L’utilisateur clique sur “Modifier profil”.
-
-Dépendances
-Dépendances techniques:
-Base utilisateurs
-Validation serveur
-Journalisation/audit (conformité Loi 25)
-Dépendance logiques:
-include → CU2 (Se connecter)
-extend → CU8 (Personnaliser affichage)
-
-Scenario principal:
-L'utilisateur ouvre la page de profil.
-Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
-L’utilisateur modifie un ou plusieurs champs.
+- **Scénario principal**:
+1. L'utilisateur ouvre la page de profil.
+2. Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
+3. L’utilisateur modifie un ou plusieurs champs.
 	3.1. Option: changement du mot de passe: validation forte.
-Le système valide les nouvelles valeurs.
-Le système met à jour la base utilisateurs.
-Le système confirme la modification.
+4. Le système valide les nouvelles valeurs.
+5. Le système met à jour la base utilisateurs.
+6. Le système confirme la modification.
 
-Scenario alternatif:
+- **Scénario alternatif**:
 4a. Validation échoue (format): affiche erreur et indique champs erronés.
+
 (1-6)a. Erreur: message “Modification non enregistrée”.
 
-Postcondition: Les nouvelles informations sont enregistrées et appliquées aux futurs affichages.
+- **Postcondition**: Les nouvelles informations sont enregistrées et appliquées aux futurs affichages.
 
-CU4 - Rechercher et consulter la fiche d’un cours
+### CU4 - Rechercher et consulter la fiche d’un cours
 
-But: Permettre à l'étudiant de rechercher un cours spécifique afin d’obtenir ses informations officielles (prérequis, crédits, description, professeurs, etc.) et de consulter sa fiche complète (description, crédits, horaires, professeurs, etc.)
+- **But**: Permettre à l'étudiant de rechercher un cours spécifique afin d’obtenir ses informations officielles (prérequis, crédits, description, professeurs, etc.) et de consulter sa fiche complète (description, crédits, horaires, professeurs, etc.)
 
-Préconditions: L’étudiant est connecté au système et la base locale est synchronisée avec l’API Planifium ou capable de demander les données à la demande.
+- **Préconditions**: L’étudiant est connecté au système et la base locale est synchronisée avec l’API Planifium ou capable de demander les données à la demande.
 
-Acteurs: Étudiant (principal), Planifium API (secondaire)
+- **Acteurs**: Étudiant (principal), Planifium API (secondaire)
 
-Déclencheur: L’étudiant saisit un mot-clé dans la barre de recherche ou clique sur un cours pour en afficher la fiche.
+- **Déclencheur**: L’étudiant saisit un mot-clé dans la barre de recherche ou clique sur un cours pour en afficher la fiche.
 
-Dépendances:
-Dépendances techniques:
-API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
-Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
-Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
-Dépendance logiques:
-include → CU5 (Lire avis)
-include → CU6 (Consulter résultats)
-extend → CU7 (Comparer les cours)
-extend → CU8 (Personnaliser l’affichage)
+- **Dépendances**:
+1. **Dépendances techniques**:
+   - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
+   - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
+   - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
+2. Dépendance logiques:
+   - include → CU5 (Lire avis)
+   - include → CU6 (Consulter résultats)
+   - extend → CU7 (Comparer les cours)
+   - extend → CU8 (Personnaliser l’affichage)
 
-Scénario principal
-L’étudiant accède au champ de recherche.
-Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
-Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
-Le système affiche les résultats sous forme de liste (sigle, titre, professeurs, session).
-L’étudiant clique sur un cours.
-Le système interroge l’API Planifium pour charger la fiche détaillée.
-Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
+- **Scénario principal**
+1. L’étudiant accède au champ de recherche.
+2. Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
+3. Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
+4. Le système affiche les résultats sous forme de liste (sigle, titre, professeurs, session).
+5. L’étudiant clique sur un cours.
+6. Le système interroge l’API Planifium pour charger la fiche détaillée.
+7. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
 
-Scénarios alternatifs
+- **Scénarios alternatifs**
 3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
+
 2a. Recherche vide ou invalide
+
 6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
 
-Postcondition
+- **Postcondition**
 La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
 
 
-CU5 - Lire les avis des étudiants
+### CU5 - Lire les avis des étudiants
 
-But: Permettre à l'étudiant de consulter les retours et évaluations de pairs pour un cours.
+- **But**: Permettre à l'étudiant de consulter les retours et évaluations de pairs pour un cours.
 
-Préconditions: Des avis existent dans la base de données importée du Bot Discord.
+- **Préconditions**: Des avis existent dans la base de données importée du Bot Discord.
 
-Acteurs: Étudiant (principal), Bot Discord (secondaire)
+- **Acteurs**: Étudiant (principal), Bot Discord (secondaire)
 
-Déclencheur: L’étudiant clique sur “Avis étudiants” dans la fiche d’un cours.
+- **Déclencheur**: L’étudiant clique sur “Avis étudiants” dans la fiche d’un cours.
 
-Dépendance:
-Dépendances techniques:
-Synchronisation entre le bot Discord et la base d’avis.
-Dépendances logiques:
-include → CU4 (Rechercher et consulter un cours)
-extend → CU7 (Comparer les cours)
+- **Dépendance**:
+1. Dépendances techniques:
+   - Synchronisation entre le bot Discord et la base d’avis.
+2. Dépendances logiques:
+   - include → CU4 (Rechercher et consulter un cours)
+   - extend → CU7 (Comparer les cours)
 
-Scénario principal:
-De la fiche d’un cours, l’utilisateur clique “Avis étudiants”.
-Le système vérifie le nombre d’avis disponibles pour ce cours.
+- **Scénario principal**:
+1. De la fiche d’un cours, l’utilisateur clique “Avis étudiants”.
+2. Le système vérifie le nombre d’avis disponibles pour ce cours.
 	2.1. Si n ≥ 5, le système calcule synthèse (moyenne charge, moyenne difficulte, mots-clés).
-Le système affiche la synthèse et la liste des avis (filtrable: session, année, type d'étudiants).
-L’utilisateur peut filtrer (avis récents).
+3. Le système affiche la synthèse et la liste des avis (filtrable: session, année, type d'étudiants).
+4. L’utilisateur peut filtrer (avis récents).
 
-Scénarios alternatifs:
+- **Scénarios alternatifs**:
 2a. Moins de 5 avis disponibles, message “Avis insuffisants”.
+
 2b. Base inaccessible, message d’erreur.
 
-Postcondition: Les avis sont affichés et la consultation est enregistrée dans le profil de l’étudiant.
+- **Postcondition**: Les avis sont affichés et la consultation est enregistrée dans le profil de l’étudiant.
 
-CU6 - Mon avis 
+### CU6 - Mon avis 
 
-But: Permettre à un étudiant de soumettre son propre avis sur un cours afin d’enrichir la base d’évaluations utilisées pour la comparaison des cours et l’aider à la décision. 
+- **But**: Permettre à un étudiant de soumettre son propre avis sur un cours afin d’enrichir la base d’évaluations utilisées pour la comparaison des cours et l’aider à la décision. 
 
-Préconditions: 
-L’étudiant est authentifié dans la plateforme.
-Le cours existe dans la base de données.
-L’étudiant n’a pas déjà rédigé un avis pour ce même cours (selon les règles du système)
+- **Préconditions**: 
+  - L’étudiant est authentifié dans la plateforme.
+  - Le cours existe dans la base de données.
+  - L’étudiant n’a pas déjà rédigé un avis pour ce même cours (selon les règles du système)
 
-Acteurs: Étudiant (principal), Bot Discord (secondaire)
+- **Acteurs**: Étudiant (principal), Bot Discord (secondaire)
 
-Déclencheur: L’étudiant clique sur “Ajouter un avis” dans la fiche d’un cours.
+- **Déclencheur**: L’étudiant clique sur “Ajouter un avis” dans la fiche d’un cours.
 
-Dépendance:
-Dépendances techniques:
-Synchronisation entre la plateforme et le Bot Discord. 
-Validation automatique de données (notation, catégories, commentaire)
+- **Dépendance**:
+- **Dépendances techniques**:
+   - Synchronisation entre la plateforme et le Bot Discord. 
+   - Validation automatique de données (notation, catégories, commentaire)
 
-Dépendances logiques:
-include → CU4 (Rechercher et consulter un cours)
-extend → CU5 (Lire les avis des étudiants)
+- **Dépendances logiques**:
+  - include → CU4 (Rechercher et consulter un cours)
+  - extend → CU5 (Lire les avis des étudiants)
 
-Scénario principal:
-De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
-Le système affiche un formulaire d’évaluation comprenant : 
-Charge de travail (1-5)
-Difficulté (1-5)
-Appréciation générale (note charge) (1-5)
-Commentaire optionnel
-Session suivie
-Echelle de disponibilité du professeur
-Nom du professeur 
-       3. L’étudiant remplit le formulaire et soumet son avis.
-       4. Le système vérifie : 
-           4.1. Que tous les champs obligatoires sont valides
+- Scénario principal:
+1. De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
+2. Le système affiche un formulaire d’évaluation comprenant : 
+    a. Charge de travail (1-5)
+    b. Difficulté (1-5)
+    c. Appréciation générale (note charge) (1-5)
+    d. Commentaire optionnel
+    e. Session suivie
+    f. Echelle de disponibilité du professeur
+    g. Nom du professeur 
+3. L’étudiant remplit le formulaire et soumet son avis.
+4. Le système vérifie : 
+   4.1. Que tous les champs obligatoires sont valides
 5. Le système enregistre l’avis dans la base interne.
 6. Le système synchronise l’avis avec le Bot Discord.
 7. Un message de confirmation s’affiche : “Votre avis a été enregistré”
 
-Scénarios alternatifs:
+- **Scénarios alternatifs**:
 2a. Le formulaire contient des champs incomplets ou invalides → message d’erreur “Veuillez corriger les champs indiqués”. 
+
 6a. Échec de synchronisation avec le bot –”l’avis est marqué “en attente de synchronisation” + avertissement 
 
-Postcondition: L’avis est enregistré et sera pris en compte dans les synthèses affichées dans CU5 et dans les comparaisons de cours (CU7)
+- **Postcondition**: L’avis est enregistré et sera pris en compte dans les synthèses affichées dans CU5 et dans les comparaisons de cours (CU7)
 
-CU7 - Consulter les résultats académiques d’un cours
+### CU7 - Consulter les résultats académiques d’un cours
 
-But: Permettre à l'étudiant de visualiser des données statistiques sur un cours (moyenne, taux d'échec, nombre d’inscrits).
+- **But**: Permettre à l'étudiant de visualiser des données statistiques sur un cours (moyenne, taux d'échec, nombre d’inscrits).
 
-Précondition: Le cours est présent dans la base locale et dispose de résultats agrégés valides.
+- **Précondition**: Le cours est présent dans la base locale et dispose de résultats agrégés valides.
 
-Acteur: Étudiant (principal), Système (secondaire)
+- **Acteur**: Étudiant (principal), Système (secondaire)
 
-Déclencheur: L'étudiant clique sur “Consulter les résultats” depuis la fiche d’un cours.
+- **Déclencheur**: L'étudiant clique sur “Consulter les résultats” depuis la fiche d’un cours.
 
-Dépendances:
-Dépendances techniques:
-Accès à la base de données interne contenant les fichiers de résultats.
-Base SQL (résultats).
-Dépendances logiques:
-include → CU4 (Rechercher et consulter un cours)
-extend → CU7 (Comparer les cours)
+- **Dépendances**:
+1. Dépendances techniques:
+   - Accès à la base de données interne contenant les fichiers de résultats.
+   - Base SQL (résultats).
+2. Dépendances logiques:
+   - include → CU4 (Rechercher et consulter un cours)
+   - extend → CU7 (Comparer les cours)
 
-Scénario principal:
-L’utilisateur clique “Voir résultats” sur la page d’un cours (CU4) ou avec le menu “Résultats”.
-Le système interroge la base de résultats pour la session demandée.
-Le système calcule la moyenne finale, nombre inscrits, nombre d'échec.
-Le système affiche les statistiques.
-Option: export CSV/PDF.
+- **Scénario principal**:
+1. L’utilisateur clique “Voir résultats” sur la page d’un cours (CU4) ou avec le menu “Résultats”.
+2. Le système interroge la base de résultats pour la session demandée.
+3. Le système calcule la moyenne finale, nombre inscrits, nombre d'échec.
+4. Le système affiche les statistiques.
+5. Option: export CSV/PDF.
 
-Scénarios alternatifs:
+- **Scénarios alternatifs**:
 2a. Données manquantes, message “Résultats non disponibles”.
+
 5a. Erreur d’exportation.
 
-Postcondition: Les statistiques sont affichées et enregistrées dans le journal de consultation.
+- **Postcondition**: Les statistiques sont affichées et enregistrées dans le journal de consultation.
 
 CU8 - Comparer plusieurs cours
 
