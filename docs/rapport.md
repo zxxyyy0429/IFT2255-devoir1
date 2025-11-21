@@ -614,8 +614,11 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 6. Le système affiche un message de succès et propose la connexion.
 
 - **Scénario alternatif**:
+  
 4a. Courriel/matricule déjà utilisé: message d’erreur “compte existant”.
+
 4b. Mot de passe non conforme: corriger.
+
 (1-6)a. Erreur serveur: message “réessayer plus tard”.
 
 - **Postcondition**: Compte créé et un nouveau profil utilisateur est enregistré dans la base.
