@@ -134,7 +134,7 @@ Yutong Zhu (20310738):
 
 
 
-### Première soumission pour le devoir 1 (Novembre 20) :
+#### Première soumission pour le devoir 1 (Novembre 20) :
 
 Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 - Diagrammes de sequences ( Avis et Recherche du cours)
