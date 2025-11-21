@@ -277,7 +277,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **Étudiants travailleurs**：Étudiants occupant un emploi en parallèle de leurs études et devant limiter leur charge de travail.
   
-—— **Étudiants parents** ：Étudiants ayant des responsabilités familiales influençant leur disponibilité.
+- **Étudiants parents** ：Étudiants ayant des responsabilités familiales influençant leur disponibilité.
 
 - **Étudiants à temps plein / temps partiel**：Catégories selon le nombre de crédits suivis par session.
 
@@ -291,23 +291,23 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **Disponibilité** ：Horaire où un cours est offert au moment où un étudiant est libre pour suivre un cours.
 
--**Conformité légale**：Respect des lois de protection des données personnelles, notamment la Loi 25 au Québec.
+- **Conformité légale**：Respect des lois de protection des données personnelles, notamment la Loi 25 au Québec.
 
--**Évaluation** ：Méthodes utilisées dans un cours pour mesurer la performance des étudiants (examens, travaux, quiz).
+- **Évaluation** ：Méthodes utilisées dans un cours pour mesurer la performance des étudiants (examens, travaux, quiz).
 
--**Taux de réussite / échec / abandon** ：Statistiques indiquant la proportion d’étudiants ayant réussi, échoué ou abandonné un cours durant une session.
+- **Taux de réussite / échec / abandon** ：Statistiques indiquant la proportion d’étudiants ayant réussi, échoué ou abandonné un cours durant une session.
 
--**Intérêts académiques** ：Domaines d’étude ou thématiques qui motivent un étudiant dans le choix de ses cours.
+- **Intérêts académiques** ：Domaines d’étude ou thématiques qui motivent un étudiant dans le choix de ses cours.
 
--**Orientation personnelle** ：Objectifs ou préférences individuelles influençant la sélection des cours (ex : carrière, style d’apprentissage).
+- **Orientation personnelle** ：Objectifs ou préférences individuelles influençant la sélection des cours (ex : carrière, style d’apprentissage).
 
--**Contrainte de transport** ：Limitations liées au déplacement  vers le campus, influençant l’horaire choisi.
+- **Contrainte de transport** ：Limitations liées au déplacement  vers le campus, influençant l’horaire choisi.
 
--**Réputation des enseignants**：Perception de la qualité d’un professeur selon les expériences rapportées par les étudiants.
+- **Réputation des enseignants**：Perception de la qualité d’un professeur selon les expériences rapportées par les étudiants.
 
--**Authentification (compte UdeM)**：Processus permettant d’identifier un étudiant avec ses identifiants institutionnels pour personnaliser l’expérience.
+- **Authentification (compte UdeM)**：Processus permettant d’identifier un étudiant avec ses identifiants institutionnels pour personnaliser l’expérience.
 
--**Préférences (théorie/pratique)** ：Paramètres choisis par l’étudiant indiquant s’il préfère des cours à dominante théorique (concepts, mathématiques, algorithmes) ou pratique (laboratoires, projets, programmation). Ces préférences sont utilisées par l’outil pour personnaliser l’affichage des résultats, recommander certains cours, et filtrer les options lors de la recherche ou de la comparaison.
+- **Préférences (théorie/pratique)** ：Paramètres choisis par l’étudiant indiquant s’il préfère des cours à dominante théorique (concepts, mathématiques, algorithmes) ou pratique (laboratoires, projets, programmation). Ces préférences sont utilisées par l’outil pour personnaliser l’affichage des résultats, recommander certains cours, et filtrer les options lors de la recherche ou de la comparaison.
 
 ## 5. Risques du projet
  ### 1. Données incomplètes ou biaisées
