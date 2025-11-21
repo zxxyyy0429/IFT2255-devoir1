@@ -90,7 +90,7 @@ Yu Tong Zhu (20310738) , username Discord : yutong
 
 ### Distribution des tâches : 
 
-#### Première soumission (Septembre 26) :
+#### Première soumission pour le devoir 1 (Septembre 26) :
 
 Ziyue Wang (20308297) et Ruoxuan Hu (20304027): 
 
@@ -103,7 +103,7 @@ Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 Xinyan Zhang (20264873): 
 - Diagrammes des cas d'utilisation
 
-#### Version final (October 10) :
+#### Version final pour le devoir 1 (October 10) :
 
 Ziyue Wang (20308297) et Ruoxuan Hu (20304027):  
 - Les coordonées des membres
@@ -132,6 +132,64 @@ Yutong Zhu (20310738):
 ### Échéancier : 
 ![Échéancier](diagrams/Echéancier.png)
 
+
+
+### Première soumission pour le devoir 1 (Novembre 20) :
+
+Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
+- Diagrammes de sequences ( Avis et Recherche du cours)
+- Diagramme de classes
+- Modele C4 niveau 3
+
+Xinyan Zhang (20264873):
+- Mise a jour diagramme d’activite
+- Diagramme de sequence ( Comparer cours )
+- Modele C4 niveau 3
+
+Yutong Zhu (20310738):
+- Mise a jour Glossaire
+- Mise a jour description du projet
+- Modele C4
+- Integration du feedback 
+
+#### Version final pour le devoir 2 (Novembre 30) :
+
+Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
+- Glossaire mise a jour
+- Mise a jour description du projet
+- Mise a jour besoin non fonctionels
+- Mise a jour cas d’utilisation principeaux dans le rapport
+- Mise a jour distribution des taches
+- Mise a jour besoins meteriels, solution de stockage et solution d’integreation
+- Integration du feedback 
+- Diagramme de classe
+- Diagrammes de sequences (Avis et Recherche du cours)
+- Mise a jour risque
+- Justification des choix du design pour le diagramme de sequences  (Avis et Recherche du cours) et le diagramme de classe
+- Implementation: Recherche du cours
+- Test unitaires et oracles du test pour les tests 1-6
+- Mise a jour GitHub
+
+Xinyan Zhang (20264873):
+- Echeancier
+- Mise a jour du diagramme d’activite
+- Digramma de sequences ( Comparer cours )
+- Diagramme de class
+- Implementation recherche du cours
+- Justification des choix du design pour le diagramme d’activite et Diagramme de sequence ( Comparer cours )
+- Test unitaires et oracle du test pour les tests 9-12
+- Mise a jour GitHub
+- Release
+
+Yutong Zhu (20310738):
+- Modele C4 niveau 3
+- La justification du design pour le Modele C4 niveau 1 , 2 et 3
+- Test unitaires et oracle du test pour les tests 6-9
+- Implementation voir les details d’un cours et comparer des cours
+- Mise a jour GitHub
+- Integration du feedback 
+
+### Échéancier : 
 
 ## 2. Analyse des exigences 
 
