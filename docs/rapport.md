@@ -3,7 +3,7 @@
 ## 1. Cadre du projet
 
 ### Description du projet 
-L’objectif principal est d’offrir un outil d’aide à la décision pour optimiser le choix de cours des étudiants du DIRO (Département d’informatique et de recherche opérationnelle). Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au Département d’informatique et de recherche opérationnelle (DIRO). 
+L’objectif principal est d’offrir un outil d’aide à la décision pour optimiser le choix de cours des étudiants du Département d’informatique et de recherche opérationnelle (DIRO). Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au DIRO. 
 La structure des programmes est parfois complexe et les sources d’information disponibles sont fragmentées : les données officielles partielles (Planifium, résultats globaux) et les avis étudiants éparpillés (forums, Discord).
 Afin de faciliter la prise de décision et d’offrir une vue plus transparente et centralisée, le projet vise à concevoir une **plateforme web** basée sur une **API REST**, combinant les données officielles et les opinions des étudiants. 
 
@@ -13,11 +13,11 @@ Cette plateforme permettra aux étudiants de :
 - accéder à des avis étudiants représentatifs;
 - personnaliser l’affichage selon leur profil et leurs contraintes.
 
-La creation de cette platforme implique plusieurs acteurs dont:
-- **les étudiants**, qui souhaitent trouver des cours adaptés à leur cheminement et qui correspond a leurs besoins;
+La création de cette plateforme implique plusieurs acteurs dont:
+- **les étudiants**, qui souhaitent trouver des cours adaptés à leur cheminement et qui correspond à leurs besoins;
 - **les professeurs** définissent le contenu, les objectifs, les horaires du cours, les prérequis des cours et leur disponibilités;
 - **les TGDEs** valident les demandes d'inscriptions au cours et respectent les contraintes administratives;
-- **les conseillers académiques** accompagnent les étudiants dans leur parcour universitaire et leur fournir des conseilles académiques;
+- **les conseillers académiques** accompagnent les étudiants dans leur parcour universitaire et leur fournir des conseils académiques;
 - **l’administration et les services informatiques** de l'université de Montréal (UDeM) sont responsables de la mise à jour des données et de la conformité légale.
 
 ### Fonctionnement du système
@@ -31,16 +31,17 @@ Son fonctionnement suit un processus interactif et incrémental, conforme au mod
 
 2. **Recherche de cours**
    - L’étudiant saisit le mot-clé ou le code du cours.
-   - Le système interroge **l’API Planifium** pour obtenir les informations officielles : code, titre, crédits, cycle, horaires, pré- et co-requis.
+   - Le système interroge **l’API Planifium** pour obtenir les informations officielles : code, titre, crédits, cycle, horaires, pré-rquis et co-requis.
    - Les résultats sont présentés avec l’indicateur d’**éligibilité** calculé selon le cheminement de l’étudiant.
+   - Les professeurs et TGDEs valident la cohérence des informations affichées.
 
 3. **Consultation des résultats académiques**
-   - Le système charge les données agrégées depuis les fichiers **CSV** (moyenne, nombre d’inscrits, échecs).
-   - L’information est stockée dans une base de données relationnelle et présentée sous forme de tableaux statistiques clairs.
+   - Le système charge les données agrégées (moyenne, nombre d’inscrits, taux d'échecs) depuis les fichiers **CSV** ou fournies par l'administration.
+   - L’information est stockée dans une base de données relationnelle et présentée sous forme de tableaux statistiques clairs et à jour.
 
 4. **Lecture des avis étudiants**
-   - Un **bot Discord** recueille les évaluations (difficulté, charge, commentaire).
-   - Les avis sont agrégés automatiquement et ne sont affichés que lorsque **n ≥ 5**, conformément à la règle métier.
+   - Un **bot Discord** recueille les évaluations (difficulté, charge de travail, commentaires).
+   - Les avis sont agrégés automatiquement et ne sont affichés que si le nombre minimal d'avis **n ≥ 5** est atteint, conformément à la règle métier.
    - Le système calcule des indicateurs synthétiques (moyenne, dispersion, mots-clés dominants).
 
 5. **Comparaison et personnalisation**
@@ -49,16 +50,15 @@ Son fonctionnement suit un processus interactif et incrémental, conforme au mod
    - Les résultats sont **filtrés** et **classés** selon les préférences du profil pour offrir une expérience personnalisée.
 
 6. **Mise à jour et sauvegarde**
-   - Des **tâches d’import (ETL)** périodiques assurent la synchronisation avec Planifium, l’actualisation des CSV et la modération des avis Discord.
-   - Tous les échanges sont sécurisés via HTTPS ; les données sont sauvegardées automatiquement.
-
+   - Des **tâches d’import (ETL)** périodiques assurent la synchronisation avec Planifium, la mise à jour des données académiques et la modération des avis Discord.
+   - Tous les échanges sont sécurisés via HTTPS ; les données sont anonymisées selon la loi 25 et sont sauvegardées automatiquement.
 
 ### Dépendances du système
 1. **Dépendances externes**
-   - **API Planifium** : source officielle pour les programmes et horaires ; dépendance critique pour la recherche et la validation des prérequis.
+   - **API Planifium** : source officielle pour les programmes, les horaires et les prérequis ; dépendance critique pour la recherche de cours et la validation des prérequis.
    - **Bot Discord / API Discord** : collecteur des avis étudiants en format JSON ; dépendance asynchrone et soumise à la disponibilité du service Discord.
-   - **Fichiers CSV fournis par l’administration** : données de résultats agrégées mises à jour à chaque session.
-   - **SSO UdeM** : service d’authentification institutionnel obligatoire pour accéder au profil.
+   - **Fichiers CSV fournis par l’administration** : données de résultats académiques agrégées ; mises à jour à chaque session.
+   - **SSO UdeM** : service d’authentification institutionnel obligatoire pour accéder au profil étudiant.
 
 2. **Dépendances internes (techniques)**
    - **Base SQL** : stockage des résultats académiques (moyennes, taux d’échec, nombre d’inscrits).
