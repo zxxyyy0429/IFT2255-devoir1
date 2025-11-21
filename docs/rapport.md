@@ -71,7 +71,9 @@ Son fonctionnement suit un processus interactif et incrémental, conforme au mod
 
 3. **Dépendances organisationnelles et légales**
    - **Loi 25 (Québec)** : encadrement légal du traitement des données personnelles ; anonymisation et consentement obligatoires.
-   - **Services informatiques de l’UdeM** : hébergement, certificats HTTPS, maintenance du SSO.
+   - **TGDEs et professeurs**: responsables de la validation et de la cohérence entre les données officielles et les informations affichées.
+   - **Conseillers académiques**: utilisent la plateforme pour orienter les étudiants lors du choix de cours.
+   - **Services informatiques de l’UdeM** : assurent l'hébergement, certificats HTTPS, maintenance du SSO.
    - **Cycle académique** : contraintes temporelles (périodes d’inscription, début de session) influençant la charge du système.
    - **Ressources humaines** : auxiliaires responsables de l’import des fichiers CSV, de la modération des avis et de la vérification de conformité.
 
@@ -260,7 +262,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 ## 5. Risques du projet
  ### 1. Données incomplètes ou biaisées
-
+- Probabilité : moyenne ; Impact : élevé
 - Problème: Les avis des étudiants sont souvent subjectifs (influence des préférences personnelles, style d’enseignement, difficultés perçues) ou insuffisants. De plus, s’il y a trop peu d’avis, les résultats sont faussés et peu représentatifs.
   
 - Conséquences : Les étudiants risquent de prendre de mauvaises décisions basées sur un échantillon non fiable.
@@ -276,6 +278,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
  ### 2. Confidentialité et Loi 25
 
+- Probabilité : faible ; Impact : très élevé 
 - Problème : Le projet manipule des données sensibles des étudiants (profils, préférences, historiques). Une mauvaise gestion des données peut mener à une violation de la Loi 25.
 - Conséquence : Cela peut causer la perte de confiance des utilisateurs, à des sanctions légales et financières.
 
@@ -290,21 +293,23 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 ### 3. Données obsolètes ou incohérentes
 
-- Problème : Les informations affichées peuvent différer des données officielles (ex : décalage entre Planifium et résultats réels).
+- Probabilité : moyenne ; Impact : moyen à élevé
+- Problème : Les informations affichées peuvent différer des données officielles (ex : décalage entre Planifium et résultats réels). Ce décalage entre les données officielles et les données affichées peut induire l'étudiant en erreur. 
   
-- Conséquences : L’étudiant peut prendre de mauvaises décisions
+- Conséquences : L’étudiant peut prendre de mauvaises décisions de choix de cours basées sur des informations inexactes.
 
 
 - Atténuation :
 
-   i. Synchronisation régulière
+   i. Synchronisation régulière et automatique des données.
   
-   ii. Affichage des dates de mise à jour pour chaque donnée
+   ii. Affichage de la date de la dernière mise à jour pour chaque donnée.
 
 
 ### 4. Accessibilité limitée
 
-- Problème : Difficulté d’accès pour certains profils (connexion lente, mobile).
+- Probabilité : moyenne ; Impact : moyen
+- Problème : Difficulté d’accès pour certains profils (connexion lente, appareil mobile, interface non responsive).
 - Conséquence : Temps de chargement long, interface illisible ou non responsive
 
 
@@ -317,8 +322,8 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 ### 5. Performance et surcharge technique
 
-
-- Problème : Trop de requêtes simultanées peuvent ralentir le plateforme ou causer des interruptions.
+- Probabilité : moyenne ; Impact : élevé
+- Problème : Trop de requêtes simultanées pendant les périodes de choix de cours peuvent ralentir le plateforme ou causer des interruptions.
 - Conséquence : Expérience des utilisateurs dégradée, risque d’abandon de la plateforme.
 
 
@@ -326,11 +331,14 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
    i. Mise en place d’un système de cache pour éviter les recalculs inutiles.
   
-   ii. Architecture scalable
+   ii. Architecture scramble pour supporter les pics de charges.
   
    iii. Surveillance en temps réel des performances avec alertes proactives.
 
+   iiii. Un plan de suivi des risques sera mise à jour à chaque itération du projet.
+
 ### 6. Accessibilité limitée pour les étudiants handicapé
+- Probabilité : faible ; Impact : élevé
 - Problème : Difficulté d’accès pour des étudiants en handicap qui sont des personnes aveugles, sourdes ou ayant des troubles cognitifs.
   
 - Conséquence : Exclusion d’une partie de la communauté étudiante.
