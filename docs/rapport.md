@@ -14,13 +14,11 @@ Cette plateforme permettra aux étudiants de :
 - personnaliser l’affichage selon leur profil et leurs contraintes.
 
 La creation de cette platforme implique plusieurs acteurs dont:
-- **les étudiants**, qui souhaitent choisir des cours adaptés à leur profil et à leurs objectif;
-- **les professeurs** définissent le contenu, les objectifs et les prérequis des cours;
-- **les TGDEs** valident les inscriptions et respectent les contraintes administratives;
-- **les conseillers académiques** accompagnent les étudiants dans leur plan de cheminement;
-- **l’administration et les services informatiques** de l’UDEM sont responsables de la mise à jour des données et de la conformité légale.
-
-Ce document présente une première analyse des besoins, les cas d’utilisation principaux ainsi qu’une identification des risques, afin de préparer les prochaines étapes de conception et d’implémentation.
+- **les étudiants**, qui souhaitent trouver des cours adaptés à leur cheminement et qui correspond a leurs besoins;
+- **les professeurs** définissent le contenu, les objectifs, les horaires du cours, les prérequis des cours et leur disponibilités;
+- **les TGDEs** valident les demandes d'inscriptions au cours et respectent les contraintes administratives;
+- **les conseillers académiques** accompagnent les étudiants dans leur parcour universitaire et leur fournir des conseilles académiques;
+- **l’administration et les services informatiques** de l'université de Montréal (UDeM) sont responsables de la mise à jour des données et de la conformité légale.
 
 ### Fonctionnement du système
 Le système proposé vise à assister les étudiants de l’Université de Montréal dans la **prise de décision pour le choix de cours**.
