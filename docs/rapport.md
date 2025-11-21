@@ -3,26 +3,22 @@
 ## 1. Cadre du projet
 
 ### Description du projet 
-Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au Département d’informatique et de recherche opérationnelle (DIRO). 
+L’objectif principal est d’offrir un outil d’aide à la décision pour optimiser le choix de cours des étudiants du DIRO (Département d’informatique et de recherche opérationnelle). Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au Département d’informatique et de recherche opérationnelle (DIRO). 
 La structure des programmes est parfois complexe et les sources d’information disponibles sont fragmentées : les données officielles partielles (Planifium, résultats globaux) et les avis étudiants éparpillés (forums, Discord).
 Afin de faciliter la prise de décision et d’offrir une vue plus transparente et centralisée, le projet vise à concevoir une **plateforme web** basée sur une **API REST**, combinant les données officielles et les opinions des étudiants. 
 
 Cette plateforme permettra aux étudiants de :
-- rechercher et comparer des cours,
-- consulter des résultats académiques agrégés,
-- accéder à des avis étudiants représentatifs,
+- rechercher et comparer des cours;
+- consulter des résultats académiques agrégés;
+- accéder à des avis étudiants représentatifs;
 - personnaliser l’affichage selon leur profil et leurs contraintes.
 
-L’objectif principal est d’offrir un outil d’aide à la décision pour optimiser le choix de cours des étudiants du DIRO (Département d’informatique et de recherche opérationnelle). Le choix de cours constitue une étape cruciale dans le parcours académique des étudiants de l’Université de Montréal, particulièrement au DIRO. La structure des programmes est parfois complexe, et les sources d’information disponibles sont fragmentées: les données officielles partielles (Planifium, résultats globaux) et les avis étudiants éparpillés (forums, Discord).
-
-Afin de faciliter la prise de décision et d’offrir une vue plus centralisée, ce projet se concentre à concevoir une plateforme web basée sur une API REST, combinant les données officielles et les opinions des étudiants.
-
-Le processus implique plusieurs acteurs:
-- Les étudiants, qui souhaitent choisir des cours adaptés à leur profil et à leurs objectif;
-- Les professeurs définissent le contenu, les objectifs et les prérequis des cours;
-- Les TGDEs valident les inscriptions et respectent les contraintes administrative;
-- Les conseillers académiques accompagnent les étudiants dans leur plan de cheminement;
-- L’administration et les services informatiques de l’UDEM sont responsables de la mise à jour des données et de la conformité légale.
+La creation de cette platforme implique plusieurs acteurs dont:
+- **les étudiants**, qui souhaitent choisir des cours adaptés à leur profil et à leurs objectif;
+- **les professeurs** définissent le contenu, les objectifs et les prérequis des cours;
+- **les TGDEs** valident les inscriptions et respectent les contraintes administratives;
+- **les conseillers académiques** accompagnent les étudiants dans leur plan de cheminement;
+- **l’administration et les services informatiques** de l’UDEM sont responsables de la mise à jour des données et de la conformité légale.
 
 Ce document présente une première analyse des besoins, les cas d’utilisation principaux ainsi qu’une identification des risques, afin de préparer les prochaines étapes de conception et d’implémentation.
 
