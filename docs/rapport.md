@@ -402,21 +402,22 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 ## 6. Besoins non fonctionnels
 Au-delà des fonctionnalités principales, la plateforme doit répondre aux exigences de qualité suivantes :
 
-   - **Performance** : Chaque requête (recherche, comparaison, consultation) doit être traitée en moins de 2 secondes afin de garantir une navigation fluide.
+   - **Performance** : Chaque requête (recherche, comparaison, consultation) doit être traitée en moins de 2 secondes afin de garantir une navigation fluide. Les données concernées incluent les cours (sigle, horaire, professeurs), les résultats agrégés et les avis étudiants. Les opérations sur la base locale et les appels à l'API Planifium doivent être optimisés avec la mise en cache et indexation.
 
-   - **Sécurité** : Les données personnelles doivent être protégées conformément à la Loi 25, avec chiffrement des échanges et anonymisation stricte.
+   - **Sécurité** : Les données personnelles (nom, courriel, numéro d’utilisateur, préférences, résultats académiques) doivent être protégées conformément à la Loi 25. Les échanges entre le client et le serveur sont chiffrées (HTTPS), et les informations sensibles sont anonymisées avant tout stockage. Les bases contenant des données académiques et des avis doivent être séparées des bases d’authentification pour limiter les risques d'accès non autorisé.
 
-   - **Fiabilité** : La plateforme doit assurer une disponibilité de 99 % pendant les périodes critiques (inscriptions, début de session).
+
+   - **Fiabilité** : La plateforme doit assurer une disponibilité de 99 % pendant les périodes critiques (inscriptions, début de session). Les données concernées sont les métadonnées de cours, les avis, les résultats et les profils utilisateurs. Des sauvegardes régulières et un mécanisme de récupération d’urgence doivent garantir l'intégrité en cas de panne.
   
-   - **Évolutivité** : L’architecture doit permettre l’intégration future d’autres sources de données (ex. évaluations professorales, API supplémentaires).
+   - **Évolutivité** : L’architecture doit permettre l’intégration future d’autres sources de données (ex. évaluations professorales, API supplémentaires). La conception modulaire du système facilite l’ajout de nouvelles fonctionnalités sans affecter les modules existants.
+
+   - **Utilisabilité** : L’interface doit être simple et accessible, compatible avec les navigateurs récents et adaptée aux différents supports (mobile, tablette, PC). Elle doit respecter les normes d'accessibilité numérique pour garantir l'accès aux utilisateurs en situation de handicap.
+
+   - **Mémoire et stockage** : La plateforme doit minimiser l'utilisation de l’espace disque local. Les caches temporaires peuvent être nettoyées automatiquement, et les données volumineuses (résultats agrégés, historiques d’avis) doivent être stockées côté serveur.
   
-   - **Utilisabilité** : Accessibilité aux personnes à handicap, bon affichage sur mobile, tablette et PC.
+   - **Maintenabilité** : Le code et l’architecture doivent être bien documentés pour faciliter les mises à jour, la correction de bugs et l’ajout de nouvelles fonctionnalités. Le système doit pouvoir recevoir des mises à jour logicielles à distance sans interrompre le service.
   
-   - **Mémoire** : N’utilise pas trop d’espace sur l'ordinateur.
-  
-   - **Maintenabilité** : Le code et l’architecture doivent être bien documentés pour faciliter les mises à jour, la correction de bugs et l’ajout de nouvelles fonctionnalités. Système capable de recevoir des mise à jour logicielles à distance.
-  
-- **Multilinguisme** : La plateforme peut être utilisée en français et en anglais pour soutenir les étudiants internationaux.
+- **Multilinguisme** : La plateforme peut être utilisée en français et en anglais pour soutenir les étudiants internationaux et le personnel anglophone. Les textes et libellées sont stockés dans des fichiers séparées pour faciliter la maintenance.
 
 ## 7. Besoins matériels, solution de stockage et solution d’intégration (Conformité et sécurité)
 Les besoins matériels définissent les ressources physiques et logicielles nécessaires au bon fonctionnement de la plateforme.
