@@ -296,7 +296,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
   
    - **Type d’utilisateur** : Les étudiants internationaux (12 crédits), les étudiants à temps plein (12-18 crédits), les étudiants à temps partiels (>6 crédits), les étudiants parents et les étudiants qui travaillent (option de bloc d’horaire).
   
-   - **Utilisateur** :Les étudiants qui veulent obtenir des informations académiques qui les aident dans leur cheminement académique.
+   - **Utilisateur** : Ensemble des personnes utilisant la plateforme (étudiant, TGDE, administrateur, etc.).
   
    - **Numéro d’utilisateur** : La matricule attribuée à chacun des étudiants de la part de l’institution (UDEM).
   
@@ -322,7 +322,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **TGDE** ：Employé administratif chargé de valider les inscriptions, les prérequis et la conformité des choix de cours.
 
-- **Etudiant** ：Utilisateur principal du système, cherchant à choisir, comparer ou planifier des cours adaptés à son cheminement académique.
+- **Etudiant** ：Type spécifique d’utilisateur, principal bénéficiaire du système. Utilisateur principal du système, cherchant à choisir, comparer ou planifier des cours adaptés à son cheminement académique.
 
 - **Professeur** ：Enseignant responsable du contenu, des objectifs pédagogiques et de l'évaluation des étudiants dans un cours.
 
@@ -340,8 +340,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **Interface utilisateur** : Une partie visible de l’application où l’utilisateur interagit. Elle peut être en ligne de commande, graphique ou web.
 
-- **Profil étudiant** : Ces données sont saisies par un utilisateur pour montrer ses préférences, ses intérêts et le type d’apprentissage, ce qui permet de personnaliser les recommandations et les résultats de recherche.
-
+- **Profil étudiant** : Ensemble des préférences personnelles。 Ces données sont saisies par un utilisateur pour montrer ses préférences, ses intérêts et le type d’apprentissage, ce qui permet de personnaliser les recommandations et les résultats de recherche.
 
 - **DIRO (Département d’informatique et de recherche opérationnelle)** ： Département de l’Université de Montréal responsable des programmes en informatique, où se situent la majorité des cours analysés dans ce projet.
 
@@ -365,7 +364,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **Étudiants à temps plein / temps partiel**：Catégories selon le nombre de crédits suivis par session.
 
-- **Profil académique** ：Informations décrivant le parcours et les besoins d’un étudiant : programme, préférences, contraintes et cheminement.
+- **Profil académique** ：Informations officielles liées au parcours académique. Informations décrivant le parcours et les besoins d’un étudiant : programme, préférences, contraintes et cheminement.
 
 - **Prérequi (ou Prérequis)**：Cours ou compétence obligatoire avant d’accéder à un autre cours.
 
