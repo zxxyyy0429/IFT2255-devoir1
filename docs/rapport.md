@@ -137,54 +137,54 @@ Yutong Zhu (20310738):
 #### Première soumission pour le devoir 1 (Novembre 20) :
 
 Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
-- Diagrammes de sequences ( Avis et Recherche du cours)
+- Diagrammes de séquences ( Avis et Recherche du cours)
 - Diagramme de classes
-- Modele C4 niveau 3
+- Modèle C4 niveau 3
 
 Xinyan Zhang (20264873):
-- Mise a jour diagramme d’activite
-- Diagramme de sequence ( Comparer cours )
-- Modele C4 niveau 3
+- Mise à jour du diagramme d’activité
+- Diagramme de séquence ( Comparer cours )
+- Modèle C4 niveau 3
 
 Yutong Zhu (20310738):
-- Mise a jour Glossaire
-- Mise a jour description du projet
-- Modele C4
+- Mise à jour Glossaire
+- Mise à jour description du projet
+- Modèle C4
 
 #### Version final pour le devoir 2 (Novembre 30) :
 
 Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
-- Glossaire mise a jour
-- Mise a jour description du projet
-- Mise a jour besoin non fonctionels
-- Mise a jour cas d’utilisation principeaux dans le rapport (ajouer 6 CU principeaux de plus)
-- Mise a jour distribution des taches
-- Mise a jour besoins meteriels, solution de stockage et solution d’integreation
+- Mise à jour du glossaire
+- Mise à jour du description du projet
+- Mise à jour des besoins non fonctionels
+- Mise à jour des cas d’utilisation principaux dans le rapport (ajouer 6 CU principaux de plus)
+- Mise à jour de la distribution des tâches
+- Mise à jour des besoins matériels, solution de stockage et solution d’intégration
 - Diagramme de classe
-- Diagrammes de sequences (Avis et Recherche du cours)
-- Mise a jour risque
-- Justification des choix du design pour le diagramme de sequences  (Avis et Recherche du cours) et le diagramme de classe
-- Implementation: Recherche du cours
+- Diagrammes de séquences (Avis et Recherche du cours)
+- Mise à jour risque
+- Justification des choix du design pour le diagramme de séquences  (Avis et Recherche du cours) et le diagramme de classe
+- Implémentation: Recherche du cours
 - Test unitaires et oracles du test pour les tests 1-6
-- Mise a jour GitHub
+- Mise à jour GitHub
 
 Xinyan Zhang (20264873):
-- Echeancier
-- Mise a jour du diagramme d’activite
-- Digramma de sequences ( Comparer cours )
-- Diagramme de class
-- Implementation recherche du cours
-- Justification des choix du design pour le diagramme d’activite et Diagramme de sequence ( Comparer cours )
+- Écheancier
+- Mise à jour du diagramme d’activité
+- Digramme de séquences ( Comparer cours )
+- Diagramme de classe
+- Implémentation recherche du cours
+- Justification des choix du design pour le diagramme d’activité et diagramme de séquence ( Comparer cours )
 - Test unitaires et oracle du test pour les tests 9-12
-- Mise a jour GitHub
+- Mise à jour GitHub
 - Release
 
 Yutong Zhu (20310738):
-- Modele C4 niveau 3
-- La justification du design pour le Modele C4 niveau 1 , 2 et 3
+- Modèle C4 niveau 3
+- La justification du design pour le Modèle C4 niveau 1 , 2 et 3
 - Test unitaires et oracle du test pour les tests 6-9
-- Implementation voir les details d’un cours et comparer des cours
-- Mise a jour GitHub
+- Implémentation voir les détails d’un cours et compaison des cours
+- Mise à jour GitHub
 
 ### Échéancier : 
 
@@ -322,25 +322,25 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **TGDE** ：Employé administratif chargé de valider les inscriptions, les prérequis et la conformité des choix de cours.
 
-- **Etudiant** ：Type spécifique d’utilisateur, principal bénéficiaire du système. Utilisateur principal du système, cherchant à choisir, comparer ou planifier des cours adaptés à son cheminement académique.
+- **Étudiant** ：Type spécifique d’utilisateur, principal bénéficiaire du système. Utilisateur principal du système, cherchant à choisir, comparer ou planifier des cours adaptés à son cheminement académique.
 
 - **Professeur** ：Enseignant responsable du contenu, des objectifs pédagogiques et de l'évaluation des étudiants dans un cours.
 
-- **Credit** ：Unité de mesure de la charge de travail associée à un cours, généralement équivalente à 45 heures de travail total.
+- **Crédit** ：Unité de mesure de la charge de travail associée à un cours, généralement équivalente à 45 heures de travail total.
 
 - **Moyenne** ：Valeur numérique représentant la performance globale des étudiants dans un cours donné.
 
 - **Accessibilité** ：Ce sont des normes internationales qui définissent les critères d'accessibilité numérique. Elles veulent rendre les interfaces utilisables en plus grand nombre, y compris les personnes en situations de handicap.
 
-- **Evolutivité** : Capacité du système à s’adapter à une augmentation du volume d’utilisateurs, de données ou de fonctionnalités sans avoir des problèmes majeurs de performances.
+- **Évolutivité** : Capacité du système à s’adapter à une augmentation du volume d’utilisateurs, de données ou de fonctionnalités sans avoir des problèmes majeurs de performances.
 
-- **Centralisation des données** : Un principe consistant à regrouper dans une même plateforme les données provenant de plusieurs sources tel que le Planifium, les résultats académiques et les avis Discord).
+- **Centralisation des données** : Un principe consistant à regrouper dans une même plateforme les données provenant de plusieurs sources tel que le Planifium, les résultats académiques et les avis Discord.
 
 - **Comparaison de cours** ：Fonctionnalité qui permet à l’utilisateur de sélectionner plusieurs cours et d’évaluer la charge de travail ou la compatibilité entre eux.
 
-- **Interface utilisateur** : Une partie visible de l’application où l’utilisateur interagit. Elle peut être en ligne de commande, graphique ou web.
+- **Interface utilisateur** : Une partie visible de l’application où l’utilisateur intéragit. Elle peut être en ligne de commande, graphique ou web.
 
-- **Profil étudiant** : Ensemble des préférences personnelles。 Ces données sont saisies par un utilisateur pour montrer ses préférences, ses intérêts et le type d’apprentissage, ce qui permet de personnaliser les recommandations et les résultats de recherche.
+- **Profil étudiant** : Ensemble des préférences personnelles. Ces données sont saisies par un utilisateur pour montrer ses préférences, ses intérêts et le type d’apprentissage, ce qui permet de personnaliser les recommandations et les résultats de recherche.
 
 - **DIRO (Département d’informatique et de recherche opérationnelle)** ： Département de l’Université de Montréal responsable des programmes en informatique, où se situent la majorité des cours analysés dans ce projet.
 
@@ -820,8 +820,8 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
    - Validation automatique de données (notation, catégories, commentaire)
 
 2. Dépendances logiques:
-  - include → CU4 (Rechercher et consulter un cours)
-  - extend → CU5 (Lire les avis des étudiants)
+   - include → CU4 (Rechercher et consulter un cours)
+   - extend → CU5 (Lire les avis des étudiants)
 
 - **Scénario principal**:
 1. De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
@@ -909,11 +909,17 @@ L'étudiant sélectionne plusieurs cours et clique sur “Comparer”.
 4. Le système aligne les données et génère un tableau comparatif.
 5. L’utilisateur peut trier/masquer les colonnes et exporter le tableau.
 6. Ajouter l’accès aux avis étudiants (utilisateurs)
+   
     a. Charge de travail (1-5)
+   
     b. Difficulté (1-5)
+   
     c. Appréciation générale (note charge) (1-5)
-    d. Nom du professeur 
+   
+    d. Nom du professeur
+   
     e. Echelle de disponibilité du professeur (1-5)
+   
     f. Taux de succès (en pourcentage)
 
 - **Scénarios alternatifs**:
