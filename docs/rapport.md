@@ -150,7 +150,6 @@ Yutong Zhu (20310738):
 - Mise a jour Glossaire
 - Mise a jour description du projet
 - Modele C4
-- Integration du feedback 
 
 #### Version final pour le devoir 2 (Novembre 30) :
 
@@ -161,7 +160,6 @@ Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 - Mise a jour cas d’utilisation principeaux dans le rapport
 - Mise a jour distribution des taches
 - Mise a jour besoins meteriels, solution de stockage et solution d’integreation
-- Integration du feedback 
 - Diagramme de classe
 - Diagrammes de sequences (Avis et Recherche du cours)
 - Mise a jour risque
@@ -187,7 +185,6 @@ Yutong Zhu (20310738):
 - Test unitaires et oracle du test pour les tests 6-9
 - Implementation voir les details d’un cours et comparer des cours
 - Mise a jour GitHub
-- Integration du feedback 
 
 ### Échéancier : 
 
@@ -955,9 +952,11 @@ Postcondition: Le contrôleur a traité la requête, appliqué la logique métie
 
 ### Diagramme de cas d'utilisation
 ![Diagramme de cas d’utilisation](diagrams/Diagramme_de_cas_d'utilisation.jpg)
+### Justification ( Diagramme de cas d'utilisation ) :
 
 ## 9. Diagramme d'activités
 ![Diagramme d'activités](diagrams/Diagramme_d'activités.jpg)
+### Justification ( Diagramme d'activité ) :
 
 ## 10. Modèle C4
 ### Niveau 1 : Diagramme de contexte
@@ -1061,13 +1060,25 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
 
 ## Modèle C4 niveau 1
 ![Modèle C4 niveau 1](diagrams/Modèle_C4_niveau_1.jpg)
+### Justification ( Modèle C4 niveau 1 ) :
+
 
 ## Modèle C4 niveau 2
 ![Modèle C4 niveau 2](diagrams/Modèle_C4_niveau_2.jpg)
+### Justification ( Modèle C4 niveau 2 ) :
 
 
+## Modèle C4 niveau 3
+### Justification ( Modèle C4 niveau 3 ) :
 
 
+## 11. Diagramme de sequences 
 
+## Recherche du cour
+### Justification ( Recherche du cour ) :
 
+## Avis
+### Justification ( Avis ) :
 
+## Comparer cour
+### Justification ( Comparer cour ) :
