@@ -825,20 +825,30 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 
 - **Scénario principal**:
 1. De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
-2. Le système affiche un formulaire d’évaluation comprenant : 
+2. Le système affiche un formulaire d’évaluation comprenant :
+   
     a. Charge de travail (1-5)
+   
     b. Difficulté (1-5)
+   
     c. Appréciation générale (note charge) (1-5)
+   
     d. Commentaire optionnel
+   
     e. Session suivie
-    f. Echelle de disponibilité du professeur
-    g. Nom du professeur 
-3. L’étudiant remplit le formulaire et soumet son avis.
-4. Le système vérifie : 
+   
+    f. Échelle de disponibilité du professeur
+   
+    g. Nom du professeur
+   
+    h . Taux de succès (en pourcentage)
+   
+4. L’étudiant remplit le formulaire et soumet son avis.
+5. Le système vérifie : 
    4.1. Que tous les champs obligatoires sont valides
-5. Le système enregistre l’avis dans la base interne.
-6. Le système synchronise l’avis avec le Bot Discord.
-7. Un message de confirmation s’affiche : “Votre avis a été enregistré”
+6. Le système enregistre l’avis dans la base interne.
+7. Le système synchronise l’avis avec le Bot Discord.
+8. Un message de confirmation s’affiche : “Votre avis a été enregistré”
 
 - **Scénarios alternatifs**:
   
@@ -990,11 +1000,16 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 1. L’utilisateur ou un système externe déclenche une action (ex : cliquer sur un bouton, lancer une comparaison, filtrer des avis, etc.)
 2. Le contrôleur reçoit la requête et identifie le cas d’utilisation associé
 3. Le contrôleur valide les préconditions (données disponibles, utilisateur authentifié, règles métier).
-4. Le contrôleur appelle les services appropriés : 
-   a. Gestion des cours 
-   b. Gestion des avis 
-   c. Gestion du profil utilisateur 
+4. Le contrôleur appelle les services appropriés :
+   
+   a. Gestion des cours
+   
+   b. Gestion des avis
+   
+   c. Gestion du profil utilisateur
+   
    d. Synchronisation discord
+   
 5. Les services exécutent la logique métier associée et renvoient les résultats.
 6. Le contrôleur formate la réponse dans un format exploitable par l’interface utilisateur.
 7. L’interface affiche les résultats à l’utilisateur (cours, avis, comparaison, message, erreur)
