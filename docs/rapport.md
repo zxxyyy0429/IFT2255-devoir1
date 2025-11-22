@@ -991,6 +991,11 @@ Système externes:
    - Résultats académiques [Base de données CSV]
      
      - Données agrégées des résultats
+       
+### Modèle C4 niveau 1
+![Modèle C4 niveau 1](diagrams/Modèle_C4_niveau_1.jpg)
+### Justification ( Modèle C4 niveau 1 ) :
+
 
 ### Niveau 2 : Diagramme des conteneurs
 Objectif: Détailler l’architecture interne principale du système et les interactions entre les conteneurs
@@ -1044,6 +1049,10 @@ Objectif: Détailler l’architecture interne principale du système et les inte
 	  
      - Assurer que chaque étudiant possède les prérequis nécéssaire
 
+### Modèle C4 niveau 2
+![Modèle C4 niveau 2](diagrams/Modèle_C4_niveau_2.jpg)
+### Justification ( Modèle C4 niveau 2 ) :
+
 ### Niveau 3 : Diagramme des composants (API Backend)
 Objectif: Développer le conteneur API Backend pour montrer ses composants internes.
 
@@ -1058,17 +1067,7 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
    - Algorithmes de suggestion basés sur le profil
    - Analyse des similarités entre cours
 
-## Modèle C4 niveau 1
-![Modèle C4 niveau 1](diagrams/Modèle_C4_niveau_1.jpg)
-### Justification ( Modèle C4 niveau 1 ) :
-
-
-## Modèle C4 niveau 2
-![Modèle C4 niveau 2](diagrams/Modèle_C4_niveau_2.jpg)
-### Justification ( Modèle C4 niveau 2 ) :
-
-
-## Modèle C4 niveau 3
+### Modèle C4 niveau 3
 ### Justification ( Modèle C4 niveau 3 ) :
 
 
