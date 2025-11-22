@@ -278,11 +278,14 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 
 ## 4. Glossaire
+
+   - **API REST** : Interface de programmation qui permet à différents systèmes de communiquer entre eux avec le protocole HTTP. Dans ce projet, l’API REST est utilisée pour exposer les fonctionnalités principales de la plateforme comme la recherche, la comparaison et les consultations des cours.
+
    - **Planifium API** : Service fournissant les données officielles des cours/programmes de l’UdeM.
   
    - **Format CSV** : Format de fichier tabulaire utilisé pour stocker les résultats académiques agrégés.
   
-   - **Résultats académiques agrégés (CSV)** : Données statistiques globales d’un cours (moyenne, inscrits, échecs).
+   - **Résultats académiques agrégés ou résultats globaux (CSV)** : Données statistiques globales d’un cours (moyenne, inscrits, échecs).
   
    - **JSON** : Format d’échange de données structurées, utilisé pour stocker et transmettre les avis des étudiants.
   
