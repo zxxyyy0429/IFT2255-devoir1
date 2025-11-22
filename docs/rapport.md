@@ -714,7 +714,9 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 1. L'utilisateur ouvre la page de profil.
 2. Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
 3. L’utilisateur modifie un ou plusieurs champs.
+   
 	3.1. Option: changement du mot de passe: validation forte.
+   
 4. Le système valide les nouvelles valeurs.
 5. Le système met à jour la base utilisateurs.
 6. Le système confirme la modification.
@@ -843,12 +845,14 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
    
     h . Taux de succès (en pourcentage)
    
-4. L’étudiant remplit le formulaire et soumet son avis.
-5. Le système vérifie : 
+3. L’étudiant remplit le formulaire et soumet son avis.
+4. Le système vérifie :
+   
    4.1. Que tous les champs obligatoires sont valides
-6. Le système enregistre l’avis dans la base interne.
-7. Le système synchronise l’avis avec le Bot Discord.
-8. Un message de confirmation s’affiche : “Votre avis a été enregistré”
+   
+5. Le système enregistre l’avis dans la base interne.
+6. Le système synchronise l’avis avec le Bot Discord.
+7. Un message de confirmation s’affiche : “Votre avis a été enregistré”
 
 - **Scénarios alternatifs**:
   
