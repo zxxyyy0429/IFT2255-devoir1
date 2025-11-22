@@ -684,6 +684,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 5. Redirection vers le tableau de bord personnalisé.
 
 - **Scénario alternatif**:
+
 3a. Identifiants invalides: message d’erreur.
 
 3b. Compte inactif/suspendu, message “contactez un TGDE”
@@ -719,6 +720,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 6. Le système confirme la modification.
 
 - **Scénario alternatif**:
+  
 4a. Validation échoue (format): affiche erreur et indique champs erronés.
 
 (1-6)a. Erreur: message “Modification non enregistrée”.
@@ -756,6 +758,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 7. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
 
 - **Scénarios alternatifs**
+
 3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
 
 2a. Recherche vide ou invalide
@@ -791,6 +794,7 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 4. L’utilisateur peut filtrer (avis récents).
 
 - **Scénarios alternatifs**:
+
 2a. Moins de 5 avis disponibles, message “Avis insuffisants”.
 
 2b. Base inaccessible, message d’erreur.
@@ -837,6 +841,7 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 7. Un message de confirmation s’affiche : “Votre avis a été enregistré”
 
 - **Scénarios alternatifs**:
+  
 2a. Le formulaire contient des champs incomplets ou invalides → message d’erreur “Veuillez corriger les champs indiqués”. 
 
 6a. Échec de synchronisation avec le bot –”l’avis est marqué “en attente de synchronisation” + avertissement 
@@ -869,6 +874,7 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 5. Option: export CSV/PDF.
 
 - **Scénarios alternatifs**:
+  
 2a. Données manquantes, message “Résultats non disponibles”.
 
 5a. Erreur d’exportation.
@@ -911,6 +917,7 @@ L'étudiant sélectionne plusieurs cours et clique sur “Comparer”.
     f. Taux de succès (en pourcentage)
 
 - **Scénarios alternatifs**:
+  
 1a. Moins de deux cours, message d’erreur.
 
 3a. Données manquantes, affichage partiel avec avertissement.
@@ -945,6 +952,7 @@ L'étudiant sélectionne plusieurs cours et clique sur “Comparer”.
 4. Le système met à jour la base utilisateurs et applique immédiatement les regles (recherche/affichage/comparaison)
 
 - **Scénarios alternatifs**:
+  
 2a. Préférences invalides, message d’avertissement et recommandation.
 
 3b. Erreur de sauvegarde: message “préférences non enregistrées”.
@@ -987,6 +995,7 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 
 - **Scénarios alternatifs**:
+  
 3a. Les préconditions ne sont pas remplies (ex. utilisateur non connecté) → message d’erreur.
 
 4a. Le service appelé retourne une erreur (ex. manque de données, import discord échoué) → scénario d’exception.
