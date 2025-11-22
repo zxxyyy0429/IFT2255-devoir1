@@ -364,6 +364,12 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **Préférences (théorie/pratique)** ：Paramètres choisis par l’étudiant indiquant s’il préfère des cours à dominante théorique (concepts, mathématiques, algorithmes) ou pratique (laboratoires, projets, programmation). Ces préférences sont utilisées par l’outil pour personnaliser l’affichage des résultats, recommander certains cours, et filtrer les options lors de la recherche ou de la comparaison.
 
+- **Interface en ligne de commande (CLI)** ：Interface utilisateur basée sur du texte permettant d’interagir avec un système logiciel via l’entrée de commandes. Elle fonctionne sans interface graphique et constitue l’interface minimale exigée dans le cadre du projet.
+
+- **Base de données NoSQL** ：Type de base de données non relationnelle conçue pour stocker des données semi-structurées ou non structurées, comme des documents JSON. Elle est adaptée aux données évolutives, flexibles et hétérogènes, comme les avis étudiants collectés via le bot Discord.
+
+- **Contrôle des accès basé sur les rôles (RBAC – Role-Based Access Control)** ：Mécanisme de sécurité permettant de restreindre l’accès aux ressources du système selon le rôle de l’utilisateur (ex. : étudiant, auxiliaire, administrateur). Il assure la protection des données sensibles et le respect des niveaux d’autorisation.
+
 ## 5. Risques du projet
  ### 1. Données incomplètes ou biaisées
 - Probabilité : moyenne ; Impact : élevé
@@ -481,31 +487,34 @@ Le système repose sur une architecture client-serveur hébergée sur une infras
 
 Cette configuration vise à garantir la performance, la sécurité et la capacité d’évolution du système, conformément aux exigences physiques vues en cours.
 
+Elle respecte également les principes étudiés dans le flux d’analyse concernant l’identification des besoins matériels, de performance, de disponibilité et de sécurité.
 
 #### Besoins matériels et solutions proposées
    - **Serveur d’application (Backend)** :
      Hébergé sur un serveur virtuel (cloud UdeM ou infonuagique public) doté de processeurs virtuels (vCPU), suffisamment de mémoire vive et de stockage SSD. 
      Le système d’exploitation recommandé est Linux, configuré pour le déploiement.
+     Afin d’assurer la tolérance aux pannes et la continuité du service, le serveur est configuré avec un mécanisme de redondance et de reprise automatique en cas de défaillance.
 
 
    - **Serveur de base de données** :
       Hébergé séparément pour assurer la sécurité et l’intégrité des données.
       Une base de données relationnelle est utilisée pour enregistrer les résultats académiques. Elle permet de stocker les moyennes, les taux d’échec et le nombre d’inscriptions pour chaque cours.
       Des sauvegardes automatiques sont faites régulièrement pour éviter toute perte d’information.
+     Cette séparation répond aux bonnes pratiques de conception système en matière de sécurité, d’isolation des responsabilités et de protection des données critiques.
 
    - **Postes clients** :
       Utilisation possible à partir de navigateurs récents tels que Chrome, Firefox, Edge ou Safari.
       Le design est responsive, permettant un accès fluide sur ordinateur, tablette ou mobile, y compris hors campus.
-
+     Le système supporte également une utilisation en ligne de commande (CLI), conformément aux exigences minimales du mandat.
 
    - **Réseau et bande passante** :
      Une connexion minimale de 10 Mo/s est requise pour interroger l’API Planifium et Discord.
      Un cache local est mis en place afin de réduire les appels redondants et d’optimiser les performances.
-
+     Ce mécanisme de cache permet aussi de limiter la dépendance directe aux API externes et d’augmenter la disponibilité du système.
 
    - **Accessibilité et hébergement** :
      L’interface est accessible et adaptée à différents types d’appareils et d’utilisateurs.
-
+     L’accessibilité respecte également les principes d’ergonomie et d’inclusivité exigés pour une utilisation par une population étudiante diversifiée.
 
 ### Solution de stockage et sécurité
 La solution de stockage combine des technologies relationnelles et non relationnelles pour gérer différents types de données et assurer leur intégrité, leur sécurité et leur évolutivité.
@@ -513,26 +522,27 @@ La solution de stockage combine des technologies relationnelles et non relationn
    - **Résultats académiques** :
      Les fichiers CSV fournis par l’administration sont importés dans une base de données relationnelle.
      Cette base permet d’effectuer des requêtes structurées, d’assurer la cohérence des statistiques et de gérer les agrégations par session ou trimestre.
-
+     Ce choix est motivé par la nature fortement structurée des résultats académiques et par le besoin d’intégrité référentielle.
 
    - **Avis étudiants** :
      Collectés via un bot Discord et enregistrés dans une base de données qui peut gérer des avis et des commentaires d’étudiants. Ce modèle permet de traiter des données semi-structurées et évolutives (commentaires, évaluations, métadonnées).
-
+     Une base NoSQL est privilégiée afin de supporter la variabilité et l’évolution future du format des avis, conformément aux besoins de flexibilité et d’évolutivité du système.
 
    - **Profils étudiants et préférences** :
      Les données des utilisateurs (cheminement, préférences de cours, contraintes personnelles) sont enregistrées dans une section sécurisée, liée à leur identifiant institutionnel via le SSO (authentification unique) UdeM.
-
+     Les données sensibles sont chiffrées au repos (en base) et en transit (HTTPS/TLS) afin d’assurer la confidentialité et la conformité avec la Loi 25.
 
    - **Fichiers journaux et statistiques** :
      Les journaux d’activité et les mesures de performance sont sauvegardés dans des fichiers JSON structurés pour assurer la traçabilité, la supervision et la maintenance proactive du système.
-
+     Ces fichiers permettent également d’appuyer le diagnostic en cas d’incident et d’alimenter les outils de monitoring.
 
    - **Sécurité et confidentialité** :
      Toutes les données sensibles sont protégées lorsqu’elles sont enregistrées et lorsqu’elles sont transmises sur le réseau.
      Les accès sont contrôlés par rôles (étudiant, auxiliaire, administrateur).
      Les avis étudiants sont anonymisés avant publication, en conformité avec la Loi 25.
      Des sauvegardes quotidiennes avec rétention de 30 jours sont réalisées, et l’architecture est scalable horizontalement (via CDN et cache Redis) pour absorber la charge.
-
+     Un contrôle des accès basé sur les rôles (RBAC) est mis en place pour limiter l’exposition des données selon le profil d’utilisateur.
+     
 
 ### Solution d’intégration
 La solution d’intégration garantit la cohérence des échanges entre les différents services internes et externes de la plateforme.
@@ -540,25 +550,25 @@ La solution d’intégration garantit la cohérence des échanges entre les diff
    - **API Planifium (Université de Montréal)** :
      L’API REST de Planifium est utilisée pour obtenir les informations officielles sur les programmes, cours, horaires, crédits et prérequis.
      Les données sont synchronisées quotidiennement via un processus automatisé et mises en cache localement pour réduire le délai d’attente.
-
+     Un mécanisme de gestion d’erreurs est prévu afin de gérer les pannes ou indisponibilités temporaires de l’API externe.
 
    - **Bot Discord (Avis étudiants)** :
      Le bot recueille automatiquement les avis et notes des étudiants.
      Les messages sont filtrés pour que toute information personnelle (PII) soient supprimés avant leur transformation en JSON et leur insertion dans la base NoSQL.
-
+     Un module de validation est ajouté pour détecter les doublons et garantir la règle n ≥ 5 avant l’affichage public des avis.
 
    - **Authentification SSO UdeM** :
      L’accès au système est protégé par une authentification institutionnelle, garantissant un lien unique entre les préférences et l’identité de l’étudiant.
-
+     L’authentification respecte les standards de sécurité OAuth2 et OpenID Connect.
 
    - **API interne REST (backend)** :
      Le système expose plusieurs points d’accès (/courses, /results, /compare, /reviews, /profile) permettant à l’interface utilisateur et aux services internes de communiquer en format JSON sur protocole HTTPS.
-
+     Ces endpoints respectent les bonnes pratiques REST (stateless, structuration des ressources, codes HTTP standards).
 
    - **CI/CD et supervision technique** :
      Le déploiement est automatisé via GitHub Actions.
      La performance et la stabilité sont surveillées en continu, et des alertes sont envoyées en cas d’erreur ou de lenteur du système.
-
+     Un tableau de bord de monitoring (ex. Grafana/Prometheus) permet de suivre l’état du système en temps réel.
 
 ### Solutions techniques globales
 L’architecture générale de la plateforme suit le modèle itératif et incrémental (I&I) enseigné en cours.
@@ -580,7 +590,8 @@ Chaque partie du système a un rôle précis (recherche, affichage, gestion des 
 
 
    - et la **maintenabilité** à long terme grâce à une documentation claire et un déploiement automatisé.
-
+   - 
+Elle respecte également l’alignement entre analyse, conception et implémentation tel qu’exigé dans le cadre méthodologique vu en cours.
 
 Dans son ensemble, cette configuration matérielle et logicielle soutient les objectifs pédagogiques du projet : offrir une plateforme performante, transparente et évolutive, conforme aux standards de génie logiciel enseignés à l’Université de Montréal.
 
