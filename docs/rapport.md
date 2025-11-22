@@ -637,8 +637,8 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 1. Dépendances techniques:
    - Service d’inscription, base d’utilisateurs, serveur HTTPS, service d’envoie de courriel de confirmation.
 2. Dépendances logiques:
-     - include → CU2 (Se connecter)
-     - extend → CU3 (Modifier le profil)
+   - include → CU2 (Se connecter)
+   - extend → CU3 (Modifier le profil)
 
 - **Scénario principal**:
 1. L’utilisateur ouvre la page d'accueil.
@@ -669,12 +669,12 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 
 - **Dépendances** : 
 1. Dépendances techniques:
-- Service d’authentification (vérification mots de passe)
-- Gestion de session
-- SSO UdeM si nécessaire
+   - Service d’authentification (vérification mots de passe)
+   - Gestion de session
+   - SSO UdeM si nécessaire
 2. Dépendances logiques:
-- include → CU3 (Modifier le profil)
-- include → CU4 (Rechercher un cours) pour un accès complet.
+   - include → CU3 (Modifier le profil)
+   - include → CU4 (Rechercher un cours) pour un accès complet.
 
 - **Scénario principal**:
 1. L’utilisateur ouvre la page de connexion.
@@ -701,13 +701,13 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 - **Déclencheur**: L’utilisateur clique sur “Modifier profil”.
 
 - **Dépendances** :
-1. **Dépendances techniques**:
-- Base utilisateurs
-- Validation serveur
-- Journalisation/audit (conformité Loi 25)
+1. Dépendances techniques:
+   - Base utilisateurs
+   - Validation serveur
+   - Journalisation/audit (conformité Loi 25)
 2. Dépendance logiques:
-- include → CU2 (Se connecter)
-- extend → CU8 (Personnaliser affichage)
+   - include → CU2 (Se connecter)
+   - extend → CU8 (Personnaliser affichage)
 
 - **Scénario principal**:
 1. L'utilisateur ouvre la page de profil.
@@ -736,7 +736,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 - **Déclencheur**: L’étudiant saisit un mot-clé dans la barre de recherche ou clique sur un cours pour en afficher la fiche.
 
 - **Dépendances**:
-1. **Dépendances techniques**:
+1. Dépendances techniques:
    - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
    - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
    - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
@@ -811,15 +811,15 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 - **Déclencheur**: L’étudiant clique sur “Ajouter un avis” dans la fiche d’un cours.
 
 - **Dépendance**:
-- **Dépendances techniques**:
+1. Dépendances techniques:
    - Synchronisation entre la plateforme et le Bot Discord. 
    - Validation automatique de données (notation, catégories, commentaire)
 
-- **Dépendances logiques**:
+2. Dépendances logiques:
   - include → CU4 (Rechercher et consulter un cours)
   - extend → CU5 (Lire les avis des étudiants)
 
-- Scénario principal:
+- **Scénario principal**:
 1. De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
 2. Le système affiche un formulaire d’évaluation comprenant : 
     a. Charge de travail (1-5)
@@ -875,116 +875,129 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 
 - **Postcondition**: Les statistiques sont affichées et enregistrées dans le journal de consultation.
 
-CU8 - Comparer plusieurs cours
+### CU8 - Comparer plusieurs cours
 
-But: Permettre à l'étudiant de comparer plusieurs cours selon différents critères (crédits, taux d'échec, avis, horaire).
+- **But**: Permettre à l'étudiant de comparer plusieurs cours selon différents critères (crédits, taux d'échec, avis, horaire).
 
-Précondition: Au moins deux cours sont ajoutés au panier de comparaison.
+- **Précondition**: Au moins deux cours sont ajoutés au panier de comparaison.
 
-Acteurs: Étudiant (principal), Système (secondaire)
+- **Acteurs**: Étudiant (principal), Système (secondaire)
 
-Déclencheur:
+- **Déclencheur**:
 L'étudiant sélectionne plusieurs cours et clique sur “Comparer”.
 
-Dépendance:
-Dépendances techniques: 
-Module d’agrégation multi-sources.
-Gestion état session.
-Accès concurrent aux bases (SQL/NoSQL)
-Dépendances logiques:
-include → CU6 (Consulter résultat)
-include → CU5 (Lire les avis des étudiants
-) si avis inclus.
-extend → CU3 pour filtrer le profil.
+- **Dépendance**:
+1. Dépendances techniques: 
+   - Module d’agrégation multi-sources.
+   - Gestion état session.
+   - Accès concurrent aux bases (SQL/NoSQL)
+2. Dépendances logiques:
+   - include → CU6 (Consulter résultat)
+   - include → CU5 (Lire les avis des étudiants) si avis inclus.
+   - extend → CU3 pour filtrer le profil.
 
-Scénario principal:
-L’utilisateur ajoute 2+ cours au panier.
-Cliquez sur “Comparer”.
-Le système récupère pour chaque cours: crédits, horaires, moyenne, taux d’échec.
-Le système aligne les données et génère un tableau comparatif.
-L’utilisateur peut trier/masquer les colonnes et exporter le tableau.
+- **Scénario principal**:
+1. L’utilisateur ajoute 2+ cours au panier.
+2. Cliquez sur “Comparer”.
+3. Le système récupère pour chaque cours: crédits, horaires, moyenne, taux d’échec.
+4. Le système aligne les données et génère un tableau comparatif.
+5. L’utilisateur peut trier/masquer les colonnes et exporter le tableau.
+6. Ajouter l’accès aux avis étudiants (utilisateurs)
+    a. Charge de travail (1-5)
+    b. Difficulté (1-5)
+    c. Appréciation générale (note charge) (1-5)
+    d. Nom du professeur 
+    e. Echelle de disponibilité du professeur (1-5)
+    f. Taux de succès (en pourcentage)
 
-Scénarios alternatifs:
+- **Scénarios alternatifs**:
 1a. Moins de deux cours, message d’erreur.
+
 3a. Données manquantes, affichage partiel avec avertissement.
+
 5a. Conflit d’horaire: donne suggestions de remplacements
 
-Postcondition: Un tableau comparatif est enregistré dans le profil utilisateur.
+- **Postcondition**: Un tableau comparatif est enregistré dans le profil utilisateur.
 
-CU9 - Personnaliser l'affichage
+### CU9 - Personnaliser l'affichage
 
-But: Permettre à l'étudiant de filtrer et trier les résultats selon ses préférences.
+- **But**: Permettre à l'étudiant de filtrer et trier les résultats selon ses préférences.
 
-Précondition: L'étudiant dispose d’un profil avec des préférences enregistrées.
+- **Précondition**: L'étudiant dispose d’un profil avec des préférences enregistrées.
 
-Acteurs: Étudiant (principal), Système (secondaire)
+- **Acteurs**: Étudiant (principal), Système (secondaire)
 
-Déclencheur: L'étudiant modifie ou active la personnalisation dans son profil.
+- **Déclencheur**: L'étudiant modifie ou active la personnalisation dans son profil.
 
-Dépendance:
-Dépendances techniques:
-Base utilisateurs (stockage préférences)
-Application runtime
-Dépendances logiques:
-include → CU4 (Rechercher)
-include → CU7 (Comparer)
-extend → CU5 (Voir la page du cours), CU5 (Lire les avis des étudiants), CU6 (Consulter résultats).
+- **Dépendance**:
+1. Dépendances techniques:
+   - Base utilisateurs (stockage préférences)
+   - Application runtime
+2. Dépendances logiques:
+   - include → CU4 (Rechercher)
+   - include → CU7 (Comparer)
+   - extend → CU5 (Voir la page du cours), CU5 (Lire les avis des étudiants), CU6 (Consulter résultats).
 
-Scenario principal:
-L'utilisateur ouvre la section Préférences.
-Le système affiche des options.
-L’utilisateur configure et enregistre les préférences dans la base utilisateur.
-Le système met à jour la base utilisateurs et applique immédiatement les regles (recherche/affichage/comparaison)
+- **Scénario principal**:
+1. L'utilisateur ouvre la section Préférences.
+2. Le système affiche des options.
+3. L’utilisateur configure et enregistre les préférences dans la base utilisateur.
+4. Le système met à jour la base utilisateurs et applique immédiatement les regles (recherche/affichage/comparaison)
 
-Scénarios alternatifs:
+- **Scénarios alternatifs**:
 2a. Préférences invalides, message d’avertissement et recommandation.
+
 3b. Erreur de sauvegarde: message “préférences non enregistrées”.
 
-Postcondition: Les préférences sont sauvegardées dans la base de données et appliquées automatiquement.
+- **Postcondition**: Les préférences sont sauvegardées dans la base de données et appliquées automatiquement.
 
-CU10 - Système contrôleur
+## CU10 - Système contrôleur
 
-But: Coordonner l’exécution des cas d’utilisation en orchestrant les interactions entre l’interface utilisateur, la logique métier et les sources de données. Le système contrôleur assure le bon déroulement des opérations et la cohérence des données.
+- **But**: Coordonner l’exécution des cas d’utilisation en orchestrant les interactions entre l’interface utilisateur, la logique métier et les sources de données. Le système contrôleur assure le bon déroulement des opérations et la cohérence des données.
 
-Précondition:
+- **Précondition**:
 Les modules principaux (interface, services métier, base de données, import Discord) sont fonctionnels.
 L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 
-Acteurs: Étudiant (principal), Système externes et Contrôleur principal (secondaire)
+- **Acteurs**: Étudiant (principal), Système externes et Contrôleur principal (secondaire)
 
-Déclencheur: Tout action de l’étudiant ou un événement système déclenche une requête à traiter (ex : afficher un cours, consulter un avis, comparer des cours, filtrer, importer des données, etc.)
+- **Déclencheur**: Tout action de l’étudiant ou un événement système déclenche une requête à traiter (ex : afficher un cours, consulter un avis, comparer des cours, filtrer, importer des données, etc.)
 
-Dépendance:
-Dépendances techniques:
-Couche de service logique (gestion des cours, avis, profils)
-API vers sources externes (CSV, Discord)
-Gestion des erreurs et vérifications 
-Dépendances logiques:
-include → tous les CU fonctionnels (CU1 à CU9)
+- **Dépendance**:
+1. Dépendances techniques:
+   - Couche de service logique (gestion des cours, avis, profils)
+   - API vers sources externes (CSV, Discord)
+   - Gestion des erreurs et vérifications 
+2. Dépendances logiques:
+   - include → tous les CU fonctionnels (CU1 à CU9)
 
-Scenario principal:
-L’utilisateur ou un système externe déclenche une action (ex : cliquer sur un bouton, lancer une comparaison, filtrer des avis, etc.)
-Le contrôleur reçoit la requête et identifie le cas d’utilisation associé
-Le contrôleur valide les préconditions (données disponibles, utilisateur authentifié, règles métier).
-Le contrôleur appelle les services appropriés : 
-Gestion des cours 
-Gestion des avis 
-Gestion du profil utilisateur 
-Synchronisation discord
-Les services exécutent la logique métier associée et renvoient les résultats.
-Le contrôleur formate la réponse dans un format exploitable par l’interface utilisateur.
-L’interface affiche les résultats à l’utilisateur (cours, avis, comparaison, message, erreur)
+- **Scénario principal**:
+1. L’utilisateur ou un système externe déclenche une action (ex : cliquer sur un bouton, lancer une comparaison, filtrer des avis, etc.)
+2. Le contrôleur reçoit la requête et identifie le cas d’utilisation associé
+3. Le contrôleur valide les préconditions (données disponibles, utilisateur authentifié, règles métier).
+4. Le contrôleur appelle les services appropriés : 
+   a. Gestion des cours 
+   b. Gestion des avis 
+   c. Gestion du profil utilisateur 
+   d. Synchronisation discord
+5. Les services exécutent la logique métier associée et renvoient les résultats.
+6. Le contrôleur formate la réponse dans un format exploitable par l’interface utilisateur.
+7. L’interface affiche les résultats à l’utilisateur (cours, avis, comparaison, message, erreur)
 
 
-Scénarios alternatifs:
+- **Scénarios alternatifs**:
 3a. Les préconditions ne sont pas remplies (ex. utilisateur non connecté) → message d’erreur.
+
 4a. Le service appelé retourne une erreur (ex. manque de données, import discord échoué) → scénario d’exception.
+
 4b. La synchronisation externe échoue → le contrôleur marque l’opération comme “partielle” et affiche un avis à l’utilisateur.
+
 5a. Les données sont incohérentes ou manquantes → message “Données indisponibles pour le moment”.
+
 6a. La réponse est trop lourde (ex. trop de cours, trop d’avis) → pagination ou réduction automatique.
 
-Postcondition: Le contrôleur a traité la requête, appliqué la logique métier, renvoyé une réponse claire à l’utilisateur et consigné les opérations dans l’historique interne du système.
+- **Postcondition**: Le contrôleur a traité la requête, appliqué la logique métier, renvoyé une réponse claire à l’utilisateur et consigné les opérations dans l’historique interne du système.
 
 
 
