@@ -918,7 +918,7 @@ L'étudiant sélectionne plusieurs cours et clique sur “Comparer”.
    
     d. Nom du professeur
    
-    e. Echelle de disponibilité du professeur (1-5)
+    e. Échelle de disponibilité du professeur (1-5)
    
     f. Taux de succès (en pourcentage)
 
