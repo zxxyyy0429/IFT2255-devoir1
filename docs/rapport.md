@@ -310,9 +310,38 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
    - **Panier de cours** : Liste temporaire de cours sélectionnés par l’étudiant en vue d’une comparaison.
 
-   - **Préférences (Profil)** : Paramètres définis par l’étudiant (théorie/pratique, contraintes personnelles) afin de personnaliser l’affichage des résultats.
+   - **Préférences (Profil)** : Paramètres définis par l’étudiant (préférence de cours théoriques ou pratiques, charge de travail souhaitée, contraintes personnelles, plage d’horaires) afin de personnaliser l’affichage des résultats.
 
    - **Moteur de filtrage** : Composant logiciel qui applique les préférences de l’étudiant pour trier et adapter la liste de cours affichée.
+
+- **Cours** ：Unité d’enseignement comportant un code (sigle), un titre, un nombre de crédits et un professeur responsable.
+
+- **Sigle** ：Code unique attribué à chaque cours pour permettre son identification dans le système universitaire.
+
+- **Session** ：Période académique durant laquelle un cours est offert (automne, hiver, été)
+
+- **TGDE** ：Employé administratif chargé de valider les inscriptions, les prérequis et la conformité des choix de cours.
+
+- **Etudiant** ：Utilisateur principal du système, cherchant à choisir, comparer ou planifier des cours adaptés à son cheminement académique.
+
+- **Professeur** ：Enseignant responsable du contenu, des objectifs pédagogiques et de l'évaluation des étudiants dans un cours.
+
+- **Credit** ：Unité de mesure de la charge de travail associée à un cours, généralement équivalente à 45 heures de travail total.
+
+- **Moyenne** ：Valeur numérique représentant la performance globale des étudiants dans un cours donné.
+
+- **Accessibilité** ：Ce sont des normes internationales qui définissent les critères d'accessibilité numérique. Elles veulent rendre les interfaces utilisables en plus grand nombre, y compris les personnes en situations de handicap.
+
+- **Evolutivité** : Capacité du système à s’adapter à une augmentation du volume d’utilisateurs, de données ou de fonctionnalités sans avoir des problèmes majeurs de performances.
+
+- **Centralisation des données** : Un principe consistant à regrouper dans une même plateforme les données provenant de plusieurs sources tel que le Planifium, les résultats académiques et les avis Discord).
+
+- **Comparaison de cours** ：Fonctionnalité qui permet à l’utilisateur de sélectionner plusieurs cours et d’évaluer la charge de travail ou la compatibilité entre eux.
+
+- **Interface utilisateur** : Une partie visible de l’application où l’utilisateur interagit. Elle peut être en ligne de commande, graphique ou web.
+
+- **Profil étudiant** : Ces données sont saisies par un utilisateur pour montrer ses préférences, ses intérêts et le type d’apprentissage, ce qui permet de personnaliser les recommandations et les résultats de recherche.
+
 
 - **DIRO (Département d’informatique et de recherche opérationnelle)** ： Département de l’Université de Montréal responsable des programmes en informatique, où se situent la majorité des cours analysés dans ce projet.
 
