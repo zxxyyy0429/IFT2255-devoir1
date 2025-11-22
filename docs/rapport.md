@@ -157,7 +157,7 @@ Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 - Glossaire mise a jour
 - Mise a jour description du projet
 - Mise a jour besoin non fonctionels
-- Mise a jour cas d’utilisation principeaux dans le rapport
+- Mise a jour cas d’utilisation principeaux dans le rapport (ajouer 6 CU principeaux de plus)
 - Mise a jour distribution des taches
 - Mise a jour besoins meteriels, solution de stockage et solution d’integreation
 - Diagramme de classe
