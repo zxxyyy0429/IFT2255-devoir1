@@ -618,7 +618,7 @@ Chaque partie du système a un rôle précis (recherche, affichage, gestion des 
 
 
    - et la **maintenabilité** à long terme grâce à une documentation claire et un déploiement automatisé.
-   - 
+
 Elle respecte également l’alignement entre analyse, conception et implémentation tel qu’exigé dans le cadre méthodologique vu en cours.
 
 Dans son ensemble, cette configuration matérielle et logicielle soutient les objectifs pédagogiques du projet : offrir une plateforme performante, transparente et évolutive, conforme aux standards de génie logiciel enseignés à l’Université de Montréal.
