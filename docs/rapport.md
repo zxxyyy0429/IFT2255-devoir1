@@ -1036,6 +1036,244 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 - **Postcondition**: Le contrôleur a traité la requête, appliqué la logique métier, renvoyé une réponse claire à l’utilisateur et consigné les opérations dans l’historique interne du système.
 
+### CU11 – Gérer les rôles et les accès (RBAC)
+
+- **But** : Permettre à un administrateur de gérer les rôles des utilisateurs et leurs droits d’accès au système via le modèle RBAC.
+
+- **Préconditions**: L’administrateur est connecté avec un compte ayant les privilèges « administrateur système ».
+
+- **Acteurs** : Administrateur (principal), Système (secondaire)
+
+- **Déclencheur** : L’administrateur accède au module de gestion des rôles.
+
+- **Dépendances**:
+1. Dépendances techniques : 
+   - Base utilisateurs, module de sécurité, système RBAC.
+2. Dépendances logiques : 
+   - include → CU2 (Se connecter)
+
+
+- **Scénario principal** :
+  
+1. L’administrateur ouvre le panneau « Gestion des rôles ».
+
+
+2. Le système affiche la liste des utilisateurs et leurs rôles actuels.
+
+
+3. L’administrateur sélectionne un utilisateur.
+
+
+4. Il modifie son rôle (ex. : étudiant → TGDE).
+
+
+5. Le système valide la modification.
+
+
+6. La base est mise à jour et les nouvelles permissions sont appliquées.
+
+
+- **Scénarios alternatifs** :
+4a. Le rôle sélectionné est invalide → message d’erreur.
+
+5a. Échec de mise à jour dans la base → message « modification impossible ».
+
+- **Postcondition** : Les rôles et permissions sont mis à jour selon les règles RBAC.
+
+
+### CU12 – Mettre à jour les données Planifium
+
+- **But** : Permettre au système d’actualiser les données académiques provenant de l’API Planifium.
+
+- **Préconditions** : Connexion valide et fonctionnelle à l’API Planifium.
+
+- **Acteurs** : Administrateur (principal), API Planifium (secondaire)
+
+- **Déclencheur** : Synchronisation manuelle par l’administrateur ou synchronisation automatique.
+
+- **Dépendances** :
+
+1. Dépendances techniques : 
+   - API Planifium, moteur ETL, base de données.
+
+
+- **Scénario principal** :
+1. L’administrateur clique sur « Mettre à jour les données ».
+
+
+2. Le système envoie une requête à l’API Planifium.
+
+
+3. Les nouvelles données sont reçues.
+
+
+4. Le système met à jour la base locale.
+
+
+5. Un rapport de synchronisation est généré.
+
+
+- **Scénarios alternatifs** :
+  
+2a. Planifium indisponible → synchronisation annulée
+
+3a. Les données reçues sont incomplètes → log d’erreur.
+
+- **Postcondition** : Les données officielles sont mises à jour localement.
+
+### CU13 – Importer les résultats académiques (CSV)
+
+- **But** : Permettre à un administrateur d’importer les résultats académiques depuis les fichiers CSV.
+  
+- **Préconditions** : Les fichiers CSV sont disponibles et accessibles.
+
+- **Acteurs** : Administrateur (principal), Système (secondaire)
+
+- **Déclencheur** : L’administrateur charge un fichier CSV dans le module d’importation.
+
+- **Dépendances** :
+1. Dépendances techniques 
+   - Base SQL
+   - Module d’importation CSV
+
+
+- **Scénario principal** :
+1. L’administrateur téléversera le fichier CSV.
+
+
+2. Le système vérifie le format.
+
+
+3. Les données sont lues et validées.
+
+
+4. Le système insère les données dans la base.
+
+
+5. Un message de succès est affiché.
+
+
+- **Scénarios alternatifs** :
+  
+2a. Format CSV invalide → message d’erreur.
+
+4a. Incohérence dans les données → import partiel.
+
+- **Postcondition** : Les résultats académiques sont intégrés dans la base.
+
+### CU14 – Modérer les avis étudiants
+
+- **But** : Permettre à un administrateur de modérer les avis soumis par les étudiants.
+
+- **Préconditions** : Des avis sont présents dans le système.
+
+- **Acteurs** : Auxiliaire / Administrateur (principal) , Système (secondaire)
+
+- **Déclencheur** : Un avis est signalé par un utilisateur.
+
+- **Dépendances** :
+1. Dépendances techniques 
+   - Base NoSQL
+   - Module de modération
+
+
+- **Scénario principal** :
+1. L’admin consulte la liste des avis signalés.
+
+
+2. Il lit l’avis concerné.
+
+
+3. Il décide de le conserver ou de le supprimer.
+
+
+4. Le système met à jour la base de données.
+
+
+- **Scénarios alternatifs** :
+3a. Une erreur empêche la suppression → message d’erreur.
+
+- **Postcondition** : L’avis est modéré et reflète la décision de l’administrateur.
+
+### CU15 – Gérer les erreurs système
+
+- **But** : Gérer et notifier les erreurs liées aux services externes (Planifium, Discord).
+
+- **Préconditions** : Une erreur est détectée (Planifium, Discord, DB).
+
+- **Acteurs** : Système (principal), Utilisateur  / Administrateur (secondaire)
+
+- **Déclencheur** : Une requête vers un service externe échoue.
+
+- **Dépendances** : 
+1. Dépendances techniques : 
+   - Service externes (API Planifium, Bot Discord)
+   - Base de données
+   - Module de gestion d’erreurs (logging, alertes)
+   - Système de notifications administrateur 
+2. Dépendances logiques : 
+   - Include → tous les CU qui utilise une source externe 
+
+- **Scénario principal** :
+
+1. Une erreur est détectée par le système.
+
+
+2. Le système affiche un message clair à l’utilisateur.
+
+
+3. Un log est d’erreur est enregistré.
+
+
+4. Une alerte est envoyée à l’administrateur.
+
+
+- **Scénarios alternatifs** :
+  
+2a. L’erreur est critique → interruption temporaire du service concerné.
+
+- **Postcondition** : L’erreur est traitée, enregistrée et les utilisateurs sont informés sans interruption majeure du système.
+
+### CU16 – Supprimer un compte utilisateur
+
+- **But** : Permettre la suppression d’un compte utilisateur conformément à la Loi 25.
+
+- **Préconditions** : L’utilisateur est authentifié ou une demande valide est reçue via un formulaire.
+
+- **Acteurs** : Utilisateur (principal) , Administrateur et Système (secondaires)
+
+- **Déclencheur** : L’utilisateur demande la suppression de son compte.
+
+- **Dépendances** :
+1. Dépendances techniques : 
+   - Base utilisateur
+   - Module de sécurité
+   - Module d’anonymisation (respect Loi 25)
+   - Service d’envoi de notifications
+2. Dépendances logiques : 
+   - Include → CU2
+
+- **Scénario principal** :
+1. L’utilisateur demande la suppression de son compte.
+
+
+2. Le système demande une confirmation.
+
+
+3. Les données associées sont anonymisées.
+
+
+4. Le compte est désactivé puis supprimé.
+
+
+5. Un message de confirmation est envoyé.
+
+
+- **Scénarios alternatifs** :
+3a. Échec technique → suppression partielle + message d’alerte
+
+- **Postcondition** : Le compte est supprimé et les données sont traitées conformément à la Loi 25.
+
 
 
 
