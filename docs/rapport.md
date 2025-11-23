@@ -972,7 +972,7 @@ L'étudiant sélectionne plusieurs cours et clique sur “Comparer”.
 1. L'utilisateur ouvre la section Préférences.
 2. Le système affiche des options.
 3. L’utilisateur configure et enregistre les préférences dans la base utilisateur.
-4. Le système met à jour la base utilisateurs et applique immédiatement les regles (recherche/affichage/comparaison)
+4. Le système met à jour la base utilisateurs et applique immédiatement les règles (recherche/affichage/comparaison)
 
 - **Scénarios alternatifs**:
   
@@ -1074,6 +1074,7 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 
 - **Scénarios alternatifs** :
+  
 4a. Le rôle sélectionné est invalide → message d’erreur.
 
 5a. Échec de mise à jour dans la base → message « modification impossible ».
@@ -1191,6 +1192,7 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 
 - **Scénarios alternatifs** :
+  
 3a. Une erreur empêche la suppression → message d’erreur.
 
 - **Postcondition** : L’avis est modéré et reflète la décision de l’administrateur.
@@ -1270,6 +1272,7 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 
 - **Scénarios alternatifs** :
+  
 3a. Échec technique → suppression partielle + message d’alerte
 
 - **Postcondition** : Le compte est supprimé et les données sont traitées conformément à la Loi 25.
