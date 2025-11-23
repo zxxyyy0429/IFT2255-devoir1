@@ -1415,22 +1415,22 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
 ## Soumettre un avis
 ### Justification ( Soumettre un avis ) :
 
-**Clarté du flux fonctionnel**
+**Clarté du flux fonctionnel**:
 Le diagramme de séquence met en place un flux clair et linéaire entre l’Étudiant, le Menu, le Système Contrôleur et la classe Avis. Chaque interactions est représentée de manière chronologique, ce qui reflète fidèlement la manière dont un utilisateur soumet un avis dans le système : ouverture du formulaire, saisie des données, validation, puis confirmation ou affichage d’erreur. Ce séquencement permet de visualiser immédiatement la responsabilité de chaque acteur et garantit que le lecteur comprend comment la fonctionnalité se déroule du début à la fin.
 
-**Séparation des responsabilités**
+**Séparation des responsabilités**:
 Chaque participant du diagramme est utilisé de manière cohérente avec sa responsabilité métier (ex : l’Étudiant initie l’action et fournit les informations nécessaires, le Menu gère l'affichage et les retours vers l’utilisateur, etc.). Cette séparation stricte améliore la maintenabilité du système et permet de modifier l’une des couches (ex : l’interface) sans changer les autres. 
 
-**Gestion des erreurs et robustesse** 
+**Gestion des erreurs et robustesse**:
 Le bloc conditionnel alt utilisé dans le diagramme illustre la robustesse du processus. Si la validation échoue (avisValide = false), le contrôleur retourne une erreur vers le Menu qui se charge de l’afficher clairement à l’utilisateur. À l’inverse, si l'avis est valide, le système procède à la création et à l’enregistrement de l’objet Avis. Cette logique conditionnelle rend explicite la gestion des cas incorrects et renforce la fiabilité du système en s’assurant que seules des données correctes sont persistées. 
 
-**Cohésion**
+**Cohésion**:
 Le diagramme montre une forte cohésion au sein de chaque entité. Le Menu ne fait qu’afficher des formulaires et transmettre les données saisies, ce qui correspond exactement à sa responsabilité d’interface. Le Système Contrôleur gère toutes les décisions du flux : valide les préconditions, appelle les services appropriés et choisit la branche du scénario (erreur ou réussite). Le module Avis est pleinement cohérent puisqu’il encapsule toute la logique liée aux avis : validation, création et enregistrement. Chaque participant accomplit ainsi une tâche unique, ce qui augmente la lisibilité, la maintenabilité et la fiabilité du système. 
 
-**Faible couplage**
+**Faible couplage**:
 Le rôle du Système Contrôleur permet de réduire fortement le couplage entre le Menu et la classe Avis. Le Menu ne traite que l'affichage et la réception des saisies, tandis que la logique métier (validation, création, enregistrement) est centralisée dans le contrôleur. Ce choix améliore l’évolutivité du système : les règles de validation ou la structure d’un avis peuvent changer sans affecter l’interface ni les actions de l’utilisateur. 
 
-**Traçabilité**
+**Traçabilité**:
 Le diagramme utilise des messages explicites (ex : afficherFormulaireAvis, validerAvis, etc.) qui facilite la compréhension du scénario même pour un lecteur qui ne connaît pas le code, et assure une traçabilité claire entre les besoins du cas d’utilisation et les méthodes réellement invoquées. Cela contribue également à aligner le diagramme de séquence avec le diagramme de classe et le code implémenté.
 
 
