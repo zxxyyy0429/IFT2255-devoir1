@@ -1402,18 +1402,18 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
 
 ## 11. Diagramme de classe
 ### Justification ( Diagramme de classe ):
-**Abstraction et Flexibilite** : Le design repose sur une abstraction claire des concepts académiques à travers des classes comme Utilisateur, Étudiant, Cours et Profil Académique. Chaque classe représente un concept précis du domaine et possède une responsabilité unique. Cette abstraction améliore la compréhension du système et assure sa flexibilité, en permettant d’ajouter ou de modifier des fonctionnalités sans changer l’architecture globale.
-**Cohesion et encapsulation** : Chaque classe présente une forte cohésion en se concentrant sur une seule tâche (ex. RechercheDeCours pour la recherche, Panier pour la sélection). L’encapsulation est respectée par l’usage d’attributs privés et de méthodes contrôlées, protégeant les données internes. Cela améliore la maintenabilité et la robustesse du système.
+**Abstraction et Flexibilité** : Le design repose sur une abstraction claire des concepts académiques à travers des classes comme Utilisateur, Étudiant, Cours et Profil Académique. Chaque classe représente un concept précis du domaine et possède une responsabilité unique. Cette abstraction améliore la compréhension du système et assure sa flexibilité, en permettant d’ajouter ou de modifier des fonctionnalités sans changer l’architecture globale.
+**Cohésion et encapsulation** : Chaque classe présente une forte cohésion en se concentrant sur une seule tâche (ex. RechercheDeCours pour la recherche, Panier pour la sélection). L’encapsulation est respectée par l’usage d’attributs privés et de méthodes contrôlées, protégeant les données internes. Cela améliore la maintenabilité et la robustesse du système.
 **Couplage** : Le faible couplage est assuré par le Système Contrôleur, qui sépare l’interface (Menu) de la logique métier. Les classes fonctionnelles restent ainsi indépendantes de la vue, permettant de modifier l’interface ou les fonctionnalités sans impact majeur sur le système.
-**Modularite et interoperabilite** ：Les classes sont regroupées en modules fonctionnels (utilisateur, académique, décision, interface), assurant une bonne modularité et facilitant l’évolution du système. Cette organisation permet aussi une bonne interopérabilité avec des systèmes externes comme des API universitaires, en intégrant leurs données sans modifier la structure existante.
+**Modularite et interopérabilité** ：Les classes sont regroupées en modules fonctionnels (utilisateur, académique, décision, interface), assurant une bonne modularité et facilitant l’évolution du système. Cette organisation permet aussi une bonne interopérabilité avec des systèmes externes comme des API universitaires, en intégrant leurs données sans modifier la structure existante.
 
-## 12. Diagramme de sequences 
+## 12. Diagrammes de séquences 
 
-## Recherche du cour
-### Justification ( Recherche du cour ) :
+## Recherche de cours
+### Justification ( Recherche de cours ) :
 
-## Avis
-### Justification ( Avis ) :
+## Soumettre un avis
+### Justification ( Soumettre un avis ) :
 
-## Comparer cour
-### Justification ( Comparer cour ) :
+## Comparer cours
+### Justification ( Comparer cours ) :
