@@ -753,7 +753,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
    - extend → CU7 (Comparer les cours)
    - extend → CU8 (Personnaliser l’affichage)
 
-- **Scénario principal**
+- **Scénario principal**:
 1. L’étudiant accède au champ de recherche.
 2. Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
 3. Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
@@ -762,7 +762,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 6. Le système interroge l’API Planifium pour charger la fiche détaillée.
 7. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
 
-- **Scénarios alternatifs**
+- **Scénarios alternatifs**:
 
 3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
 
@@ -770,7 +770,7 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 
 6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
 
-- **Postcondition**
+- **Postcondition**:
 La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
 
 
