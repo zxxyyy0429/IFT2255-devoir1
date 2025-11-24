@@ -1412,6 +1412,19 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
 ## Recherche de cours
 ### Justification ( Recherche de cours ) :
 
+**Abstraction + flexibilité**
+Le diagramme illustre en abstraction claire du processus de recherche de cours en séparant les rôles de l’Étudiant, du Menu, du SystèmeContrôleur, du ServiceRechercheCours et de l’entité Cours. Chaque ligne de vie représente un niveau distinct : l’interface utilisateur, la logique métier générale, le service spécialisé et finalement les données académiques. Cette abstraction permet de comprendre visuellement quelles responsabilités appartiennent à quelle couche, tout en assurant le processus reste compréhensible, évolutif et indépendant des détails de bas niveau. Ainsi, les étapes comme la validation ou le traitement des critères sont isolées dans des modules appropriés sans surcharger l’interface ni l’utilisateur. 
+
+**Cohésion** 
+Le diagramme illustre une forte cohésion au sein de chaque participant : le Menu se limite à afficher les formulaires et récolter les critères, le SystèmeContrôleur orchestre le flux général, tandis que le ServiceRechercheCours s’occupe exclusivement de la validation et de la recherche réelle. Cette distribution permet d’encapsuler les responsabilités et rend le système plus facile à modifier plus tard, parce qu’on peut changer l’intérieur d’un module sans casser les autres parties. 
+
+**Couplage** 
+Le diagramme met en place un faible couplage en faisant transiter toutes les interactions par un SystèmeContrôleur central. Le Menu n’interagit jamais directement avec ServiceRechercheCours, ce qui évite toute dépendance entre l’interface et les services spécialisés. Le ServiceRechercheCours n’a également pas besoin de connaître la structure de l’interface ni du contrôleur. Grâce à cette séparation, chaque module peut être modifié indépendamment (ex : pour intégrer une API externe de cours ou pour améliorer les règles de validation des critères). Le contrôleur joue le rôle de médiateur, assurant un flux clair et contrôlé des messages entre les différentes couches. 
+
+**Modularité** 
+Le choix d’isoler la logique de validation et de rechercher dans un service dédié montre une modularité forte. Grâce à cette structure, il devient facile d’ajouter de nouveaux critères, d’intégrer une base de données externe ou de modifier la manière dont les cours sont filtrés, sans toucher au Menu ou au SystèmeContrôleur. Cette modularité rend le système plus extensible, adaptable aux changements futurs et conforme aux bonnes pratiques d’architecture logicielle.
+
+
 ## Soumettre un avis
 ### Justification ( Soumettre un avis ) :
 
