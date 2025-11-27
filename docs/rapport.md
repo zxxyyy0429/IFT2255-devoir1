@@ -1286,7 +1286,9 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 ## 9. Diagramme d'activités
 ![Diagramme d'activités](diagrams/Diagramme_d'activités.jpg)
-### Justification ( Diagramme d'activité ) :
+### Justification:
+Ce diagramme d'activités montre clairement le flux des activités principales du système. Il y a trois acteurs principaux séparés par des swimlanes: l’étudiant, la plateforme, le service externe. Il montre aussi que le menu principal ne gère que l’affichage, que la plateforme est responsable de la logique du traitement principal et que le service externe ne fournit que les données. Cela permet de bien séparer les responsabilités de chaque acteur et d’offrir un faible couplage ainsi qu’une forte cohésion. Cela rend le diagramme plus lisible pour les développeurs et pour les personnes qui ne comprennent pas les aspects techniques.
+
 
 ## 10. Modèle C4
 ### Niveau 1 : Diagramme de contexte
@@ -1448,7 +1450,12 @@ Le diagramme utilise des messages explicites (ex : afficherFormulaireAvis, valid
 
 
 ## Comparer cours
-### Justification ( Comparer cours ) :
+### Justification:
+Ce diagramme de séquence illustre clairement la logique du flux pour comparer des cours. L’étudiant choisit d’abord le panier dans le menu principal, puis le système valide le nombre de cours dans le panier. Ensuite, l’étudiant sélectionne les cours à comparer, et le système appelle la méthode de comparaison des cours. Enfin, le tableau comparatif est retourné. Cela permet de montrer l'interaction entre plusieurs contrôleurs, services et entités, ce qui le rend compréhensible pour les clients et les développeurs.
+Le diagramme sépare bien les responsabilités de chaque objet. Le menu est responsable de l’affichage pour les étudiants. Le contrôleur établit un lien entre le menu et le service métier, et il gère le comportement du logiciel.  Le service et les entités représentent les méthodes et les données internes. Les avantages de cette séparation sont un faible couplage entre des modules différents et une meilleure maintenabilité.
+Le bloc alt montre clairement comment valider le nombre de cours dans le panier. Il illustre aussi les comportements différents entre le chemin normal et  le chemin d’erreur. Le bloc loop décrit bien la logique pour obtenir les informations de chaque cours entre la service et les différents objets. Ceci rend la logique du système plus explicite et améliore sa fiabilité.
+Les modules dans ce diagramme sont tous indépendants. Par exemple, le Menu est seulement responsable de l'affichage et ne connaît pas les données métier. La ServiceComparaison concentre sur la logique de comparaison, il ne valide pas le nombre de cours et ne récupère pas les informations des cours. Cela met en évidence le faible couplage et la forte cohésion. Ainsi, on peut modifier un module ou ajouter une nouvelle fonctionnalité sans toucher aux autres modules.
+
 
 ## 13. Test unitaires
 ### CU2: Se connecter
