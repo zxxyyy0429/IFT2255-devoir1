@@ -21,9 +21,7 @@ La création de cette plateforme implique plusieurs acteurs dont:
 - **l’administration et les services informatiques** de l'université de Montréal (UDeM) sont responsables de la mise à jour des données et de la conformité légale.
 
 ### Fonctionnement du système
-Le système proposé vise à assister les étudiants de l’Université de Montréal dans la **prise de décision pour le choix de cours**.
-
-Son fonctionnement suit un processus interactif et incrémental, conforme au modèle de développement enseigné (modèle en V / itératif-incrémental) :
+Le système proposé vise à assister les étudiants de l’Université de Montréal dans la **prise de décision pour le choix de cours** ：
 
 1. **Authentification et profil utilisateur**
    - Connexion via **SSO UdeM** ; création automatique du profil étudiant.
@@ -167,9 +165,9 @@ Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 - Implémentation: Recherche du cours
 - Test unitaires et oracles du test pour les tests 1-6
 - Mise à jour GitHub
+- Écheancier
 
 Xinyan Zhang (20264873):
-- Écheancier
 - Mise à jour du diagramme d’activité
 - Digramme de séquences ( Comparer cours )
 - Diagramme de classe
@@ -279,8 +277,6 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 ## 4. Glossaire
 
-   - **API REST** : Interface de programmation qui permet à différents systèmes de communiquer entre eux avec le protocole HTTP. Dans ce projet, l’API REST est utilisée pour exposer les fonctionnalités principales de la plateforme comme la recherche, la comparaison et les consultations des cours.
-
    - **Planifium API** : Service fournissant les données officielles des cours/programmes de l’UdeM.
   
    - **Format CSV** : Format de fichier tabulaire utilisé pour stocker les résultats académiques agrégés.
@@ -333,15 +329,7 @@ Dans l’élaboration du projet, certaines hypothèses de travail ont été émi
 
 - **Moyenne** ：Valeur numérique représentant la performance globale des étudiants dans un cours donné.
 
-- **Accessibilité** ：Ce sont des normes internationales qui définissent les critères d'accessibilité numérique. Elles veulent rendre les interfaces utilisables en plus grand nombre, y compris les personnes en situations de handicap.
-
-- **Évolutivité** : Capacité du système à s’adapter à une augmentation du volume d’utilisateurs, de données ou de fonctionnalités sans avoir des problèmes majeurs de performances.
-
-- **Centralisation des données** : Un principe consistant à regrouper dans une même plateforme les données provenant de plusieurs sources tel que le Planifium, les résultats académiques et les avis Discord.
-
 - **Comparaison de cours** ：Fonctionnalité qui permet à l’utilisateur de sélectionner plusieurs cours et d’évaluer la charge de travail ou la compatibilité entre eux.
-
-- **Interface utilisateur** : Une partie visible de l’application où l’utilisateur intéragit. Elle peut être en ligne de commande, graphique ou web.
 
 - **Profil étudiant** : Ensemble des préférences personnelles. Ces données sont saisies par un utilisateur pour montrer ses préférences, ses intérêts et le type d’apprentissage, ce qui permet de personnaliser les recommandations et les résultats de recherche.
 
