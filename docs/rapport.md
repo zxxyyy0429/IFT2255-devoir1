@@ -128,7 +128,7 @@ Yutong Zhu (20310738):
 - Code bonus
 
 ### Échéancier : 
-![Échéancier](diagrams/Echéancier.png)
+![Échéancier](diagrams/Echeancier1.png)
 
 
 
@@ -182,7 +182,7 @@ Yu Tong Zhu (20310738):
 - Implémentation comparer deux cours
 
 ### Échéancier : 
-
+![Échéancier](diagrams/Echeancier2.png)
 ## 2. Analyse des exigences 
 
 ### Description du domaine 
