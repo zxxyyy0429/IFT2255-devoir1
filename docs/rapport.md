@@ -147,7 +147,7 @@ Xinyan Zhang (20264873):
 Yutong Zhu (20310738):
 - Mise à jour Glossaire
 - Mise à jour description du projet
-- Modèle C4
+- Modèle C4 niveau 3
 
 #### Version final pour le devoir 2 (Novembre 30) :
 
@@ -170,6 +170,7 @@ Xinyan Zhang (20264873):
 - Mise à jour du diagramme d’activité
 - Digramme de séquences ( Comparer cours )
 - Implémentation recherche du cours
+- Implémentation les détails d’un cours 
 - Justification des choix du design pour le diagramme d’activité et diagramme de séquence ( Comparer cours )
 - 3 test unitaires et oracle du test
 - Release
@@ -178,7 +179,7 @@ Yutong Zhu (20310738):
 - Modèle C4 niveau 3
 - La justification du design pour le Modèle C4 niveau 1 , 2 et 3
 - 3 Test unitaires et oracle du test
-- Implémentation voir les détails d’un cours et compaison des cours
+- Implémentation voir compaison des cours
 
 ### Échéancier : 
 
