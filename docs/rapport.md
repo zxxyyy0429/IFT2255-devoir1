@@ -1307,11 +1307,8 @@ Système externes:
    - Résultats académiques [Base de données CSV]
      
      - Données agrégées des résultats
-       
-### Modèle C4 niveau 1
-![Modèle C4 niveau 1](diagrams/Modèle_C4_niveau_1.jpg)
-### Justification ( Modèle C4 niveau 1 ) :
 
+![Modèle C4 niveau 1](diagrams/Modèle_C4_niveau_1.jpg)
 
 ### Niveau 2 : Diagramme des conteneurs
 Objectif: Détailler l’architecture interne principale du système et les interactions entre les conteneurs
@@ -1365,9 +1362,7 @@ Objectif: Détailler l’architecture interne principale du système et les inte
 	  
      - Assurer que chaque étudiant possède les prérequis nécéssaire
 
-### Modèle C4 niveau 2
 ![Modèle C4 niveau 2](diagrams/Modèle_C4_niveau_2.jpg)
-### Justification ( Modèle C4 niveau 2 ) :
 
 ### Niveau 3 : Diagramme des composants (API Backend)
 Objectif: Développer le conteneur API Backend pour montrer ses composants internes.
@@ -1383,62 +1378,35 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
    - Algorithmes de suggestion basés sur le profil
    - Analyse des similarités entre cours
 
-### Modèle C4 niveau 3
-### Justification ( Modèle C4 niveau 3 ) :
+![Modèle C4 niveau 3](diagrams/Modèle_C4_niveau_3.jpg)
 
 ## 11. Diagramme de classe
-### Justification ( Diagramme de classe ):
-**Abstraction et Flexibilité** : Le design repose sur une abstraction claire des concepts académiques à travers des classes comme Utilisateur, Étudiant, Cours et Profil Académique. Chaque classe représente un concept précis du domaine et possède une responsabilité unique. Cette abstraction améliore la compréhension du système et assure sa flexibilité, en permettant d’ajouter ou de modifier des fonctionnalités sans changer l’architecture globale.
-**Cohésion et encapsulation** : Chaque classe présente une forte cohésion en se concentrant sur une seule tâche (ex. RechercheDeCours pour la recherche, Panier pour la sélection). L’encapsulation est respectée par l’usage d’attributs privés et de méthodes contrôlées, protégeant les données internes. Cela améliore la maintenabilité et la robustesse du système.
-**Couplage** : Le faible couplage est assuré par le Système Contrôleur, qui sépare l’interface (Menu) de la logique métier. Les classes fonctionnelles restent ainsi indépendantes de la vue, permettant de modifier l’interface ou les fonctionnalités sans impact majeur sur le système.
-**Modularité et interopérabilité** ：Les classes sont regroupées en modules fonctionnels (utilisateur, académique, décision, interface), assurant une bonne modularité et facilitant l’évolution du système. Cette organisation permet aussi une bonne interopérabilité avec des systèmes externes comme des API universitaires, en intégrant leurs données sans modifier la structure existante.
+![Diagramme de classe](diagrams/Class_1.jpg)
+![Diagramme de classe](diagrams/Class_2.jpg)
+### Justification:
+**Le premier diagramme** met en évidence une abstraction claire des composantes liées à l’utilisateur, en séparant les éléments stables à long terme comme Utilisateur et ProfilÉtudiant des composants soumis à des changements à court terme, tels que Préférence. Cette distinction permet d’isoler les paramètres modifiables fréquemment (langue, thème, charge de travail souhaitée) sans affecter la structure identitaire ou académique de l’usager. La cohésion est forte, car chaque classe remplit une fonction précise : Préférence gère exclusivement les paramètres d’affichage, tandis que ProfilÉtudiant regroupe les informations durables sur la progression académique. Le couplage est faible, grâce à des associations simples et non circulaires, ce qui facilite les évolutions indépendantes de chaque composant. L’encapsulation garantit la protection des données sensibles de l’utilisateur et permet des changements internes sans impact sur les autres classes. Cette architecture favorise ainsi la modularité et la flexibilité, car l’ajout de nouvelles préférences, de nouveaux paramètres d’affichage ou d’un autre type de profil ne nécessite aucune modification structurelle majeure. De plus, ce design hautement structuré assure une interopérabilité naturelle avec d’éventuels systèmes externes (ex. système d'authentification ou base institutionnelle des étudiants).
+**Le second diagramme** illustre une conception fortement modulaire, distinguant nettement les entités académiques stables à long terme (Cours, Horaire, Prérequis, SessionCours, Professeur, RésultatAcadémique) des éléments volatils à court terme tels que Panier, RechercheCours ou AvisÉtudiant. Cette séparation soutient une meilleure évolutivité : les critères de recherche, les avis étudiants ou les mécanismes de comparaison peuvent évoluer sans affecter la structure des cours et des sessions universitaires. Le faible couplage est assuré par l’introduction du SystèmeContrôleur et des contrôleurs spécialisés (Cours, Horaire, Panier, Avis), qui centralisent la logique métier et isolent les modules fonctionnels les uns des autres. La cohésion est élevée, car chaque classe métier représente un concept précis du domaine académique, et chaque contrôleur assume une responsabilité unique dans le traitement des opérations. L’encapsulation protège les données internes (par exemple les listes de cours dans Panier ou les critères dans RechercheCours), tout en garantissant une interface stable pour le reste du système. Cette architecture modulaire renforce la flexibilité : l’ajout de nouvelles fonctionnalités (recommandation de cours, détection de conflits, statistiques académiques) devient possible sans modifier les structures existantes. Enfin, la séparation claire entre les modèles académiques et les contrôleurs facilite l’interopérabilité avec des systèmes externes tels que Planifium, API universitaires ou plateformes d’inscription institutionnelles.
+
 
 ## 12. Diagrammes de séquences 
 
 ## Recherche de cours
-### Justification ( Recherche de cours ) :
-
-**Abstraction + flexibilité**
-Le diagramme illustre en abstraction claire du processus de recherche de cours en séparant les rôles de l’Étudiant, du Menu, du SystèmeContrôleur, du ServiceRechercheCours et de l’entité Cours. Chaque ligne de vie représente un niveau distinct : l’interface utilisateur, la logique métier générale, le service spécialisé et finalement les données académiques. Cette abstraction permet de comprendre visuellement quelles responsabilités appartiennent à quelle couche, tout en assurant le processus reste compréhensible, évolutif et indépendant des détails de bas niveau. Ainsi, les étapes comme la validation ou le traitement des critères sont isolées dans des modules appropriés sans surcharger l’interface ni l’utilisateur. 
-
-**Cohésion** 
-Le diagramme illustre une forte cohésion au sein de chaque participant : le Menu se limite à afficher les formulaires et récolter les critères, le SystèmeContrôleur orchestre le flux général, tandis que le ServiceRechercheCours s’occupe exclusivement de la validation et de la recherche réelle. Cette distribution permet d’encapsuler les responsabilités et rend le système plus facile à modifier plus tard, parce qu’on peut changer l’intérieur d’un module sans casser les autres parties. 
-
-**Couplage** 
-Le diagramme met en place un faible couplage en faisant transiter toutes les interactions par un SystèmeContrôleur central. Le Menu n’interagit jamais directement avec ServiceRechercheCours, ce qui évite toute dépendance entre l’interface et les services spécialisés. Le ServiceRechercheCours n’a également pas besoin de connaître la structure de l’interface ni du contrôleur. Grâce à cette séparation, chaque module peut être modifié indépendamment (ex : pour intégrer une API externe de cours ou pour améliorer les règles de validation des critères). Le contrôleur joue le rôle de médiateur, assurant un flux clair et contrôlé des messages entre les différentes couches. 
-
-**Modularité** 
-Le choix d’isoler la logique de validation et de rechercher dans un service dédié montre une modularité forte. Grâce à cette structure, il devient facile d’ajouter de nouveaux critères, d’intégrer une base de données externe ou de modifier la manière dont les cours sont filtrés, sans toucher au Menu ou au SystèmeContrôleur. Cette modularité rend le système plus extensible, adaptable aux changements futurs et conforme aux bonnes pratiques d’architecture logicielle.
-
+![Diagramme de sequence recherche cours](diagrams/Sequence_Recherche_Cours.jpg)
+### Justification:
+Le diagramme de séquence de la recherche de cours s’appuie sur plusieurs principes de design afin d'assurer un système clair, structuré et facile à maintenir. L’abstraction est utilisée pour séparer les rôles : l’étudiant déclenche la méthode, le SystèmeControleur coordonne les interactions, le CoursControleur gère la logique métier et le ServiceRechercheCours prend en charge de la validation des critères ainsi que du traitement des informations du cours. Cette séparation sert à réduire le couplage puisqu’aucun composant n’a besoin de connaître les détails internes des autres. Il suffit tout simplement de respecter les messages échangés. Pour ce qui en est de la cohésion, celle-ci est renforcée, car chaque classe se concentre sur une seule responsabilité bien définie. L’encapsulation est également respectée puisque la logique de validation, de récupération des données et de traitement reste isolée dans les classes appropriées. Donc, cela évite toute dépendance inutile. Grâce à ces principes, le design gagne en modularité puisqu’un composant peut être modifié ou remplacé sans affecter tout le système. Le design est aussi plus flexible et permet d’ajouter facilement de nouveaux critères ou types de recherche. L’architecture favorise aussi l’interopérabilité puisque les communications entre les composants se font par des interfaces et des messages bien définis. L’ensemble de ces choix permet d’obtenir un système plus robuste et évolutif. 
 
 ## Soumettre un avis
-### Justification ( Soumettre un avis ) :
-
-**Clarté du flux fonctionnel**:
-Le diagramme de séquence met en place un flux clair et linéaire entre l’Étudiant, le Menu, le Système Contrôleur et la classe Avis. Chaque interactions est représentée de manière chronologique, ce qui reflète fidèlement la manière dont un utilisateur soumet un avis dans le système : ouverture du formulaire, saisie des données, validation, puis confirmation ou affichage d’erreur. Ce séquencement permet de visualiser immédiatement la responsabilité de chaque acteur et garantit que le lecteur comprend comment la fonctionnalité se déroule du début à la fin.
-
-**Séparation des responsabilités**:
-Chaque participant du diagramme est utilisé de manière cohérente avec sa responsabilité métier (ex : l’Étudiant initie l’action et fournit les informations nécessaires, le Menu gère l'affichage et les retours vers l’utilisateur, etc.). Cette séparation stricte améliore la maintenabilité du système et permet de modifier l’une des couches (ex : l’interface) sans changer les autres. 
-
-**Gestion des erreurs et robustesse**:
-Le bloc conditionnel alt utilisé dans le diagramme illustre la robustesse du processus. Si la validation échoue (avisValide = false), le contrôleur retourne une erreur vers le Menu qui se charge de l’afficher clairement à l’utilisateur. À l’inverse, si l'avis est valide, le système procède à la création et à l’enregistrement de l’objet Avis. Cette logique conditionnelle rend explicite la gestion des cas incorrects et renforce la fiabilité du système en s’assurant que seules des données correctes sont persistées. 
-
-**Cohésion**:
-Le diagramme montre une forte cohésion au sein de chaque entité. Le Menu ne fait qu’afficher des formulaires et transmettre les données saisies, ce qui correspond exactement à sa responsabilité d’interface. Le Système Contrôleur gère toutes les décisions du flux : valide les préconditions, appelle les services appropriés et choisit la branche du scénario (erreur ou réussite). Le module Avis est pleinement cohérent puisqu’il encapsule toute la logique liée aux avis : validation, création et enregistrement. Chaque participant accomplit ainsi une tâche unique, ce qui augmente la lisibilité, la maintenabilité et la fiabilité du système. 
-
-**Faible couplage**:
-Le rôle du Système Contrôleur permet de réduire fortement le couplage entre le Menu et la classe Avis. Le Menu ne traite que l'affichage et la réception des saisies, tandis que la logique métier (validation, création, enregistrement) est centralisée dans le contrôleur. Ce choix améliore l’évolutivité du système : les règles de validation ou la structure d’un avis peuvent changer sans affecter l’interface ni les actions de l’utilisateur. 
-
-**Traçabilité**:
-Le diagramme utilise des messages explicites (ex : afficherFormulaireAvis, validerAvis, etc.) qui facilite la compréhension du scénario même pour un lecteur qui ne connaît pas le code, et assure une traçabilité claire entre les besoins du cas d’utilisation et les méthodes réellement invoquées. Cela contribue également à aligner le diagramme de séquence avec le diagramme de classe et le code implémenté.
-
+![Diagramme de sequence soumettre avis](diagrams/Sequence_Soumettre_Avis.jpg)
+### Justification:
+Le diagramme de séquence pour la soumission d’un avis applique plusieurs principes de design afin d’assurer un système organisé, extensible et facile à maintenir. L’abstraction est utilisée pour séparer clairement les responsabilités : le Bot Discord déclenche la demande de soumettre un avis, le SystèmeControleur orchestre la requête, le AvisControleur s’occupe de la création et du traitement de l’avis et AvisEtudiant gère la représentation ou la transformation de l’avis au moment de le formater. Cette organisation réduit le couplage parce que chaque composant interagit uniquement à travers des messages précis (ex : newAvis, formaterAvis, enregistrerAvis) sans dépendre des détails internes des autres classes. La cohésion est renforcée puisque chaque classe se concentre sur une seule responsabilité : le contrôleur traite la logique liée aux avis, le service étudiant s’occupe du formatage et les opérations d’enregistrement sont isolées dans les méthodes associées. L'encapsulation est respectée en gardant les détails de création, de mise en forme et d’enregistrement à l’intérieur des classes spécialisées. Grâce à cette structure, le design devient plus modulaire puisqu’il est possible de modifier un des modules (ex : changer la logique de formatage ou ajouter une vérification supplémentaire) sans impacter les autres. Le design reste tout de même flexible ce qui facilite l’ajout futur de nouvelles propriétés d’avis ou de règles de validation. L’ensemble de ces choix permet d’obtenir un système plus robuste et évolutif. 
 
 ## Comparer cours
+![Diagramme de sequence comparer cours](diagrams/Sequence_Comparer_Cours.jpg)
 ### Justification:
-Ce diagramme de séquence illustre clairement la logique du flux pour comparer des cours. L’étudiant choisit d’abord le panier dans le menu principal, puis le système valide le nombre de cours dans le panier. Ensuite, l’étudiant sélectionne les cours à comparer, et le système appelle la méthode de comparaison des cours. Enfin, le tableau comparatif est retourné. Cela permet de montrer l'interaction entre plusieurs contrôleurs, services et entités, ce qui le rend compréhensible pour les clients et les développeurs.
-Le diagramme sépare bien les responsabilités de chaque objet. Le menu est responsable de l’affichage pour les étudiants. Le contrôleur établit un lien entre le menu et le service métier, et il gère le comportement du logiciel.  Le service et les entités représentent les méthodes et les données internes. Les avantages de cette séparation sont un faible couplage entre des modules différents et une meilleure maintenabilité.
-Le bloc alt montre clairement comment valider le nombre de cours dans le panier. Il illustre aussi les comportements différents entre le chemin normal et  le chemin d’erreur. Le bloc loop décrit bien la logique pour obtenir les informations de chaque cours entre la service et les différents objets. Ceci rend la logique du système plus explicite et améliore sa fiabilité.
-Les modules dans ce diagramme sont tous indépendants. Par exemple, le Menu est seulement responsable de l'affichage et ne connaît pas les données métier. La ServiceComparaison concentre sur la logique de comparaison, il ne valide pas le nombre de cours et ne récupère pas les informations des cours. Cela met en évidence le faible couplage et la forte cohésion. Ainsi, on peut modifier un module ou ajouter une nouvelle fonctionnalité sans toucher aux autres modules.
+Ce diagramme de séquence illustre clairement la logique du flux pour comparer des cours. L’étudiant choisit d’abord le panier, puis le service panier valide le nombre de cours sélectionnés. Ensuite, il appelle la méthode de voir les détails du cours pour chaque cours sélectionné. Enfin, le tableau comparatif est retourné. Cela permet de montrer l'interaction entre plusieurs contrôleurs, services et entités, ce qui le rend compréhensible pour les clients et les développeurs.
+Le diagramme sépare bien les responsabilités de chaque objet. Le système contrôleur établit un lien entre l’utilisateur et le service métier, et il gère le comportement du logiciel.  Le service et les entités représentent les méthodes et les données internes. Les avantages de cette séparation sont un faible couplage entre des modules différents et une meilleure maintenabilité.
+Le bloc alt montre clairement comment valider le nombre de cours dans le panier. Il illustre aussi les comportements différents entre le chemin normal et  le chemin d’erreur. Le bloc loop décrit bien la logique pour obtenir les informations de chaque cours entre le cours contrôleur et l’objet cours. Ceci rend la logique du système plus explicite et améliore sa fiabilité. 
+Les modules dans ce diagramme sont tous indépendants. Par exemple, le système contrôleur ne touche pas la logique de cours. Cela met en évidence le faible couplage et la forte cohésion. Ainsi, on peut modifier un module ou ajouter une nouvelle fonctionnalité sans toucher aux autres modules.
 
 
 ## 13. Oracle de tests 
