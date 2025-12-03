@@ -670,13 +670,13 @@ La recherche de cours reste accessible sans compte.
   
 1. Dépendances techniques:
    
-- Base utilisateurs
-- Validation serveur
-- Journalisation (conformité Loi 25)
+  - Base utilisateurs
+  - Validation serveur
+  - Journalisation (conformité Loi 25)
   
 2. Dépendance logiques:
-   
-extend → CU7 (Personnaliser affichage)
+
+  - extend → CU7 (Personnaliser affichage)
 
 - **Scénario principal**:
   
@@ -685,8 +685,7 @@ extend → CU7 (Personnaliser affichage)
 2.Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
 
 3.L’utilisateur modifie un ou plusieurs champs.
-
-	3.1. Option: changement du mot de passe: validation forte.
+  3.1. Option: changement du mot de passe: validation forte.
 	
 4.Le système valide les nouvelles valeurs.
 
@@ -716,16 +715,16 @@ extend → CU7 (Personnaliser affichage)
   
 1.Dépendances techniques:
 
-- API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
-- Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
-- Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
+  - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
+  - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
+  - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
   
 2.Dépendance logiques:
 
-- include → CU4 (Lire avis)
-- include → CU6 (Consulter résultats)
-- extend → CU8 (Comparer les cours)
-- extend → CU9 (Personnaliser l’affichage)
+  - include → CU4 (Lire avis)
+  - include → CU6 (Consulter résultats)
+  - extend → CU8 (Comparer les cours)
+  - extend → CU9 (Personnaliser l’affichage)
 
 
 - **Scénario principal**:
@@ -747,7 +746,9 @@ extend → CU7 (Personnaliser affichage)
 - **Scénario alternatif**:
   
  3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
+ 
  2a. Recherche vide ou invalide
+ 
  6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
 
 - **Postcondition**: La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
@@ -822,12 +823,12 @@ extend → CU7 (Personnaliser affichage)
 - **Dépendance**:
   
 1.Dépendances techniques:
-- Synchronisation entre la plateforme et le Bot Discord. 
-- Validation automatique de données (notation, catégories, commentaire)
+  - Synchronisation entre la plateforme et le Bot Discord. 
+  - Validation automatique de données (notation, catégories, commentaire)
 
 2.Dépendances logiques:
-- include → CU3 (Rechercher un cours)
-- extend → CU4 (Lire les avis des étudiants)
+  - include → CU3 (Rechercher un cours)
+  - extend → CU4 (Lire les avis des étudiants)
 
 
 - **Scénario principal**:
@@ -880,10 +881,15 @@ extend → CU7 (Personnaliser affichage)
    - extend → CU7 (Comparer les cours)
 
 - **Scénario principal**:
+  
 1. L’utilisateur clique “Voir résultats” sur la page d’un cours (CU4) ou avec le menu “Résultats”.
+   
 2. Le système interroge la base de résultats pour la session demandée.
+
 3. Le système calcule la moyenne finale, nombre inscrits, nombre d'échec.
+   
 4. Le système affiche les statistiques.
+   
 5. Option: export CSV/PDF.
 
 - **Scénarios alternatifs**:
@@ -912,17 +918,17 @@ extend → CU7 (Personnaliser affichage)
 - **Dépendances**:
 1.Dépendances techniques : 
 
-- API Planifium
+  - API Planifium
 
-- Base CSV résultats
+  - Base CSV résultats
 
-- Base JSON avis
+  - Base JSON avis
 
 2. Dépendances logiques : 
 
-- Include → CU3 (rechercher cours)
-- 
-- Extend → CU6 (consulter les résultats académiques d’un cours)
+  - Include → CU3 (rechercher cours)
+  
+  - Extend → CU6 (consulter les résultats académiques d’un cours)
 
 
 - **Scénario principal**:
