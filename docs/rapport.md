@@ -618,23 +618,34 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 
 - **But**: Permettre à un nouvel utilisateur de créer un compte afin d’enregistrer ses préférences et accéder aux fonctionnalités personnalisées (avis, comparaison enrichie, gestion du profil).
 La recherche de cours reste accessible sans compte.
+
 - **Précondition**: Aucun compte n’existe déjà pour le matricule fourni.
+  
 - **Acteurs**: Etudiant (principal), Système (secondaire)
+  
 - **Déclencheur**: L’utilisateur sélectionne « Créer un compte » dans la page d’accueil.
 
 - **Dépendances** : 
 1. Dépendances techniques:
    - Service d’inscription, base d’utilisateurs, serveur HTTPS, service d’envoie de courriel de confirmation.
+     
 2. Dépendances logiques:
    - extend → CU2 (Modifier le profil)
 
 - **Scénario principal**:
+  
 1. L’utilisateur ouvre la page d'accueil.
+   
    1.1. Cliquez sur “Créer un compte”.
+   
 2. Le système affiche le formulaire d’inscription (nom complet, matricule, courriel UdeM, mot de passe).
+
 3. L’utilisateur saisit les données et accepte la politique (Loi 25).
+
 4. Le système valide les informations.
+
 5. Le système crée le compte et enregistre les données.
+
 6. Un message confirme la création du compte.
 
 - **Scénario alternatif**:
@@ -655,21 +666,32 @@ La recherche de cours reste accessible sans compte.
 - **Acteurs**:  Étudiant (principal), Système (secondaire)
 - **Déclencheur**:  L’utilisateur clique sur « Modifier le profil ».
 
-- **Dépendances** : 
+- **Dépendances** :
+  
 1. Dépendances techniques:
+   
 - Base utilisateurs
 - Validation serveur
 - Journalisation (conformité Loi 25)
+  
 2. Dépendance logiques:
+   
 extend → CU7 (Personnaliser affichage)
 
 - **Scénario principal**:
+  
 1.L'utilisateur ouvre la page de profil.
+
 2.Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
+
 3.L’utilisateur modifie un ou plusieurs champs.
+
 	3.1. Option: changement du mot de passe: validation forte.
+	
 4.Le système valide les nouvelles valeurs.
+
 5.Le système met à jour la base utilisateurs.
+
 6.Le système confirme la modification.
 
 
@@ -691,11 +713,15 @@ extend → CU7 (Personnaliser affichage)
 - **Déclencheur**:  L’étudiant saisit un mot-clé dans la barre de recherche ou clique sur un cours pour en afficher la fiche.
 
 - **Dépendances** :
+  
 1.Dépendances techniques:
+
 - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
 - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
 - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
+  
 2.Dépendance logiques:
+
 - include → CU4 (Lire avis)
 - include → CU6 (Consulter résultats)
 - extend → CU8 (Comparer les cours)
@@ -704,12 +730,18 @@ extend → CU7 (Personnaliser affichage)
 
 - **Scénario principal**:
 1. L’utilisateur accède à la barre de recherche.
-2. Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
-3. Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
-4. Le système affiche les résultats sous forme de liste (sigle, titre, professeurs, session).
-5. L’étudiant clique sur un cours.
-6. Le système interroge l’API Planifium pour charger la fiche détaillée.
-7. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
+   
+3. Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
+   
+4. Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
+   
+5. Le système affiche les résultats sous forme de liste (sigle, titre, professeurs, session).
+   
+6. L’étudiant clique sur un cours.
+   
+7. Le système interroge l’API Planifium pour charger la fiche détaillée.
+    
+8. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
 
 
 - **Scénario alternatif**:
@@ -731,10 +763,13 @@ extend → CU7 (Personnaliser affichage)
 - **Déclencheur**: L’étudiant saisit un mot-clé dans la barre de recherche ou clique sur un cours pour en afficher la fiche.
 
 - **Dépendances**:
+  
 1. Dépendances techniques:
+   
    - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
    - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
    - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
+     
 2. Dépendance logiques:
    - include → CU5 (Lire avis)
    - include → CU6 (Consulter résultats)
@@ -742,13 +777,20 @@ extend → CU7 (Personnaliser affichage)
    - extend → CU8 (Personnaliser l’affichage)
 
 - **Scénario principal**:
+  
 1. L’étudiant accède au champ de recherche.
-2. Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
-3. Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
-4. Le système affiche les résultats sous forme de liste (sigle, titre, professeurs, session).
-5. L’étudiant clique sur un cours.
-6. Le système interroge l’API Planifium pour charger la fiche détaillée.
-7. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
+   
+3. Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
+   
+4. Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
+
+5. Le système affiche les résultats sous forme de liste (sigle, titre, professeurs, session).
+   
+6. L’étudiant clique sur un cours.
+   
+7. Le système interroge l’API Planifium pour charger la fiche détaillée.
+    
+8. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
 
 - **Scénarios alternatifs**:
 
@@ -767,9 +809,9 @@ extend → CU7 (Personnaliser affichage)
 
 
 - **Préconditions**:
-- L’utilisateur est connecté.
-- Le cours existe dans la base de données.
-- L’étudiant n’a pas déjà rédigé un avis pour ce même cours (selon les règles du système)
+  - L’utilisateur est connecté.
+  - Le cours existe dans la base de données.
+  - L’étudiant n’a pas déjà rédigé un avis pour ce même cours (selon les règles du système)
 
 
 - **Acteurs**: Étudiant (principal), Bot Discord (secondaire)
@@ -778,6 +820,7 @@ extend → CU7 (Personnaliser affichage)
 
 
 - **Dépendance**:
+  
 1.Dépendances techniques:
 - Synchronisation entre la plateforme et le Bot Discord. 
 - Validation automatique de données (notation, catégories, commentaire)
@@ -788,7 +831,9 @@ extend → CU7 (Personnaliser affichage)
 
 
 - **Scénario principal**:
+  
 1.De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
+
 2.Le système affiche un formulaire d’évaluation comprenant : 
  a. Charge de travail (1-5)
  b. Difficulté (1-5)
