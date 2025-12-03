@@ -1594,7 +1594,7 @@ ctx.json() reçoit la map formatée.
 Aucun ctx.status().
 
 
-### ID trop invalide
+### ID invalide
 CU couvert : CU6 - Voir les détails d’un cours 
 
 But du test : Vérifier que le contrôleur refuse un ID invalide, une longueur < 6
