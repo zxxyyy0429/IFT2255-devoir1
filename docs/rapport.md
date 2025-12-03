@@ -820,12 +820,12 @@ La recherche de cours reste accessible sans compte.
 
 
 - **Dépendance**:
-  
-1.Dépendances techniques:
-    - Synchronisation entre la plateforme et le Bot Discord. 
+
+1. Dépendances techniques:
+    - Synchronisation entre la plateforme et le Bot Discord.
     - Validation automatique de données (notation, catégories, commentaire)
 
-2.Dépendances logiques:
+2. Dépendances logiques:
     - include → CU3 (Rechercher un cours)
     - extend → CU4 (Lire les avis des étudiants)
 
@@ -836,12 +836,19 @@ La recherche de cours reste accessible sans compte.
 
 2.Le système affiche un formulaire d’évaluation comprenant : 
  a. Charge de travail (1-5)
+ 
  b. Difficulté (1-5)
+ 
  c. Appréciation générale (note charge) (1-5)
+ 
  d. Commentaire optionnel
+ 
  e. Session suivie
+ 
  f. Echelle de disponibilité du professeur
+ 
  g. Nom du professeur 
+ 
  h.Taux de succès (en pourcentage)
 
 3. L’étudiant remplit le formulaire et soumet son avis.
