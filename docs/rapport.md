@@ -639,11 +639,11 @@ La recherche de cours reste accessible sans compte.
 
 - **Scénario alternatif**:
   
-4a. Courriel/matricule déjà utilisé: message d’erreur “compte existant”.
+ 4a. Courriel/matricule déjà utilisé: message d’erreur “compte existant”.
 
-4b. Mot de passe non conforme: demande de correction.
+ 4b. Mot de passe non conforme: demande de correction.
 
-(1-6)a. Erreur serveur: message “réessayer plus tard”.
+ (1-6)a. Erreur serveur: message “réessayer plus tard”.
 
 - **Postcondition**: Un compte utilisateur valide est créé et pourra être utilisé pour les fonctionnalités personnalisées.
 
@@ -675,8 +675,8 @@ extend → CU7 (Personnaliser affichage)
 
 - **Scénario alternatif**:
 
-4a. Validation échoue (format): affiche erreur et indique champs erronés.
-(1-6)a. Erreur: message “Modification non enregistrée”.
+ 4a. Validation échoue (format): affiche erreur et indique champs erronés.
+ (1-6)a. Erreur: message “Modification non enregistrée”.
 
 
 - **Postcondition**: Les nouvelles informations sont enregistrées et appliquées aux futurs affichages.
@@ -714,9 +714,9 @@ extend → CU7 (Personnaliser affichage)
 
 - **Scénario alternatif**:
   
-3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
-2a. Recherche vide ou invalide
-6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
+ 3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
+ 2a. Recherche vide ou invalide
+ 6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
 
 - **Postcondition**: La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
 
@@ -752,14 +752,13 @@ extend → CU7 (Personnaliser affichage)
 
 - **Scénarios alternatifs**:
 
-3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
+ 3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
 
-2a. Recherche vide ou invalide
+ 2a. Recherche vide ou invalide
 
-6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
+ 6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
 
-- **Postcondition**:
-La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
+- **Postcondition**: La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
 
 
 ### CU5 - Mon avis 
@@ -791,14 +790,14 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 - **Scénario principal**:
 1.De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
 2.Le système affiche un formulaire d’évaluation comprenant : 
-a. Charge de travail (1-5)
-b. Difficulté (1-5)
-c. Appréciation générale (note charge) (1-5)
-d. Commentaire optionnel
-e. Session suivie
-f. Echelle de disponibilité du professeur
-g. Nom du professeur 
-h.Taux de succès (en pourcentage)
+ a. Charge de travail (1-5)
+ b. Difficulté (1-5)
+ c. Appréciation générale (note charge) (1-5)
+ d. Commentaire optionnel
+ e. Session suivie
+ f. Echelle de disponibilité du professeur
+ g. Nom du professeur 
+ h.Taux de succès (en pourcentage)
 3. L’étudiant remplit le formulaire et soumet son avis.
 4. Le système vérifie : 
            4.1 Que tous les champs obligatoires sont valides
@@ -810,9 +809,9 @@ h.Taux de succès (en pourcentage)
 
 - **Scénarios alternatifs**:
 
-2a. Le formulaire contient des champs incomplets ou invalides → message d’erreur “Veuillez corriger les champs indiqués”. 
+ 2a. Le formulaire contient des champs incomplets ou invalides → message d’erreur “Veuillez corriger les champs indiqués”. 
 
-6a. Échec de synchronisation avec le bot –”l’avis est marqué “en attente de synchronisation” + avertissement 
+ 6a. Échec de synchronisation avec le bot –”l’avis est marqué “en attente de synchronisation” + avertissement 
 
 - **Postcondition**:L’avis est enregistré et sera pris en compte dans les synthèses affichées dans CU5 et dans les comparaisons de cours (CU7)
 
@@ -844,9 +843,9 @@ h.Taux de succès (en pourcentage)
 
 - **Scénarios alternatifs**:
   
-2a. Données manquantes, message “Résultats non disponibles”.
+ 2a. Données manquantes, message “Résultats non disponibles”.
 
-5a. Erreur d’exportation.
+ 5a. Erreur d’exportation.
 
 - **Postcondition**: Les statistiques sont affichées et enregistrées dans le journal de consultation.
 
@@ -981,13 +980,13 @@ L'étudiant sélectionne plusieurs cours et clique sur “Comparer”.
 
 - **Scénarios alternatifs**:
   
-2a. Préférences invalides, message d’avertissement et recommandation.
+ 2a. Préférences invalides, message d’avertissement et recommandation.
 
-3b. Erreur de sauvegarde: message “préférences non enregistrées”.
+ 3b. Erreur de sauvegarde: message “préférences non enregistrées”.
 
 - **Postcondition**: Les préférences sont sauvegardées dans la base de données et appliquées automatiquement.
 
-## CU10 - Système contrôleur
+### CU10 - Système contrôleur
 
 - **But**: Coordonner l’exécution des cas d’utilisation en orchestrant les interactions entre l’interface utilisateur, la logique métier et les sources de données. Le système contrôleur assure le bon déroulement des opérations et la cohérence des données.
 
@@ -1029,15 +1028,15 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 - **Scénarios alternatifs**:
   
-3a. Les préconditions ne sont pas remplies (ex. utilisateur non connecté) → message d’erreur.
+ 3a. Les préconditions ne sont pas remplies (ex. utilisateur non connecté) → message d’erreur.
 
-4a. Le service appelé retourne une erreur (ex. manque de données, import discord échoué) → scénario d’exception.
+ 4a. Le service appelé retourne une erreur (ex. manque de données, import discord échoué) → scénario d’exception.
 
-4b. La synchronisation externe échoue → le contrôleur marque l’opération comme “partielle” et affiche un avis à l’utilisateur.
+ 4b. La synchronisation externe échoue → le contrôleur marque l’opération comme “partielle” et affiche un avis à l’utilisateur.
 
-5a. Les données sont incohérentes ou manquantes → message “Données indisponibles pour le moment”.
+ 5a. Les données sont incohérentes ou manquantes → message “Données indisponibles pour le moment”.
 
-6a. La réponse est trop lourde (ex. trop de cours, trop d’avis) → pagination ou réduction automatique.
+ 6a. La réponse est trop lourde (ex. trop de cours, trop d’avis) → pagination ou réduction automatique.
 
 - **Postcondition**: Le contrôleur a traité la requête, appliqué la logique métier, renvoyé une réponse claire à l’utilisateur et consigné les opérations dans l’historique interne du système.
 
@@ -1073,14 +1072,14 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 5. Un rapport de synchronisation est généré.
 
-
 - **Scénarios alternatifs** :
   
-2a. Planifium indisponible → synchronisation annulée
+ 2a. Planifium indisponible → synchronisation annulée
 
-3a. Les données reçues sont incomplètes → log d’erreur.
+ 3a. Les données reçues sont incomplètes → log d’erreur.
 
 - **Postcondition** : Les données officielles sont mises à jour localement.
+- 
 
 ### CU12 – Importer les résultats académiques (CSV)
 
@@ -1116,12 +1115,11 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 - **Scénarios alternatifs** :
   
-2a. Format CSV invalide → message d’erreur.
+ 2a. Format CSV invalide → message d’erreur.
 
-4a. Incohérence dans les données → import partiel.
+ 4a. Incohérence dans les données → import partiel.
 
 - **Postcondition** : Les résultats académiques sont intégrés dans la base.
-
 
 
 ### Diagramme de cas d'utilisation
