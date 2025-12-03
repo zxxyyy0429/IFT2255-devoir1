@@ -1,4 +1,4 @@
-# Rapport du projet IFT2255
+ # Rapport du projet IFT2255
 
 ## 1. Cadre du projet
 
@@ -627,10 +627,10 @@ La recherche de cours reste accessible sans compte.
 
 - **Dépendances** : 
 1. Dépendances techniques:
-   - Service d’inscription, base d’utilisateurs, serveur HTTPS, service d’envoie de courriel de confirmation.
+     - Service d’inscription, base d’utilisateurs, serveur HTTPS, service d’envoie de courriel de confirmation.
      
 2. Dépendances logiques:
-   - extend → CU2 (Modifier le profil)
+     - extend → CU2 (Modifier le profil)
 
 - **Scénario principal**:
   
@@ -670,13 +670,13 @@ La recherche de cours reste accessible sans compte.
   
 1. Dépendances techniques:
    
-  - Base utilisateurs
-  - Validation serveur
-  - Journalisation (conformité Loi 25)
+    - Base utilisateurs
+    - Validation serveur
+    - Journalisation (conformité Loi 25)
   
 2. Dépendance logiques:
 
-  - extend → CU7 (Personnaliser affichage)
+     - extend → CU7 (Personnaliser affichage)
 
 - **Scénario principal**:
   
