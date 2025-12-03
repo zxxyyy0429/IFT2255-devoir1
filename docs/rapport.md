@@ -1428,16 +1428,25 @@ id2 = "DEF456"
 Deux objets CourseDetails valides retournés par le service
 
 Sortie attendue
+
 JSON contenant les champs :
+
 id1, name1, credits1
+
 id2, name2, credits2
+
 sameCredits = true
+
 commonPrerequisites = ["IFT1015"]
 
 Effets de bord
+
 Appel du service : getCourseDetails(id1) et getCourseDetails(id2)
+
 Appel de ctx.json() avec le tableau comparatif
+
 Aucun code d’erreur retourné
+
 
 **Test HRX-2 — Détection des prérequis communs**
 CU couvert : CU4 — Comparer deux cours
@@ -1445,36 +1454,60 @@ CU couvert : CU4 — Comparer deux cours
 But du test : Vérifier que le contrôleur calcule correctement les prérequis communs.
 
 Entrées
+
 id1 = "AAA111"
+
 id2 = "BBB222"
+
 Prérequis cours 1 : ["IFT1015", "IFT2000"]
+
 Prérequis cours 2 : ["IFT1015"]
 
 Sortie attendue
+
 commonPrerequisites = ["IFT1015"]
 
 Effets de bord
+
 Appel des deux getCourseDetails
+
 ctx.json() doit contenir exactement la liste commune
+
 Aucun status d’erreur
+
+
 
 **HRX-3 — Comparaison impossible (cours introuvable)**
 CU couvert : CU4 — Comparer deux cours
 
+
 But du test : Vérifier que le contrôleur retourne une erreur si un des cours n’existe pas.
 
+
 Entrées
+
 id1 = "ABC123"
+
 id2 = "INVALID"
+
 Service retourne Optional.empty() pour les deux cours
 
+
 Sortie attendue
+
 Status :
+
 404 Not Found
+
 JSON :
+
 { "error": "Un ou les deux cours n'ont pas été trouvés." }
 
+
 Effets de bord
+
 Appel de ctx.status(404)
+
 Appel de ctx.json() avec un message d’erreur
+
 Aucun calcul de comparaison n’est effectué
