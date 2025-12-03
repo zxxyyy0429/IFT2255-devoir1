@@ -685,8 +685,8 @@ La recherche de cours reste accessible sans compte.
 2.Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
 
 3.L’utilisateur modifie un ou plusieurs champs.
- 
-    3.1. Option: changement du mot de passe: validation forte.
+    
+	3.1. Option: changement du mot de passe: validation forte.
 	
 4.Le système valide les nouvelles valeurs.
 
