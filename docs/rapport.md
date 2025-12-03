@@ -1407,7 +1407,7 @@ Aucun calcul de comparaison n’est effectué
 
 
 ###Oracle - Yu Tong Zhu (20310738)
-Recherche par mot-clé valide
+###Recherche par mot-clé valide
 
 CU couvert : CU1 — Rechercher dans les cours
 
@@ -1432,10 +1432,60 @@ IFT3913 — Sujets spéciaux en génie
 Effets de bord
 
 getCoursesByMotCle() appelé avec :
-    * motCle = "génie"
-    * cycle = "premier cycle"
+
+motCle = "génie"
+	
+cycle = "premier cycle"
 	
 ctx.json() appelé avec la liste des cours.
+
 Aucun status d’erreur.
+
+
+###Détails du cours existant
+CU couvert : CU6 - Voir les détails d’un cours 
+
+But du test : Vérifier que le contrôleur retourne un JSON formaté correctement lorsque le cours existe.
+
+Entrées
+"id" = "IFT2255"
+
+Le service retourne un objet CourseDetails avec :
+
+name = Génie Logiciel
+
+description = Intro au génie logiciel
+
+credits = 3
+
+availableTerms = { autumn=true, winter=false, summer=true } avec un format attendu : "Automne, Ete"
+
+prerequis = ["IFT1015", "IFT1025"] avec un format attendu : "IFT1015, IFT1025"
+
+Sortie attendue
+
+JSON contient les clés :
+
+id
+
+name
+
+description
+
+credits
+
+availableTerms (bien formatés)
+
+prerequis
+
+Effets de bord
+
+getCourseDetails("IFT2255") appelé une fois.
+
+ctx.json() reçoit la map formatée.
+
+Aucun ctx.status().
+
+
 
 
