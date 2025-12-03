@@ -1403,3 +1403,39 @@ Appel de ctx.status(404)
 Appel de ctx.json() avec un message d’erreur
 
 Aucun calcul de comparaison n’est effectué
+
+
+
+###Oracle - Yu Tong Zhu (20310738)
+Recherche par mot-clé valide
+
+CU couvert : CU1 — Rechercher dans les cours
+
+But du test : Vérifier que le contrôleur retourne correctement la liste filtrée lorsque des paramètres valides sont fournis.
+
+Entrées
+
+motCle = "génie"
+
+cycle = "premier cycle"
+
+Service retourne une liste de 2 cours contenant le mot-clé.
+
+Sortie attendue
+
+JSON contenant la liste retournée par le service, exactement les deux cours :
+
+IFT2255 — Génie Logiciel
+
+IFT3913 — Sujets spéciaux en génie
+
+Effets de bord
+
+getCoursesByMotCle() appelé avec :
+    * motCle = "génie"
+    * cycle = "premier cycle"
+	
+ctx.json() appelé avec la liste des cours.
+Aucun status d’erreur.
+
+
