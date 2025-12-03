@@ -1368,6 +1368,7 @@ Les modules dans ce diagramme sont tous indépendants. Par exemple, le système 
 ### Oracle #1 (HRX - Ruoxuan HU 20304027)
 
 **Test HRX-1 — Comparer deux cours valides**
+
 CU couvert ：CU4 — Comparer deux cours
 
 But du test ：Vérifier que le contrôleur retourne un tableau comparatif complet lorsque deux cours existent.
@@ -1402,6 +1403,7 @@ Aucun code d’erreur retourné
 
 
 **Test HRX-2 — Détection des prérequis communs**
+
 CU couvert : CU4 — Comparer deux cours
 
 But du test : Vérifier que le contrôleur calcule correctement les prérequis communs.
@@ -1430,7 +1432,8 @@ Aucun status d’erreur
 
 
 
-**HRX-3 — Comparaison impossible (cours introuvable)**
+**Test HRX-3 — Comparaison impossible (cours introuvable)**
+
 CU couvert : CU4 — Comparer deux cours
 
 
@@ -1514,13 +1517,13 @@ Effet de bord attendus :
 - Le service getCoursesByMotCle est bien appelé.
 
 ### Oracle 3 - Yu Tong Zhu (20310738)
-### Recherche par mot-clé valide
+#### Test 1 - Recherche par mot-clé valide
 
 CU couvert : CU1 — Rechercher dans les cours
 
 But du test : Vérifier que le contrôleur retourne correctement la liste filtrée lorsque des paramètres valides sont fournis.
 
-Entrées
+Entrées :
 
 motCle = "génie"
 
@@ -1528,7 +1531,7 @@ cycle = "premier cycle"
 
 Service retourne une liste de 2 cours contenant le mot-clé.
 
-Sortie attendue
+Sortie attendue :
 
 JSON contenant la liste retournée par le service, exactement les deux cours :
 
@@ -1536,7 +1539,7 @@ IFT2255 — Génie Logiciel
 
 IFT3913 — Sujets spéciaux en génie
 
-Effets de bord
+Effets de bord :
 
 getCoursesByMotCle() appelé avec :
 
@@ -1549,12 +1552,14 @@ ctx.json() appelé avec la liste des cours.
 Aucun status d’erreur.
 
 
-### Détails du cours existant
+#### Test 2 - Détails du cours existant
+
 CU couvert : CU6 - Voir les détails d’un cours 
 
 But du test : Vérifier que le contrôleur retourne un JSON formaté correctement lorsque le cours existe.
 
-Entrées
+Entrées :
+
 "id" = "IFT2255"
 
 Le service retourne un objet CourseDetails avec :
@@ -1569,7 +1574,7 @@ availableTerms = { autumn=true, winter=false, summer=true } avec un format att
 
 prerequis = ["IFT1015", "IFT1025"] avec un format attendu : "IFT1015, IFT1025"
 
-Sortie attendue
+Sortie attendue :
 
 JSON contient les clés :
 
@@ -1585,7 +1590,7 @@ availableTerms (bien formatés)
 
 prerequis
 
-Effets de bord
+Effets de bord :
 
 getCourseDetails("IFT2255") appelé une fois.
 
@@ -1594,22 +1599,23 @@ ctx.json() reçoit la map formatée.
 Aucun ctx.status().
 
 
-### ID invalide
+#### Test 3 - ID invalide
+
 CU couvert : CU6 - Voir les détails d’un cours 
 
 But du test : Vérifier que le contrôleur refuse un ID invalide, une longueur < 6
 
-Entrées
+Entrées :
 
 "id" = "IFT1" est invalide
 
 Service jamais appelé
 
-Sortie attendue
+Sortie attendue :
 
 Status 400 Bad Request JSON contenant une clé "error"
 
-Effets de bord
+Effets de bord ;
 
 ctx.status(400) est appelé
 
@@ -1618,44 +1624,66 @@ ctx.json({error: ...}) est appelé
 Service non appelé
 
 ### Oracle 4 (Xinyan Zhang-20264873)
-ZXY 1— Voir détails : vide prérequis
--CU couvert
+
+#### Test ZXY 1— Voir détails : vide prérequis
+
+-CU couvert :
+
 CU7 — Voir les détails d’un cours
--But du test
+
+-But du test :
+
 Vérifier que lorsque le cours n’a aucun prérequis besoin, le contrôleur renvoie correctement : "prerequis": "Aucun"
--Entrées
+
+-Entrées :
+
 id = "IFT1015" et un CourseDetails valide avec prerequisiteCourses = [ ] (une liste vide)
--Sortie attendue
+
+-Sortie attendue :
+
 ctx.json() est appelé avec un JSON contenant : "prerequis": "Aucun"
--Effets de bord
+
+-Effets de bord : 
+
 ctx.json(...) appeler une seule fois avec une Map contenant prerequis = "Aucun"
 
-ZXY 2 — Comparer cours: données manquantes
--CU couvert
-CU8 — Comparer plusieurs cours
--But du test
-Vérifier que le contrôleur retourne 404 lorsqu’un des deux cours demandés est indisponible.
--Entrées
+#### Test ZXY 2 — Comparer cours: données manquantes
+
+-CU couvert : CU8 — Comparer plusieurs cours
+
+-But du test : Vérifier que le contrôleur retourne 404 lorsqu’un des deux cours demandés est indisponible.
+
+-Entrées :
+
 id1 = "IFT1015" et un CourseDetails valide
+
 id2 = "IFT1025" et un null CourseDetails (données manquantes)
+
 -Sortie attendue :
+
 ctx.status(404) est appelé
+
 ctx.json({...}) avec un message d’erreur 
--Effets de bord
-Aucune comparaison n’est effectuée
+
+-Effets de bord : Aucune comparaison n’est effectuée
+
 La réponse est uniquement un code 404 et un message d’erreur
 
-ZXY 3 — Comparer cours: ordre des cours 
--CU couvert
-CU8 — Comparer plusieurs cours
--But du test
-Vérifier que l’ordre des paramètres fournis par l’utilisateur est gardé dans le tableau comparatif.
--Entrées
+#### Test ZXY 3 — Comparer cours: ordre des cours 
+
+-CU couvert : CU8 — Comparer plusieurs cours
+
+-But du test : Vérifier que l’ordre des paramètres fournis par l’utilisateur est gardé dans le tableau comparatif.
+
+-Entrées :
+
 id1 = "IFT1015" et un CourDetails valide
+
 id2 = "IFT1025" et un CourDetails valide
--sortie attendue
-L’ordre doit être strictement respecté. Le premier est "IFT1015" et le deuxieme est "IFT1025"
--Effets de bord
-Appeler getCourseDetails("IFT1015") et getCourseDetails("IFT1025")
+
+-sortie attendue : L’ordre doit être strictement respecté. Le premier est "IFT1015" et le deuxieme est "IFT1025"
+
+-Effets de bord : Appeler getCourseDetails("IFT1015") et getCourseDetails("IFT1025")
+
 ctx.json() reçoit une Map contenant id1 puis id2
 
