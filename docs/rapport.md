@@ -822,12 +822,12 @@ La recherche de cours reste accessible sans compte.
 - **Dépendance**:
   
 1.Dépendances techniques:
-    - Synchronisation entre la plateforme et le Bot Discord. 
-    - Validation automatique de données (notation, catégories, commentaire)
+   - Synchronisation entre la plateforme et le Bot Discord. 
+   - Validation automatique de données (notation, catégories, commentaire)
 
 2.Dépendances logiques:
-    - include → CU3 (Rechercher un cours)
-    - extend → CU4 (Lire les avis des étudiants)
+   - include → CU3 (Rechercher un cours)
+   - extend → CU4 (Lire les avis des étudiants)
 
 
 - **Scénario principal**:
