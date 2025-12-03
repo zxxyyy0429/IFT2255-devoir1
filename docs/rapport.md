@@ -1402,9 +1402,55 @@ Appel de ctx.json() avec un message d’erreur
 
 Aucun calcul de comparaison n’est effectué
 
+### Oracle 2 (ZYW - Ziyue Wang 20308297)
+
+**test 1 (ZYW) – testGetCourseByMotCleKeywords()**
+
+CU3 - recherche d’un cours. L’utilisateur lance une recherche sans écrire de mot-clé.
+
+Jeu d’argument : queryParmMap = {}
+
+Retour attendu : 
+- Le contrôleur doit retourner un statut 400.
+- Le JSON retourné doit contenir un champ “error” indiquant que le mot-clé est obligatoire.
+
+Effet de bord attendus : 
+- Le service getCourseByMotCle ne doit pas être appelé, car la recherche n’a pas assez d’information pour être effectuée.
 
 
-### Oracle - Yu Tong Zhu (20310738)
+**test 2 (ZYW) – testGetCourseByMotCleValid()**
+
+CU3 - recherche d’un cours. L’utilisateur écrit un mot-clé valide et s’attend à voir des cours pertinents.
+
+Jeu d’argument : queryParamMap = {"mot": ["programmation"]}
+
+Retour attendu : 
+
+- le contrôleur transmet le mot-clé exact au service : “programmation”
+- Le service retourne une liste de cours.
+- Le contrôleur renvoie cette même liste au format JSON.
+
+Effet de bord attendus : 
+
+- Le service est bien appelé avec les bons paramètres.
+- Aucun code d’erreur n'est envoyé.
+
+**test 3 (ZYW)  – testGetCourseByMotCleNoResults()**
+
+CU3 - recherche d’un cours. L’utilisateur entre un mot-clé qui ne correspond à aucun cours.
+
+Jeu d’argument : queryParamMap = {"mot": ["xyz"]}
+
+- Le service retourne une liste vide : [ ]
+
+Retour attendu : 
+- Le contrôleur doit retourner une liste vide au format JSON.
+- Il ne doit pas retourner d’erreur, car la recherche reste valide.
+
+Effet de bord attendus : 
+- Le service getCoursesByMotCle est bien appelé.
+
+### Oracle 3 - Yu Tong Zhu (20310738)
 ### Recherche par mot-clé valide
 
 CU couvert : CU1 — Rechercher dans les cours
