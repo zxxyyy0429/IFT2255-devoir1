@@ -158,31 +158,27 @@ Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 - Mise à jour des cas d’utilisation principaux dans le rapport (ajouer 6 CU principaux de plus)
 - Mise à jour de la distribution des tâches
 - Mise à jour des besoins matériels, solution de stockage et solution d’intégration
+- Mise a jour diagramme de CU
+- Mise a jour echeancier
+- Mise à jour risque
 - Diagramme de classe
 - Diagrammes de séquences (Avis et Recherche du cours)
-- Mise à jour risque
 - Justification des choix du design pour le diagramme de séquences  (Avis et Recherche du cours) et le diagramme de classe
-- Implémentation: Recherche du cours
-- Test unitaires et oracles du test pour les tests 1-6
-- Mise à jour GitHub
-- Écheancier
-
+- Test unitaires et oracles du test (3 tests chacune)
+  
 Xinyan Zhang (20264873):
 - Mise à jour du diagramme d’activité
 - Digramme de séquences ( Comparer cours )
-- Diagramme de classe
 - Implémentation recherche du cours
 - Justification des choix du design pour le diagramme d’activité et diagramme de séquence ( Comparer cours )
-- Test unitaires et oracle du test pour les tests 9-12
-- Mise à jour GitHub
+- 3 test unitaires et oracle du test
 - Release
 
 Yutong Zhu (20310738):
 - Modèle C4 niveau 3
 - La justification du design pour le Modèle C4 niveau 1 , 2 et 3
-- Test unitaires et oracle du test pour les tests 6-9
+- 3 Test unitaires et oracle du test
 - Implémentation voir les détails d’un cours et compaison des cours
-- Mise à jour GitHub
 
 ### Échéancier : 
 
