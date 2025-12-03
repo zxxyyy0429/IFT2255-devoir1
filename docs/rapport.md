@@ -685,6 +685,7 @@ La recherche de cours reste accessible sans compte.
 2.Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
 
 3.L’utilisateur modifie un ou plusieurs champs.
+ 
   3.1. Option: changement du mot de passe: validation forte.
 	
 4.Le système valide les nouvelles valeurs.
@@ -852,14 +853,14 @@ La recherche de cours reste accessible sans compte.
 
 3. L’étudiant remplit le formulaire et soumet son avis.
    
-4. Le système vérifie : 
-      4.1 Que tous les champs obligatoires sont valides
+4. Le système vérifie :
+   4.1 Que tous les champs obligatoires sont valides
    
-5. Le système enregistre l’avis dans la base interne.
+6. Le système enregistre l’avis dans la base interne.
    
-6. Le système synchronise l’avis avec le Bot Discord.
+7. Le système synchronise l’avis avec le Bot Discord.
    
-7. Un message de confirmation s’affiche : “Votre avis a été enregistré”
+8. Un message de confirmation s’affiche : “Votre avis a été enregistré”
 
 
 
