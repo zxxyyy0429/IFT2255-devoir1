@@ -5,21 +5,16 @@
 ### Description du projet
 Ce système, Plateforme d'aide au choix de cours, est une plateforme web basée sur une API REST, combinant les données officielles et les opinions des étudiants. Cette plateforme permettra aux étudiants de rechercher et comparer des cours, de consulter des résultats académiques agrégés, d'accéder à des avis étudiants représentatifs et de personnaliser l’affichage selon leur profil et leurs contraintes. Ce sysystème facilite le choix de cours et la prise de décision des étudiants, et offre une vue plus transparente et centralisée des informations disponibles. 
 
-### Organisation du répertoire
-```
-IFT2255-devoir1/
-  ├── docs/
-  │  ├── rapport.md
-  │  └── diagrams/
-  │    ├── Echeancier.png
-  │    ├── Diagramme_de_cas_d'utilisation.jpg
-  │    ├── Diagramme_d'activités.jpg
-  │    ├── Modèle_C4_niveau_1.jpg
-  │    └── Modèle_C4_niveau_2.jpg
-  ├── code/
-  │    └── Bonus
-  │      ├── app.js
-  │      ├── index.html
-  │      └── style.css
-  └── README.md
-```
+### Le guide pour evaluer notre code
+Recherche de cours (montrer des informations simples, seuleument inclut le sigle, le nom et la description du cours)
+-	par un sigle particulier : http://localhost:7070/courses/IFT1005
+-	par des mot-clés : 
+-  lister tous les cours du département informatique : http://localhost:7070/courses/search?sigle=IFT
+- lister tous les cours où il y a le mot «programmation» dans la description : http://localhost:7070/courses/search?description=programmation 
+
+Voir les détails d’un cours :
+- afficher les détails d’un cours avec son id(montrer plus des informations, inclut le sigle, le nom, la description, le crédit, le trimestre disponible et le prérequis du cours) : http://localhost:7070/courses/IFT2255/details
+
+Comparer des cours :
+- Comparer deux cours par id (lister deux cours avec quelques simples informations et montrer le prérequis commun) : http://localhost:7070/courses/compare?id1=IFT2015&id2=IFT2255
+
