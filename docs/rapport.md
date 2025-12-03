@@ -1381,6 +1381,36 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
 
 ![Modèle C4 niveau 3](diagrams/Modèle_C4_Niveau_3.jpg)
 
+### Justification:
+
+### Modèle C4: niveau 1
+Le modèle C4 niveau 1 représente la Plateforme d’aide au choix de cours comme le système central et illustre ses principales interactions avec les utilisateurs et les systèmes externes. La plateforme est clairement identifiée au centre du diagramme, ce qui permet de distinguer le système que l’on veut démontrer des entités externes. On a une vue d’ensemble compréhensible.
+
+Il y a deux types d’utilisateurs qui sont représentés, l'Étudiant UdeM où il consulte les informations sur les cours et personnaliser son profil académique, et l'Administrateur Système où il gère et maintient la plateforme. La représentation explicite des rôles des responsabilités de chaque acteur donne de la cohérence et la pertinence du modèle de manière compréhensible pour tous, même ceux sans connaissances techniques.
+
+Le Système capture info externe est aussi inclus comme un système externe qui fournit des données structurées à la plateforme via l’API Planifium et le service Discord. On montre comment le système s'intègre dans son environnement et interagit avec d’autres entités ce qui permet la complétude du modèle.
+
+Les relations entre les acteurs et le système et entre la plateforme et le système externe sont bien représentés avec une description. Cela donne une meilleure lisibilité et rend les interactions compréhensibles. Le diagramme maintient un niveau d’abstraction approprié en se concentrant sur le système et ses interactions externes sans entrer dans les détails internes. Ceci est l'objectif d’un modèle C4 niveau 1.
+
+### Modèle C4: niveau 2
+
+Le modèle C4 niveau 2 représente la vue des conteneurs de la plateforme d’aide au choix de cours et détaille l’architecture interne principale du système. Le modèle identifie les différents conteneurs qui composent la plateforme, soit l’Application Web, l’API Backend et la Database. Ainsi que les systèmes externes tels que le Service d’avis Discord, l’APi Planifium et le système des Résultats Académiques. Cette structure est claire, car elle sépare les composants internes de la plateforme des systèmes externes, ce qui permet de comprendre rapidement les principaux éléments du système et aussi leur rôle.
+
+Les interactions entre les conteneurs et systèmes externes sont explicitement représentés, avec des descriptions précises des protocoles de communication comme HTTP/REST, HTTP/JSON, et SQL. Les flèches indiquent aussi le sens des relations et la nature des données échangées. Cela donne une meilleure lisibilité et la pertinence du diagramme est pour montrer comment les différentes parties du système interagissent et communiquent entre elles.
+
+Chaque conteneur a une responsabilité bien définie, l’Application Web sert d’interface utilisateur, l’API Backend utilise la logique métier et l'agrégation des données, et la Database stocke les profils et préférences des utilisateurs. Les systèmes externes sont correctement intégrés pour donner des informations complémentaires nécessaires aux fonctionnement de la plateforme. Avec une répartition des responsabilités, on assure une haute cohésion à l'intérieur des conteneurs et un faible couplage entre eux, car chaque composant communique avec d’autres uniquement via des interfaces bien définies.
+
+De plus, le diagramme respecte aussi le principe d’abstraction appropriée, en se concentrant sur les conteneurs et leurs interactions sans entrer dans la logique interne de chaque composant. Les noms des conteneurs et des systèmes sont explicites, et les relations sont cohérentes, alors on a une cohérence globale et une complétude du modèle C4 niveau 2.
+
+### Modèle C4: niveau 3
+
+Le modèle C4 de niveau 3 nous donne une vue détaillée de l’intérieur d’un conteneur. Il représente la structure interne de l’Application API. Cela permet de comprendre comment l’application organise ses composants et comment les parties internes de l’application sont arrangées et la façon dont elles fonctionnent ensemble. La première rangée présente les acteurs principaux, l’étudiant UdeM, l’administrateur et l’application web. Ils constituent les points d’entrée du système et commencent les différentes interactions.
+
+La deuxième rangée correspond aux contrôleurs, qui ont le rôle d’intermédiaires entre l’interface web et les services internes. Chaque contrôleur a une responsabilité spécifique, tel que la gestion du profil utilisateur, recherche de cours, affichage des avis étudiants ou comparaison de cours. Ils reçoivent les demandes, les valident et donnent la demande aux services appropriés. La troisième rangée contient ces services spécialisés. Ils assurent les fonctionnalités essentielles, comme l’authentification et la sécurité, communication avec l’API Planifium, interaction avec le service d’avis Discord et logique de comparaison de cours. Cette séparation entre contrôleurs et services permet une architecture plus claire, mieux organisée et plus facile à maintenir.
+
+Les rangées suivantes représentent les systèmes externes et les sources de données comme la base de données interne, l’API Planifium, le service Discord et les résultats académiques. Ces éléments sont séparés pour montrer clairement quels services sont de l’extérieur et comment l’Application API récupère les données dont elle a besoin.
+
+
 ## 11. Diagramme de classe
 ![Diagramme de classe](diagrams/Class_1.jpg)
 ### Justification:
