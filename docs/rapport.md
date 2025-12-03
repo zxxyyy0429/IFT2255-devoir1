@@ -1617,7 +1617,45 @@ ctx.json({error: ...}) est appelé
 
 Service non appelé
 
+### Oracle 4 (Xinyan Zhang-20264873)
+ZXY 1— Voir détails : vide prérequis
+-CU couvert
+CU7 — Voir les détails d’un cours
+-But du test
+Vérifier que lorsque le cours n’a aucun prérequis besoin, le contrôleur renvoie correctement : "prerequis": "Aucun"
+-Entrées
+id = "IFT1015" et un CourseDetails valide avec prerequisiteCourses = [ ] (une liste vide)
+-Sortie attendue
+ctx.json() est appelé avec un JSON contenant : "prerequis": "Aucun"
+-Effets de bord
+ctx.json(...) appeler une seule fois avec une Map contenant prerequis = "Aucun"
 
+ZXY 2 — Comparer cours: données manquantes
+-CU couvert
+CU8 — Comparer plusieurs cours
+-But du test
+Vérifier que le contrôleur retourne 404 lorsqu’un des deux cours demandés est indisponible.
+-Entrées
+id1 = "IFT1015" et un CourseDetails valide
+id2 = "IFT1025" et un null CourseDetails (données manquantes)
+-Sortie attendue :
+ctx.status(404) est appelé
+ctx.json({...}) avec un message d’erreur 
+-Effets de bord
+Aucune comparaison n’est effectuée
+La réponse est uniquement un code 404 et un message d’erreur
 
-
+ZXY 3 — Comparer cours: ordre des cours 
+-CU couvert
+CU8 — Comparer plusieurs cours
+-But du test
+Vérifier que l’ordre des paramètres fournis par l’utilisateur est gardé dans le tableau comparatif.
+-Entrées
+id1 = "IFT1015" et un CourDetails valide
+id2 = "IFT1025" et un CourDetails valide
+-sortie attendue
+L’ordre doit être strictement respecté. Le premier est "IFT1015" et le deuxieme est "IFT1025"
+-Effets de bord
+Appeler getCourseDetails("IFT1015") et getCourseDetails("IFT1025")
+ctx.json() reçoit une Map contenant id1 puis id2
 
