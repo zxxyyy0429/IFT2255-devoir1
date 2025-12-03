@@ -182,7 +182,7 @@ Yu Tong Zhu (20310738):
 - Implémentation comparer deux cours
 
 ### Échéancier : 
-![Échéancier](diagrams/Echeancier2.png)
+![Échéancier](diagrams/Echeancier2.jpg)
 ## 2. Analyse des exigences 
 
 ### Description du domaine 
@@ -1186,7 +1186,7 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 
 ### Diagramme de cas d'utilisation
-![Diagramme de cas d’utilisation](diagrams/Diagramme_de_cas_d'utilisation.jpg)
+![Diagramme de cas d’utilisation](diagrams/Diagramme_CU.jpg)
 ### Justification ( Diagramme de cas d'utilisation ) :
 
 ## 9. Diagramme d'activités
