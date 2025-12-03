@@ -714,17 +714,16 @@ La recherche de cours reste accessible sans compte.
 - **Dépendances** :
   
 1.Dépendances techniques:
-
-   - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
-   - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
-   - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
+     - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
+     - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
+     - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
   
 2.Dépendance logiques:
 
-   - include → CU4 (Lire avis)
-   - include → CU6 (Consulter résultats)
-   - extend → CU8 (Comparer les cours)
-   - extend → CU9 (Personnaliser l’affichage)
+    - include → CU4 (Lire avis)
+    - include → CU6 (Consulter résultats)
+    - extend → CU8 (Comparer les cours)
+    - extend → CU9 (Personnaliser l’affichage)
 
 
 - **Scénario principal**:
@@ -823,12 +822,12 @@ La recherche de cours reste accessible sans compte.
 - **Dépendance**:
   
 1.Dépendances techniques:
-   - Synchronisation entre la plateforme et le Bot Discord. 
-   - Validation automatique de données (notation, catégories, commentaire)
+    - Synchronisation entre la plateforme et le Bot Discord. 
+    - Validation automatique de données (notation, catégories, commentaire)
 
 2.Dépendances logiques:
-   - include → CU3 (Rechercher un cours)
-   - extend → CU4 (Lire les avis des étudiants)
+    - include → CU3 (Rechercher un cours)
+    - extend → CU4 (Lire les avis des étudiants)
 
 
 - **Scénario principal**:
@@ -844,11 +843,16 @@ La recherche de cours reste accessible sans compte.
  f. Echelle de disponibilité du professeur
  g. Nom du professeur 
  h.Taux de succès (en pourcentage)
+
 3. L’étudiant remplit le formulaire et soumet son avis.
+   
 4. Le système vérifie : 
            4.1 Que tous les champs obligatoires sont valides
+   
 5. Le système enregistre l’avis dans la base interne.
+   
 6. Le système synchronise l’avis avec le Bot Discord.
+   
 7. Un message de confirmation s’affiche : “Votre avis a été enregistré”
 
 
