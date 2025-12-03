@@ -719,11 +719,10 @@ La recherche de cours reste accessible sans compte.
      - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
   
 2.Dépendance logiques:
-
-    - include → CU4 (Lire avis)
-    - include → CU6 (Consulter résultats)
-    - extend → CU8 (Comparer les cours)
-    - extend → CU9 (Personnaliser l’affichage)
+  - include → CU4 (Lire avis)
+  - include → CU6 (Consulter résultats)
+  - extend → CU8 (Comparer les cours)
+  - extend → CU9 (Personnaliser l’affichage)
 
 
 - **Scénario principal**:
