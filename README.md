@@ -18,3 +18,5 @@ Voir les détails d’un cours :
 Comparer des cours :
 - Comparer deux cours par id (lister deux cours avec quelques simples informations et montrer le prérequis commun) : http://localhost:7070/courses/compare?id1=IFT2015&id2=IFT2255
 
+### Test unitaire
+Tous les 12 tests sont dans le file CourseControllerTest.java
