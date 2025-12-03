@@ -1378,7 +1378,7 @@ Objectif: Développer le conteneur API Backend pour montrer ses composants inter
    - Algorithmes de suggestion basés sur le profil
    - Analyse des similarités entre cours
 
-![Modèle C4 niveau 3](diagrams/Modèle_C4_niveau_3.jpg)
+![Modèle C4 niveau 3](diagrams/Modèle_C4_Niveau_3.jpg)
 
 ## 11. Diagramme de classe
 ![Diagramme de classe](diagrams/Class_1.jpg)
