@@ -1420,8 +1420,11 @@ CU couvert ：CU4 — Comparer deux cours
 But du test ：Vérifier que le contrôleur retourne un tableau comparatif complet lorsque deux cours existent.
 
 Entrées
+
 id1 = "ABC123"
+
 id2 = "DEF456"
+
 Deux objets CourseDetails valides retournés par le service
 
 Sortie attendue
