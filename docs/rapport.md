@@ -144,7 +144,7 @@ Xinyan Zhang (20264873):
 - Diagramme de séquence ( Comparer cours )
 - Modèle C4 niveau 3
 
-Yutong Zhu (20310738):
+Yu Tong Zhu (20310738):
 - Mise à jour Glossaire
 - Mise à jour description du projet
 - Modèle C4 niveau 3
@@ -175,11 +175,11 @@ Xinyan Zhang (20264873):
 - 3 test unitaires et oracle du test
 - Release
 
-Yutong Zhu (20310738):
+Yu Tong Zhu (20310738):
 - Modèle C4 niveau 3
 - La justification du design pour le Modèle C4 niveau 1 , 2 et 3
 - 3 Test unitaires et oracle du test
-- Implémentation voir compaison des cours
+- Implémentation comparer deux cours
 
 ### Échéancier : 
 
