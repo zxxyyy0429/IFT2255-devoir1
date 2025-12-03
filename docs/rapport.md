@@ -616,112 +616,115 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 
 ### CU1 - Créer un compte
 
-- **But**: Permettre à un nouvel utilisateur d’enregistrer son profil pour utiliser la plateforme.
+- **But**: Permettre à un nouvel utilisateur de créer un compte afin d’enregistrer ses préférences et accéder aux fonctionnalités personnalisées (avis, comparaison enrichie, gestion du profil).
+La recherche de cours reste accessible sans compte.
 - **Précondition**: Aucun compte n’existe déjà pour le matricule fourni.
 - **Acteurs**: Etudiant (principal), Système (secondaire)
-- **Déclencheur**: L’utilisateur clique sur “Créer un compte”.
+- **Déclencheur**: L’utilisateur sélectionne « Créer un compte » dans la page d’accueil.
 
 - **Dépendances** : 
 1. Dépendances techniques:
    - Service d’inscription, base d’utilisateurs, serveur HTTPS, service d’envoie de courriel de confirmation.
 2. Dépendances logiques:
-   - include → CU2 (Se connecter)
-   - extend → CU3 (Modifier le profil)
+   - extend → CU2 (Modifier le profil)
 
 - **Scénario principal**:
 1. L’utilisateur ouvre la page d'accueil.
    1.1. Cliquez sur “Créer un compte”.
 2. Le système affiche le formulaire d’inscription (nom complet, matricule, courriel UdeM, mot de passe).
 3. L’utilisateur saisit les données et accepte la politique (Loi 25).
-4. Le système valide (format courriel, unicité matricule, règles mot de passe).
-5. Le système crée l'entrée dans la base utilisateurs et envoie un courriel de confirmation.
-6. Le système affiche un message de succès et propose la connexion.
+4. Le système valide les informations.
+5. Le système crée le compte et enregistre les données.
+6. Un message confirme la création du compte.
 
 - **Scénario alternatif**:
   
 4a. Courriel/matricule déjà utilisé: message d’erreur “compte existant”.
 
-4b. Mot de passe non conforme: corriger.
+4b. Mot de passe non conforme: demande de correction.
 
 (1-6)a. Erreur serveur: message “réessayer plus tard”.
 
-- **Postcondition**: Compte créé et un nouveau profil utilisateur est enregistré dans la base.
+- **Postcondition**: Un compte utilisateur valide est créé et pourra être utilisé pour les fonctionnalités personnalisées.
 
 
-### CU2 - Se connecter
+### CU2 - Modifier le profil
 
-- **But**: Permettre à un utilisateur de s’authentifier pour accéder à ses données et préférences.
-- **Précondition**: L’utilisateur possède un compte valide dans la base.
-- **Acteurs**: Etudiant, TGDE, Professeur (principal), Système (secondaire).
-- **Déclencheur**: L’utilisateur saisit son matricule et son mot de passe.
+- **But**: Permettre à l'étudiant de modifier ses informations personnelles ou ses préférences d’affichage (ex : préférences horaires, filtres par défaut).
+- **Précondition**: L’utilisateur est connecté.
+- **Acteurs**:  Étudiant (principal), Système (secondaire)
+- **Déclencheur**:  L’utilisateur clique sur « Modifier le profil ».
 
 - **Dépendances** : 
 1. Dépendances techniques:
-   - Service d’authentification (vérification mots de passe)
-   - Gestion de session
-   - SSO UdeM si nécessaire
-2. Dépendances logiques:
-   - include → CU3 (Modifier le profil)
-   - include → CU4 (Rechercher un cours) pour un accès complet.
+- Base utilisateurs
+- Validation serveur
+- Journalisation (conformité Loi 25)
+2. Dépendance logiques:
+extend → CU7 (Personnaliser affichage)
 
 - **Scénario principal**:
-1. L’utilisateur ouvre la page de connexion.
-2. Saisit courriel/matricule et le mot de passe.
-3. Le système vérifie les identifiants dans la base utilisateurs.
-4. Le système crée la session et charge le profil (préférences).
-5. Redirection vers le tableau de bord personnalisé.
+1.L'utilisateur ouvre la page de profil.
+2.Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
+3.L’utilisateur modifie un ou plusieurs champs.
+	3.1. Option: changement du mot de passe: validation forte.
+4.Le système valide les nouvelles valeurs.
+5.Le système met à jour la base utilisateurs.
+6.Le système confirme la modification.
+
 
 - **Scénario alternatif**:
 
-3a. Identifiants invalides: message d’erreur.
+4a. Validation échoue (format): affiche erreur et indique champs erronés.
+(1-6)a. Erreur: message “Modification non enregistrée”.
 
-3b. Compte inactif/suspendu, message “contactez un TGDE”
 
-2.a||. L’utilisateur choisit “mot de passe oublié” : déclenche processus de réinitialisation.
-
-- **Postcondition**: L’utilisateur est authentifié et redirige vers la page d'accueil
+- **Postcondition**: Les nouvelles informations sont enregistrées et appliquées aux futurs affichages.
 
 
 ### CU3 - Modifier le profil
 
-- **But**: Permettre à l'étudiant de modifier ses informations personnelles ou ses préférences.
-- **Précondition**: L’utilisateur est connecté.
-- **Acteurs**: Etudiant (principal), Système (secondaire)
-- **Déclencheur**: L’utilisateur clique sur “Modifier profil”.
+- **But**: Permettre à tout utilisateur (connecté ou pas) de rechercher un cours spécifique afin d’obtenir ses informations officielles (prérequis, crédits, description, professeurs, etc.) et de consulter sa fiche complète (description, crédits, horaires, professeurs, etc.)
+
+- **Précondition**: Aucune authentification requise
+- **Acteurs**: Étudiant (principal), Planifium API (secondaire)
+- **Déclencheur**:  L’étudiant saisit un mot-clé dans la barre de recherche ou clique sur un cours pour en afficher la fiche.
 
 - **Dépendances** :
-1. Dépendances techniques:
-   - Base utilisateurs
-   - Validation serveur
-   - Journalisation/audit (conformité Loi 25)
-2. Dépendance logiques:
-   - include → CU2 (Se connecter)
-   - extend → CU8 (Personnaliser affichage)
+1.Dépendances techniques:
+- API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
+- Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
+- Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
+2.Dépendance logiques:
+- include → CU4 (Lire avis)
+- include → CU6 (Consulter résultats)
+- extend → CU8 (Comparer les cours)
+- extend → CU9 (Personnaliser l’affichage)
+
 
 - **Scénario principal**:
-1. L'utilisateur ouvre la page de profil.
-2. Le système affiche les champs modifiables (nom, courriel, préférences horaires, etc.).
-3. L’utilisateur modifie un ou plusieurs champs.
-   
-	3.1. Option: changement du mot de passe: validation forte.
-   
-4. Le système valide les nouvelles valeurs.
-5. Le système met à jour la base utilisateurs.
-6. Le système confirme la modification.
+1. L’utilisateur accède à la barre de recherche.
+2. Saisit un mot-clé, un sigle ou applique des filtres (session, professeur).
+3. Système interroge l’API Planifium pour récupérer la liste des cours correspondant aux critères.
+4. Le système affiche les résultats sous forme de liste (sigle, titre, professeurs, session).
+5. L’étudiant clique sur un cours.
+6. Le système interroge l’API Planifium pour charger la fiche détaillée.
+7. Le système affiche la fiche complète du cours: description, crédits, horaire, professeur, prérequis, options “Lire avis”, “Voir résultats”, “Ajouter à la comparaison”.
+
 
 - **Scénario alternatif**:
   
-4a. Validation échoue (format): affiche erreur et indique champs erronés.
+3a. API Planifium est indisponible, le système affiche un message “Veuillez essayer plus tard.”
+2a. Recherche vide ou invalide
+6.a Le cours n’est pas trouvé, le système affiche “Cours introuvable” et propose une nouvelle recherche.
 
-(1-6)a. Erreur: message “Modification non enregistrée”.
+- **Postcondition**: La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
 
-- **Postcondition**: Les nouvelles informations sont enregistrées et appliquées aux futurs affichages.
+### CU4 - Lire les avis des étudiants
 
-### CU4 - Rechercher et consulter la fiche d’un cours
+- **But**: Permettre à un étudiant de consulter les avis agrégés concernant un cours afin d'évaluer la difficulté perçue, la charge de travail et les commentaires pertinents.
 
-- **But**: Permettre à l'étudiant de rechercher un cours spécifique afin d’obtenir ses informations officielles (prérequis, crédits, description, professeurs, etc.) et de consulter sa fiche complète (description, crédits, horaires, professeurs, etc.)
-
-- **Préconditions**: L’étudiant est connecté au système et la base locale est synchronisée avec l’API Planifium ou capable de demander les données à la demande.
+- **Préconditions**: Des avis existent dans la base de données importée du Bot Discord，Au moins 5 avis doivent être disponibles (n ≥ 5). 
 
 - **Acteurs**: Étudiant (principal), Planifium API (secondaire)
 
@@ -759,98 +762,62 @@ Dans son ensemble, cette configuration matérielle et logicielle soutient les ob
 La page complète d’un cours est affichée et l’étudiant peut consulter les avis, les résultats ou ajouter le cours à sa comparaison.
 
 
-### CU5 - Lire les avis des étudiants
-
-- **But**: Permettre à l'étudiant de consulter les retours et évaluations de pairs pour un cours.
-
-- **Préconditions**: Des avis existent dans la base de données importée du Bot Discord.
-
-- **Acteurs**: Étudiant (principal), Bot Discord (secondaire)
-
-- **Déclencheur**: L’étudiant clique sur “Avis étudiants” dans la fiche d’un cours.
-
-- **Dépendance**:
-1. Dépendances techniques:
-   - Synchronisation entre le bot Discord et la base d’avis.
-2. Dépendances logiques:
-   - include → CU4 (Rechercher et consulter un cours)
-   - extend → CU7 (Comparer les cours)
-
-- **Scénario principal**:
-1. De la fiche d’un cours, l’utilisateur clique “Avis étudiants”.
-2. Le système vérifie le nombre d’avis disponibles pour ce cours.
-	2.1. Si n ≥ 5, le système calcule synthèse (moyenne charge, moyenne difficulte, mots-clés).
-3. Le système affiche la synthèse et la liste des avis (filtrable: session, année, type d'étudiants).
-4. L’utilisateur peut filtrer (avis récents).
-
-- **Scénarios alternatifs**:
-
-2a. Moins de 5 avis disponibles, message “Avis insuffisants”.
-
-2b. Base inaccessible, message d’erreur.
-
-- **Postcondition**: Les avis sont affichés et la consultation est enregistrée dans le profil de l’étudiant.
-
-### CU6 - Mon avis 
+### CU5 - Mon avis 
 
 - **But**: Permettre à un étudiant de soumettre son propre avis sur un cours afin d’enrichir la base d’évaluations utilisées pour la comparaison des cours et l’aider à la décision. 
 
-- **Préconditions**: 
-  - L’étudiant est authentifié dans la plateforme.
-  - Le cours existe dans la base de données.
-  - L’étudiant n’a pas déjà rédigé un avis pour ce même cours (selon les règles du système)
+
+- **Préconditions**:
+- L’utilisateur est connecté.
+- Le cours existe dans la base de données.
+- L’étudiant n’a pas déjà rédigé un avis pour ce même cours (selon les règles du système)
+
 
 - **Acteurs**: Étudiant (principal), Bot Discord (secondaire)
 
 - **Déclencheur**: L’étudiant clique sur “Ajouter un avis” dans la fiche d’un cours.
 
-- **Dépendance**:
-1. Dépendances techniques:
-   - Synchronisation entre la plateforme et le Bot Discord. 
-   - Validation automatique de données (notation, catégories, commentaire)
 
-2. Dépendances logiques:
-   - include → CU4 (Rechercher et consulter un cours)
-   - extend → CU5 (Lire les avis des étudiants)
+- **Dépendance**:
+1.Dépendances techniques:
+- Synchronisation entre la plateforme et le Bot Discord. 
+- Validation automatique de données (notation, catégories, commentaire)
+
+2.Dépendances logiques:
+- include → CU3 (Rechercher un cours)
+- extend → CU4 (Lire les avis des étudiants)
+
 
 - **Scénario principal**:
-1. De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
-2. Le système affiche un formulaire d’évaluation comprenant :
-   
-    a. Charge de travail (1-5)
-   
-    b. Difficulté (1-5)
-   
-    c. Appréciation générale (note charge) (1-5)
-   
-    d. Commentaire optionnel
-   
-    e. Session suivie
-   
-    f. Échelle de disponibilité du professeur
-   
-    g. Nom du professeur
-   
-    h . Taux de succès (en pourcentage)
-   
+1.De la fiche d’un cours, l’utilisateur clique “Ajouter un avis”.
+2.Le système affiche un formulaire d’évaluation comprenant : 
+a. Charge de travail (1-5)
+b. Difficulté (1-5)
+c. Appréciation générale (note charge) (1-5)
+d. Commentaire optionnel
+e. Session suivie
+f. Echelle de disponibilité du professeur
+g. Nom du professeur 
+h.Taux de succès (en pourcentage)
 3. L’étudiant remplit le formulaire et soumet son avis.
-4. Le système vérifie :
-   
-   4.1. Que tous les champs obligatoires sont valides
-   
+4. Le système vérifie : 
+           4.1 Que tous les champs obligatoires sont valides
 5. Le système enregistre l’avis dans la base interne.
 6. Le système synchronise l’avis avec le Bot Discord.
 7. Un message de confirmation s’affiche : “Votre avis a été enregistré”
 
+
+
 - **Scénarios alternatifs**:
-  
+
 2a. Le formulaire contient des champs incomplets ou invalides → message d’erreur “Veuillez corriger les champs indiqués”. 
 
 6a. Échec de synchronisation avec le bot –”l’avis est marqué “en attente de synchronisation” + avertissement 
 
-- **Postcondition**: L’avis est enregistré et sera pris en compte dans les synthèses affichées dans CU5 et dans les comparaisons de cours (CU7)
+- **Postcondition**:L’avis est enregistré et sera pris en compte dans les synthèses affichées dans CU5 et dans les comparaisons de cours (CU7)
 
-### CU7 - Consulter les résultats académiques d’un cours
+
+### CU6 - Consulter les résultats académiques d’un cours
 
 - **But**: Permettre à l'étudiant de visualiser des données statistiques sur un cours (moyenne, taux d'échec, nombre d’inscrits).
 
@@ -880,6 +847,59 @@ La page complète d’un cours est affichée et l’étudiant peut consulter les
 2a. Données manquantes, message “Résultats non disponibles”.
 
 5a. Erreur d’exportation.
+
+- **Postcondition**: Les statistiques sont affichées et enregistrées dans le journal de consultation.
+
+### CU7 - Voir les détails d’un cours
+
+
+- **But**: Afficher une page complète contenant toutes les informations détaillées d’un cours (description, crédits, cycle, prérequis, horaire).
+
+
+- **Précondition**: L’utilisateur a sélectionné un cours depuis la liste de recherche (CU3).
+
+
+- **Acteur**: Étudiant (principal), système (secondaire), API Planifium, Base CSV, Base JSON
+
+
+- **Déclencheur**:  L’utilisateur clique sur « Voir les détails » depuis un cours.
+
+
+- **Dépendances**:
+1.Dépendances techniques : 
+
+- API Planifium
+
+- Base CSV résultats
+
+- Base JSON avis
+
+2. Dépendances logiques : 
+
+- Include → CU3 (rechercher cours)
+- 
+- Extend → CU6 (consulter les résultats académiques d’un cours)
+
+
+- **Scénario principal**:
+1. L’étudiant clique sur « Voir les détails » sur la fiche d’un cours (CU3).
+
+2.Le système interroge l’API Planifium et charge : description, crédits, cycle, prérequis, horaire.
+
+3.Le système charge les résultats académiques associés depuis la base CSV.
+
+4.Le système charge les avis agrégés si n ≥ 5.
+
+5.Le système affiche la page détaillée du cours.
+
+
+- **Scénarios alternatifs**:
+  
+2.a API indisponible → message d’erreur
+
+3.a Résultats académiques manquants → section résultat vide
+
+4.a Moins de 5 avis disponibles → message « Avis insuffisants ».
 
 - **Postcondition**: Les statistiques sont affichées et enregistrées dans le journal de consultation.
 
@@ -1021,53 +1041,8 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 - **Postcondition**: Le contrôleur a traité la requête, appliqué la logique métier, renvoyé une réponse claire à l’utilisateur et consigné les opérations dans l’historique interne du système.
 
-### CU11 – Gérer les rôles et les accès (RBAC)
 
-- **But** : Permettre à un administrateur de gérer les rôles des utilisateurs et leurs droits d’accès au système via le modèle RBAC.
-
-- **Préconditions**: L’administrateur est connecté avec un compte ayant les privilèges « administrateur système ».
-
-- **Acteurs** : Administrateur (principal), Système (secondaire)
-
-- **Déclencheur** : L’administrateur accède au module de gestion des rôles.
-
-- **Dépendances**:
-1. Dépendances techniques : 
-   - Base utilisateurs, module de sécurité, système RBAC.
-2. Dépendances logiques : 
-   - include → CU2 (Se connecter)
-
-
-- **Scénario principal** :
-  
-1. L’administrateur ouvre le panneau « Gestion des rôles ».
-
-
-2. Le système affiche la liste des utilisateurs et leurs rôles actuels.
-
-
-3. L’administrateur sélectionne un utilisateur.
-
-
-4. Il modifie son rôle (ex. : étudiant → TGDE).
-
-
-5. Le système valide la modification.
-
-
-6. La base est mise à jour et les nouvelles permissions sont appliquées.
-
-
-- **Scénarios alternatifs** :
-  
-4a. Le rôle sélectionné est invalide → message d’erreur.
-
-5a. Échec de mise à jour dans la base → message « modification impossible ».
-
-- **Postcondition** : Les rôles et permissions sont mis à jour selon les règles RBAC.
-
-
-### CU12 – Mettre à jour les données Planifium
+### CU11 – Mettre à jour les données Planifium
 
 - **But** : Permettre au système d’actualiser les données académiques provenant de l’API Planifium.
 
@@ -1107,7 +1082,7 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 
 - **Postcondition** : Les données officielles sont mises à jour localement.
 
-### CU13 – Importer les résultats académiques (CSV)
+### CU12 – Importer les résultats académiques (CSV)
 
 - **But** : Permettre à un administrateur d’importer les résultats académiques depuis les fichiers CSV.
   
@@ -1146,122 +1121,6 @@ L’utilisateur interagit avec la plateforme (navigation, actions, requêtes)
 4a. Incohérence dans les données → import partiel.
 
 - **Postcondition** : Les résultats académiques sont intégrés dans la base.
-
-### CU14 – Modérer les avis étudiants
-
-- **But** : Permettre à un administrateur de modérer les avis soumis par les étudiants.
-
-- **Préconditions** : Des avis sont présents dans le système.
-
-- **Acteurs** : Auxiliaire / Administrateur (principal) , Système (secondaire)
-
-- **Déclencheur** : Un avis est signalé par un utilisateur.
-
-- **Dépendances** :
-1. Dépendances techniques 
-   - Base NoSQL
-   - Module de modération
-
-
-- **Scénario principal** :
-1. L’admin consulte la liste des avis signalés.
-
-
-2. Il lit l’avis concerné.
-
-
-3. Il décide de le conserver ou de le supprimer.
-
-
-4. Le système met à jour la base de données.
-
-
-- **Scénarios alternatifs** :
-  
-3a. Une erreur empêche la suppression → message d’erreur.
-
-- **Postcondition** : L’avis est modéré et reflète la décision de l’administrateur.
-
-### CU15 – Gérer les erreurs système
-
-- **But** : Gérer et notifier les erreurs liées aux services externes (Planifium, Discord).
-
-- **Préconditions** : Une erreur est détectée (Planifium, Discord, DB).
-
-- **Acteurs** : Système (principal), Utilisateur  / Administrateur (secondaire)
-
-- **Déclencheur** : Une requête vers un service externe échoue.
-
-- **Dépendances** : 
-1. Dépendances techniques : 
-   - Service externes (API Planifium, Bot Discord)
-   - Base de données
-   - Module de gestion d’erreurs (logging, alertes)
-   - Système de notifications administrateur 
-2. Dépendances logiques : 
-   - Include → tous les CU qui utilise une source externe 
-
-- **Scénario principal** :
-
-1. Une erreur est détectée par le système.
-
-
-2. Le système affiche un message clair à l’utilisateur.
-
-
-3. Un log est d’erreur est enregistré.
-
-
-4. Une alerte est envoyée à l’administrateur.
-
-
-- **Scénarios alternatifs** :
-  
-2a. L’erreur est critique → interruption temporaire du service concerné.
-
-- **Postcondition** : L’erreur est traitée, enregistrée et les utilisateurs sont informés sans interruption majeure du système.
-
-### CU16 – Supprimer un compte utilisateur
-
-- **But** : Permettre la suppression d’un compte utilisateur conformément à la Loi 25.
-
-- **Préconditions** : L’utilisateur est authentifié ou une demande valide est reçue via un formulaire.
-
-- **Acteurs** : Utilisateur (principal) , Administrateur et Système (secondaires)
-
-- **Déclencheur** : L’utilisateur demande la suppression de son compte.
-
-- **Dépendances** :
-1. Dépendances techniques : 
-   - Base utilisateur
-   - Module de sécurité
-   - Module d’anonymisation (respect Loi 25)
-   - Service d’envoi de notifications
-2. Dépendances logiques : 
-   - Include → CU2
-
-- **Scénario principal** :
-1. L’utilisateur demande la suppression de son compte.
-
-
-2. Le système demande une confirmation.
-
-
-3. Les données associées sont anonymisées.
-
-
-4. Le compte est désactivé puis supprimé.
-
-
-5. Un message de confirmation est envoyé.
-
-
-- **Scénarios alternatifs** :
-  
-3a. Échec technique → suppression partielle + message d’alerte
-
-- **Postcondition** : Le compte est supprimé et les données sont traitées conformément à la Loi 25.
-
 
 
 
