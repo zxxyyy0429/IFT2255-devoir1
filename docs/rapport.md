@@ -155,7 +155,7 @@ Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 - Mise à jour du glossaire
 - Mise à jour du description du projet
 - Mise à jour des besoins non fonctionels
-- Mise à jour des cas d’utilisation principaux dans le rapport (ajouer 6 CU principaux de plus)
+- Mise à jour des cas d’utilisation principaux dans le rapport 
 - Mise à jour de la distribution des tâches
 - Mise à jour des besoins matériels, solution de stockage et solution d’intégration
 - Mise a jour diagramme de CU
