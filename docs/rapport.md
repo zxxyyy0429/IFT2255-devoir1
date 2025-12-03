@@ -713,16 +713,16 @@ La recherche de cours reste accessible sans compte.
 
 - **Dépendances** :
   
-1.Dépendances techniques:
-     - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
-     - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
-     - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
+1. Dépendances techniques:
+   - API Planifium fournit les données officielles sur les cours (titre, description, prérequis, professeurs, horaires, etc.).
+   - Le système a besoin d’une connexion Internet fonctionnelle pour interroger l’API au moment de la recherche ou de l’ouverture d’une page.
+   - Le système utilise la barre de recherche pour trier, filtrer et présenter les résultats selon les critères entrés par l’étudiant.
   
-2.Dépendance logiques:
-  - include → CU4 (Lire avis)
-  - include → CU6 (Consulter résultats)
-  - extend → CU8 (Comparer les cours)
-  - extend → CU9 (Personnaliser l’affichage)
+2. Dépendance logiques:
+   - include → CU4 (Lire avis)
+   - include → CU6 (Consulter résultats)
+   - extend → CU8 (Comparer les cours)
+   - extend → CU9 (Personnaliser l’affichage)
 
 
 - **Scénario principal**:
