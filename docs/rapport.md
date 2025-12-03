@@ -1406,8 +1406,8 @@ Aucun calcul de comparaison n’est effectué
 
 
 
-###Oracle - Yu Tong Zhu (20310738)
-###Recherche par mot-clé valide
+### Oracle - Yu Tong Zhu (20310738)
+### Recherche par mot-clé valide
 
 CU couvert : CU1 — Rechercher dans les cours
 
@@ -1442,7 +1442,7 @@ ctx.json() appelé avec la liste des cours.
 Aucun status d’erreur.
 
 
-###Détails du cours existant
+### Détails du cours existant
 CU couvert : CU6 - Voir les détails d’un cours 
 
 But du test : Vérifier que le contrôleur retourne un JSON formaté correctement lorsque le cours existe.
@@ -1485,6 +1485,31 @@ getCourseDetails("IFT2255") appelé une fois.
 ctx.json() reçoit la map formatée.
 
 Aucun ctx.status().
+
+
+### ID trop invalide
+CU couvert : CU6 - Voir les détails d’un cours 
+
+But du test : Vérifier que le contrôleur refuse un ID invalide, une longueur < 6
+
+Entrées
+
+"id" = "IFT1" est invalide
+
+Service jamais appelé
+
+Sortie attendue
+
+Status 400 Bad Request JSON contenant une clé "error"
+
+Effets de bord
+
+ctx.status(400) est appelé
+
+ctx.json({error: ...}) est appelé
+
+Service non appelé
+
 
 
 
