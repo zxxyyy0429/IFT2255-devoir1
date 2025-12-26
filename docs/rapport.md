@@ -196,7 +196,7 @@ Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
 - Vérification de la cohérence entre conception (C4, classes, séquences) et code
 - Développement des tests unitaires supplémentaires
 - Rédaction détaillée des oracles de tests selon les exigences du devoir.
-- Préparation du release final GitHub.
+- Release final GitHub.
 
 Xinyan Zhang (20264873):
 - Conception et implémentation complète du CLI.
