@@ -1942,3 +1942,8 @@ id = 1
 id = 999
 
 - Sortie attendue : Optional.empty()
+
+### Configuration Maven
+Le projet utilise Apache Maven pour la gestion du cycle de vie.
+La configuration permet d’exécuter les tests unitaires JUnit à l’aide de la commande mvn test et de générer un fichier JAR exécutable avec mvn package.
+Les tests passent avec succès et le JAR est correctement généré dans le répertoire target.
