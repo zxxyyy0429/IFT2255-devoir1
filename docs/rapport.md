@@ -180,6 +180,10 @@ Yu Tong Zhu (20310738):
 - La justification du design pour le Modèle C4 niveau 1 , 2 et 3
 - 3 Test unitaires et oracle du test
 - Implémentation comparer deux cours
+  
+### Échéancier : 
+![Échéancier](diagrams/Echeancier2.jpg)
+## 2. Analyse des exigences 
 
 #### Version final pour le devoir 3 (Decembre 26) :
 
@@ -212,10 +216,6 @@ Yu Tong Zhu (20310738):
 - Validation de toutes les entrées utilisateur et gestion des erreurs.
 - Implémentation complète du bot Discord (collecte et envoi d’avis).
 - Réalisation de la vidéo officielle (7 à 10 minutes)
-  
-### Échéancier : 
-![Échéancier](diagrams/Echeancier2.jpg)
-## 2. Analyse des exigences 
 
 ### Description du domaine 
 **Utilisateurs visés**
