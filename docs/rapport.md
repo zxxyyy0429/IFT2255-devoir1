@@ -1866,3 +1866,79 @@ Appel de ctx.status(400)
 
 ### Oracle - Comparer plusieurs cours 
 
+#### Test 1 — Identifiant manquant
+
+- CU couvert : CU8 — Comparer plusieurs cours
+
+- But du test : Vérifier que la comparaison est refusée si un identifiant est manquant.
+
+- Entrées :
+id1 = null, id2 = "IFT2255"
+
+- Sortie attendue : Status 400 Bad Request
+
+- Effets de bord attendus :
+
+Aucun appel au service
+
+Appel de ctx.status(400)
+
+#### Test 2 — Identifiants identiques
+
+- CU couvert : CU8 — Comparer plusieurs cours
+
+- But du test : Vérifier que la comparaison de deux cours identiques est refusée.
+
+- Entrées :
+id1 = "IFT2255", id2 = "IFT2255"
+
+- Sortie attendue : Status 404 Not Found
+
+- Effets de bord attendus :
+
+Aucun calcul de comparaison
+
+Aucun appel au service
+
+### Oracle — Résultats académiques
+
+#### Test 1 — Résultats inexistants
+
+- CU couvert : CU6 — Consulter les résultats académiques d’un cours
+
+- But du test : Vérifier que le système gère l’absence de résultats.
+
+- Entrées :
+id = "IFT2255"
+
+- Sortie attendue : Message “Résultats non disponibles”
+
+- Effets de bord attendus :
+
+Appel du service de résultats
+
+Appel de ctx.json()
+
+### Oracle — Service utilisateur
+
+#### Test 1 — Utilisateur existant
+
+- CU couvert : CU2 — Modifier le profil
+
+- But du test : Vérifier que le système retrouve un utilisateur existant.
+
+- Entrées :
+id = 1
+
+- Sortie attendue : Utilisateur présent.
+
+#### Test 2 — Utilisateur inexistant
+
+- CU couvert : CU2 — Modifier le profil
+
+- But du test : Vérifier que le système retourne un résultat vide pour un utilisateur inexistant.
+
+- Entrées :
+id = 999
+
+- Sortie attendue : Optional.empty()
