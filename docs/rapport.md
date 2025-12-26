@@ -183,7 +183,6 @@ Yu Tong Zhu (20310738):
   
 ### Échéancier : 
 ![Échéancier](diagrams/Echeancier2.jpg)
-## 2. Analyse des exigences 
 
 #### Version final pour le devoir 3 (Decembre 26) :
 
@@ -216,6 +215,10 @@ Yu Tong Zhu (20310738):
 - Validation de toutes les entrées utilisateur et gestion des erreurs.
 - Implémentation complète du bot Discord (collecte et envoi d’avis).
 - Réalisation de la vidéo officielle (7 à 10 minutes)
+
+
+## 2. Analyse des exigences 
+
 
 ### Description du domaine 
 **Utilisateurs visés**
