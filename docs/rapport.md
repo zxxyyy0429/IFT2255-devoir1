@@ -181,6 +181,38 @@ Yu Tong Zhu (20310738):
 - 3 Test unitaires et oracle du test
 - Implémentation comparer deux cours
 
+#### Version final pour le devoir 3 (Decembre 26) :
+
+Ziyue Wang (20308297) et Ruoxuan Hu (20304027):
+- Conformité totale avec le diagramme de classes et la conception établie.
+- Mise à jour complète du rapport du Devoir 2 vers le Devoir 3 
+- Manuel d’utilisation (README)
+- Production de la documentation JavaDoc pour toutes les classes, attributs et méthodes publiques.
+- Intégration du lien officiel vers la JavaDoc dans le rapport.
+- Mise à jour du diagramme si nécessaire.
+- Vérification de la cohérence entre conception (C4, classes, séquences) et code
+- Développement des tests unitaires supplémentaires
+- Rédaction détaillée des oracles de tests selon les exigences du devoir.
+- Préparation du release final GitHub.
+
+Xinyan Zhang (20264873):
+- Conception et implémentation complète du CLI.
+- Recherche par sigle / mots-clés
+- Consultation d'un cours
+- Affichage des horaires
+- Création d’ensemble de cours
+- Comparaison de deux cours
+  
+Yu Tong Zhu (20310738):
+- Développement complet de l’API REST (endpoints, contrôleurs, services).
+- Intégration avec l’API Planifium (cours, programmes, horaires).
+- Gestion des résultats académiques (lecture CSV, validation, formatage).
+- Fonctionnalité de comparaison de deux cours (logique métier complète).
+- Vérification d’éligibilité selon prérequis et cycle.
+- Validation de toutes les entrées utilisateur et gestion des erreurs.
+- Implémentation complète du bot Discord (collecte et envoi d’avis).
+- Réalisation de la vidéo officielle (7 à 10 minutes)
+  
 ### Échéancier : 
 ![Échéancier](diagrams/Echeancier2.jpg)
 ## 2. Analyse des exigences 
