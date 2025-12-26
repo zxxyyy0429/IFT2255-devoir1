@@ -739,7 +739,7 @@ La recherche de cours reste accessible sans compte.
 - **Postcondition**: Les nouvelles informations sont enregistrées et appliquées aux futurs affichages.
 
 
-### CU3 - Modifier le profil
+### CU3 - Rechercher un cours
 
 - **But**: Permettre à tout utilisateur (connecté ou pas) de rechercher un cours spécifique afin d’obtenir ses informations officielles (prérequis, crédits, description, professeurs, etc.) et de consulter sa fiche complète (description, crédits, horaires, professeurs, etc.)
 
@@ -1724,11 +1724,11 @@ ctx.json() reçoit une Map contenant id1 puis id2
 
 ### Autres oracles
 
-### Oracle - Lister les cours (GetAllCourses)
+### Oracle - Recherche des cours (GetAllCourses)
 
-#### Test 1 - Lister tous les cours sans paramètres
+#### Test 1 - Recherche sans paramètres
 
-- CU couvert : CU2 — Lister les cours
+- CU couvert : CU3 — Rechercher un cours
 
 - But du test : Vérifier que le contrôleur retourne la liste complète des cours lorsque aucun paramètre de requête n’est fourni.
 
@@ -1748,7 +1748,7 @@ Aucun code d’erreur retourné.
 
 #### Test 2 — Lister les cours avec paramètres valides
 
-- CU couvert : CU2 — Lister les cours
+- CU couvert : CU3 — Recherche un cours
 
 - But du test : Vérifier que les paramètres de requête sont correctement transmis au service.
 
@@ -1768,7 +1768,7 @@ Aucun code d’erreur.
 
 #### Test 3 — Aucun cours disponible
 
-- CU couvert : CU2 — Lister les cours
+- CU couvert : CU3 — Recherche un cours
 
 - But du test : Vérifier que le contrôleur retourne une liste vide lorsque le service ne trouve aucun cours.
 
@@ -1786,9 +1786,9 @@ Appel de ctx.json() avec une liste vide.
 
 Aucun status d’erreur.
 
-- Test 4 — Paramètre inconnu ignoré
+ #### Test 4 — Paramètre inconnu ignoré
 
-- CU couvert : CU2 — Lister les cours
+- CU couvert : CU3 — Rechercher un cours
 
 - But du test : Vérifier que les paramètres inconnus n’empêchent pas la récupération des cours.
 
@@ -1810,7 +1810,7 @@ Aucun code d’erreur.
 
 #### Test 1 — Cours existant
 
-- CU couvert : CU5 — Consulter un cours par identifiant
+- CU couvert : CU7 — voir les détails d'un cours
 
 - But du test : Vérifier que le contrôleur retourne le cours lorsque l’identifiant existe.
 
@@ -1830,7 +1830,7 @@ Aucun status d’erreur.
 
 #### Test 2 — Cours introuvable
 
-- CU couvert : CU5 — Consulter un cours par identifiant
+- CU couvert : CU7 — voir les détails d'un cours
 
 - But du test : Vérifier que le contrôleur retourne une erreur lorsque le cours n’existe pas.
 
@@ -1838,12 +1838,31 @@ Aucun status d’erreur.
 
 id = "IFT1234"
 
-- Sortie attendue : Status 404 Not Found
-
-JSON : { "error": "..." }
+- Sortie attendue : Status 404 Not Found + JSON : { "error": "..." }
 
 - Effets de bord :
 
 Appel de getCourseById(id).
 
 Appel de ctx.status(404) et ctx.json().
+
+#### Test 3 — Identifiant nul
+
+- CU couvert : CU7 — Voir les détails d’un cours
+
+- But du test : Vérifier que le système refuse un identifiant nul.
+
+- Entrées :
+
+id = null
+
+- Sortie attendue : Status 400 Bad Request
+
+- Effets de bord attendus :
+
+Le service n’est pas appelé
+
+Appel de ctx.status(400)
+
+### Oracle - Comparer plusieurs cours 
+
