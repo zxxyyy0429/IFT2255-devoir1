@@ -1722,3 +1722,128 @@ id2 = "IFT1025" et un CourDetails valide
 
 ctx.json() reçoit une Map contenant id1 puis id2
 
+### Autres oracles
+
+### Oracle - Lister les cours (GetAllCourses)
+
+#### Test 1 - Lister tous les cours sans paramètres
+
+- CU couvert : CU2 — Lister les cours
+
+- But du test : Vérifier que le contrôleur retourne la liste complète des cours lorsque aucun paramètre de requête n’est fourni.
+
+- Entrées :
+
+queryParamMap = { }
+
+- Sortie attendue : JSON contenant la liste complète des cours retournée par le service.
+
+- Effets de bord :
+
+Appel de getAllCourses(queryParamMap) sur le service.
+
+Appel de ctx.json() avec la liste de cours.
+
+Aucun code d’erreur retourné.
+
+#### Test 2 — Lister les cours avec paramètres valides
+
+- CU couvert : CU2 — Lister les cours
+
+- But du test : Vérifier que les paramètres de requête sont correctement transmis au service.
+
+- Entrées :
+
+queryParamMap = { "session": ["A2025"] }
+
+- Sortie attendue : JSON contenant la liste de cours filtrée retournée par le service.
+
+- Effets de bord :
+
+Appel de getAllCourses() avec les paramètres exacts.
+
+Appel de ctx.json() avec la liste retournée.
+
+Aucun code d’erreur.
+
+#### Test 3 — Aucun cours disponible
+
+- CU couvert : CU2 — Lister les cours
+
+- But du test : Vérifier que le contrôleur retourne une liste vide lorsque le service ne trouve aucun cours.
+
+- Entrées :
+
+queryParamMap = { }
+
+- Sortie attendue : JSON contenant une liste vide [ ].
+
+- Effets de bord :
+
+Appel de getAllCourses().
+
+Appel de ctx.json() avec une liste vide.
+
+Aucun status d’erreur.
+
+- Test 4 — Paramètre inconnu ignoré
+
+- CU couvert : CU2 — Lister les cours
+
+- But du test : Vérifier que les paramètres inconnus n’empêchent pas la récupération des cours.
+
+- Entrées :
+
+queryParamMap = { "unknown": ["test"] }
+
+- Sortie attendue : JSON contenant la liste retournée par le service (potentiellement vide).
+
+Effets de bord :
+
+Appel de getAllCourses() malgré le paramètre inconnu.
+
+Appel de ctx.json().
+
+Aucun code d’erreur.
+
+### Oracle - Consulter un cours par identifiant
+
+#### Test 1 — Cours existant
+
+- CU couvert : CU5 — Consulter un cours par identifiant
+
+- But du test : Vérifier que le contrôleur retourne le cours lorsque l’identifiant existe.
+
+- Entrées :
+
+id = "IFT2255"
+
+- Sortie attendue : JSON contenant l’objet Course correspondant.
+
+- Effets de bord :
+
+Appel de getCourseById(id).
+
+Appel de ctx.json() avec le cours.
+
+Aucun status d’erreur.
+
+#### Test 2 — Cours introuvable
+
+- CU couvert : CU5 — Consulter un cours par identifiant
+
+- But du test : Vérifier que le contrôleur retourne une erreur lorsque le cours n’existe pas.
+
+- Entrées :
+
+id = "IFT1234"
+
+- Sortie attendue : Status 404 Not Found
+
+JSON : { "error": "..." }
+
+- Effets de bord :
+
+Appel de getCourseById(id).
+
+Appel de ctx.status(404) et ctx.json().
