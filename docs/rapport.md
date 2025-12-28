@@ -217,7 +217,7 @@ Yu Tong Zhu (20310738):
 - Réalisation de la vidéo officielle (7 à 10 minutes)
 
 ### Échéancier : 
-![Échéancier](docs/Echeancier3.png)
+![Échéancier](docs/Diagrams/Echeancier3.png)
 
 
 ## 2. Analyse des exigences 
