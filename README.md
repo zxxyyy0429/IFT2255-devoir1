@@ -27,17 +27,20 @@ CourseControllerTest.java
 
 Ils couvrent :
 
+
 1. Lister les cours (GET /courses)
 - Retour de la liste complète lorsque aucun paramètre n’est fourni
 - Transmission correcte des query parameters au service
 - Gestion d’un résultat vide (liste vide)
 - Tolérance aux paramètres inconnus (ignorés)
+  
 
 2. Recherche / Consultation d’un cours par sigle (GET /courses/:id)
 - Retour d’un cours lorsque l’identifiant existe
 - Erreur 404 lorsque le cours est introuvable
 - Erreur 400 lorsque l’ID est nul ou vide
 - Cas d’ID avec espaces (validation/erreur)
+
 
 3. Détails d’un cours (GET /courses/:id/details)
 - Retour d’un JSON formaté (ex. crédits, prérequis, trimestres disponibles)
@@ -46,10 +49,12 @@ Ils couvrent :
 - Erreur 404 si le cours n’existe pas
 - Cas où aucun trimestre n’est disponible (termes tous à false)
 
+
 4. Recherche par mot-clé (GET /courses/search …)
 - Recherche valide (retour d’une liste filtrée)
 - Absence de mot-clé → 400
 - Aucun résultat → retour liste vide (sans erreur)
+
 
 5. Comparer deux cours (GET /courses/compare?id1=…&id2=…)
 - Comparaison de deux cours valides (retour JSON comparatif)
@@ -57,6 +62,7 @@ Ils couvrent :
 - Gestion d’erreurs : cours introuvable → 404
 - Gestion d’erreurs : id1 manquant / id2 manquant → 400
 - Gestion d’erreurs : ids identiques → erreur (statut d’erreur)
+
 
 6. Service utilisateur (UserService)
 - Récupération de la liste des utilisateurs (non nulle, taille attendue)
