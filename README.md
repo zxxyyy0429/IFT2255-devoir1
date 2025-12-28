@@ -160,6 +160,13 @@ Un menu texte s’affiche :
    - Saisir un trimestre (ex : `A25`)  
    - La CLI envoie un JSON à `/courseset/schedule` pour obtenir l’horaire de l’ensemble
 
-0. **Quitter**  
+10. **Quitter**  
    - Ferme proprement la CLI.
 
+### Conclusion / Remarques
+
+Ce dépôt contient l’API REST, la CLI, les tests unitaires et la documentation du projet.
+
+Pour toute question d’exécution (port, dépendances, etc.), consulter les sections Installation et Exécution ci-dessus.
+
+Documentation JavaDoc : target/site/apidocs/index.html (après génération).
