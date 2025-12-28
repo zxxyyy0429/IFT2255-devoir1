@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>pom.xml</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #6aab73;}
+.s3 { color: #bcbec4;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+pom.xml</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;?</span><span class="s1">xml version</span><span class="s2">=&quot;1.0&quot; </span><span class="s1">encoding</span><span class="s2">=&quot;UTF-8&quot;</span><span class="s0">?&gt;</span>
+<span class="s0">&lt;project </span><span class="s1">xmlns</span><span class="s2">=&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+         <span class="s1">xmlns:xsi</span><span class="s2">=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+         <span class="s1">xsi:schemaLocation</span><span class="s2">=&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="s0">&gt;</span>
+
+    <span class="s0">&lt;modelVersion&gt;</span><span class="s3">4.0.0</span><span class="s0">&lt;/modelVersion&gt;</span>
+
+    <span class="s0">&lt;groupId&gt;</span><span class="s3">com.diro.ift2255</span><span class="s0">&lt;/groupId&gt;</span>
+    <span class="s0">&lt;artifactId&gt;</span><span class="s3">rest-api</span><span class="s0">&lt;/artifactId&gt;</span>
+    <span class="s0">&lt;version&gt;</span><span class="s3">1.0-SNAPSHOT</span><span class="s0">&lt;/version&gt;</span>
+
+    <span class="s0">&lt;properties&gt;</span>
+        <span class="s0">&lt;maven.compiler.source&gt;</span><span class="s3">17</span><span class="s0">&lt;/maven.compiler.source&gt;</span>
+        <span class="s0">&lt;maven.compiler.target&gt;</span><span class="s3">17</span><span class="s0">&lt;/maven.compiler.target&gt;</span>
+        <span class="s0">&lt;project.build.sourceEncoding&gt;</span><span class="s3">UTF-8</span><span class="s0">&lt;/project.build.sourceEncoding&gt;</span>
+    <span class="s0">&lt;/properties&gt;</span>
+
+    <span class="s4">&lt;!-- ───────────────────────────── 
+         Dependencies 
+    ──────────────────────────────── --&gt;</span>
+    <span class="s0">&lt;dependencies&gt;</span>
+
+        <span class="s4">&lt;!-- JSON Mapping --&gt;</span>
+        <span class="s0">&lt;dependency&gt;</span>
+            <span class="s0">&lt;groupId&gt;</span><span class="s3">com.fasterxml.jackson.core</span><span class="s0">&lt;/groupId&gt;</span>
+            <span class="s0">&lt;artifactId&gt;</span><span class="s3">jackson-databind</span><span class="s0">&lt;/artifactId&gt;</span>
+            <span class="s0">&lt;version&gt;</span><span class="s3">2.17.2</span><span class="s0">&lt;/version&gt;</span>
+        <span class="s0">&lt;/dependency&gt;</span>
+
+        <span class="s4">&lt;!-- Javalin REST Framework --&gt;</span>
+        <span class="s0">&lt;dependency&gt;</span>
+            <span class="s0">&lt;groupId&gt;</span><span class="s3">io.javalin</span><span class="s0">&lt;/groupId&gt;</span>
+            <span class="s0">&lt;artifactId&gt;</span><span class="s3">javalin</span><span class="s0">&lt;/artifactId&gt;</span>
+            <span class="s0">&lt;version&gt;</span><span class="s3">6.7.0</span><span class="s0">&lt;/version&gt;</span>
+        <span class="s0">&lt;/dependency&gt;</span>
+
+        <span class="s4">&lt;!-- Logging --&gt;</span>
+        <span class="s0">&lt;dependency&gt;</span>
+            <span class="s0">&lt;groupId&gt;</span><span class="s3">org.slf4j</span><span class="s0">&lt;/groupId&gt;</span>
+            <span class="s0">&lt;artifactId&gt;</span><span class="s3">slf4j-simple</span><span class="s0">&lt;/artifactId&gt;</span>
+            <span class="s0">&lt;version&gt;</span><span class="s3">2.0.16</span><span class="s0">&lt;/version&gt;</span>
+        <span class="s0">&lt;/dependency&gt;</span>
+
+        <span class="s4">&lt;!-- JUnit Tests --&gt;</span>
+        <span class="s0">&lt;dependency&gt;</span>
+            <span class="s0">&lt;groupId&gt;</span><span class="s3">org.junit.jupiter</span><span class="s0">&lt;/groupId&gt;</span>
+            <span class="s0">&lt;artifactId&gt;</span><span class="s3">junit-jupiter-api</span><span class="s0">&lt;/artifactId&gt;</span>
+            <span class="s0">&lt;version&gt;</span><span class="s3">5.13.4</span><span class="s0">&lt;/version&gt;</span>
+            <span class="s0">&lt;scope&gt;</span><span class="s3">test</span><span class="s0">&lt;/scope&gt;</span>
+        <span class="s0">&lt;/dependency&gt;</span>
+
+        <span class="s4">&lt;!-- Mockito --&gt;</span>
+        <span class="s0">&lt;dependency&gt;</span>
+            <span class="s0">&lt;groupId&gt;</span><span class="s3">org.mockito</span><span class="s0">&lt;/groupId&gt;</span>
+            <span class="s0">&lt;artifactId&gt;</span><span class="s3">mockito-core</span><span class="s0">&lt;/artifactId&gt;</span>
+            <span class="s0">&lt;version&gt;</span><span class="s3">5.18.0</span><span class="s0">&lt;/version&gt;</span>
+            <span class="s0">&lt;scope&gt;</span><span class="s3">test</span><span class="s0">&lt;/scope&gt;</span>
+        <span class="s0">&lt;/dependency&gt;</span>
+
+        <span class="s0">&lt;dependency&gt;</span>
+            <span class="s0">&lt;groupId&gt;</span><span class="s3">org.mockito</span><span class="s0">&lt;/groupId&gt;</span>
+            <span class="s0">&lt;artifactId&gt;</span><span class="s3">mockito-junit-jupiter</span><span class="s0">&lt;/artifactId&gt;</span>
+            <span class="s0">&lt;version&gt;</span><span class="s3">5.18.0</span><span class="s0">&lt;/version&gt;</span>
+            <span class="s0">&lt;scope&gt;</span><span class="s3">test</span><span class="s0">&lt;/scope&gt;</span>
+        <span class="s0">&lt;/dependency&gt;</span>
+
+    <span class="s0">&lt;/dependencies&gt;</span>
+
+    <span class="s4">&lt;!-- ───────────────────────────── 
+         Build Plugins (IMPORTANT) 
+    ──────────────────────────────── --&gt;</span>
+    <span class="s0">&lt;build&gt;</span>
+        <span class="s0">&lt;plugins&gt;</span>
+
+            <span class="s4">&lt;!-- JavaDoc Generator --&gt;</span>
+            <span class="s0">&lt;plugin&gt;</span>
+                <span class="s0">&lt;groupId&gt;</span><span class="s3">org.apache.maven.plugins</span><span class="s0">&lt;/groupId&gt;</span>
+                <span class="s0">&lt;artifactId&gt;</span><span class="s3">maven-javadoc-plugin</span><span class="s0">&lt;/artifactId&gt;</span>
+                <span class="s0">&lt;version&gt;</span><span class="s3">3.6.3</span><span class="s0">&lt;/version&gt;</span>
+                <span class="s0">&lt;configuration&gt;</span>
+                    <span class="s0">&lt;encoding&gt;</span><span class="s3">UTF-8</span><span class="s0">&lt;/encoding&gt;</span>
+                    <span class="s0">&lt;charSet&gt;</span><span class="s3">UTF-8</span><span class="s0">&lt;/charSet&gt;</span>
+                    <span class="s0">&lt;docencoding&gt;</span><span class="s3">UTF-8</span><span class="s0">&lt;/docencoding&gt;</span>
+                    <span class="s0">&lt;show&gt;</span><span class="s3">public</span><span class="s0">&lt;/show&gt;</span>
+                    <span class="s0">&lt;failOnError&gt;</span><span class="s3">false</span><span class="s0">&lt;/failOnError&gt;</span>
+                <span class="s0">&lt;/configuration&gt;</span>
+            <span class="s0">&lt;/plugin&gt;</span>
+
+            <span class="s4">&lt;!-- Compile Java --&gt;</span>
+            <span class="s0">&lt;plugin&gt;</span>
+                <span class="s0">&lt;groupId&gt;</span><span class="s3">org.apache.maven.plugins</span><span class="s0">&lt;/groupId&gt;</span>
+                <span class="s0">&lt;artifactId&gt;</span><span class="s3">maven-compiler-plugin</span><span class="s0">&lt;/artifactId&gt;</span>
+                <span class="s0">&lt;version&gt;</span><span class="s3">3.11.0</span><span class="s0">&lt;/version&gt;</span>
+                <span class="s0">&lt;configuration&gt;</span>
+                    <span class="s0">&lt;source&gt;</span><span class="s3">17</span><span class="s0">&lt;/source&gt;</span>
+                    <span class="s0">&lt;target&gt;</span><span class="s3">17</span><span class="s0">&lt;/target&gt;</span>
+                <span class="s0">&lt;/configuration&gt;</span>
+            <span class="s0">&lt;/plugin&gt;</span>
+
+            <span class="s4">&lt;!-- Create JAR --&gt;</span>
+            <span class="s0">&lt;plugin&gt;</span>
+                <span class="s0">&lt;groupId&gt;</span><span class="s3">org.apache.maven.plugins</span><span class="s0">&lt;/groupId&gt;</span>
+                <span class="s0">&lt;artifactId&gt;</span><span class="s3">maven-jar-plugin</span><span class="s0">&lt;/artifactId&gt;</span>
+                <span class="s0">&lt;version&gt;</span><span class="s3">3.3.0</span><span class="s0">&lt;/version&gt;</span>
+                <span class="s0">&lt;configuration&gt;</span>
+                    <span class="s0">&lt;archive&gt;</span>
+                        <span class="s0">&lt;manifest&gt;</span>
+                            <span class="s0">&lt;addClasspath&gt;</span><span class="s3">true</span><span class="s0">&lt;/addClasspath&gt;</span>
+                            <span class="s0">&lt;mainClass&gt;</span><span class="s3">com.diro.ift2255.Main</span><span class="s0">&lt;/mainClass&gt;</span>
+                        <span class="s0">&lt;/manifest&gt;</span>
+                    <span class="s0">&lt;/archive&gt;</span>
+                <span class="s0">&lt;/configuration&gt;</span>
+            <span class="s0">&lt;/plugin&gt;</span>
+
+            <span class="s4">&lt;!-- Run tests --&gt;</span>
+            <span class="s0">&lt;plugin&gt;</span>
+                <span class="s0">&lt;groupId&gt;</span><span class="s3">org.apache.maven.plugins</span><span class="s0">&lt;/groupId&gt;</span>
+                <span class="s0">&lt;artifactId&gt;</span><span class="s3">maven-surefire-plugin</span><span class="s0">&lt;/artifactId&gt;</span>
+                <span class="s0">&lt;version&gt;</span><span class="s3">3.2.5</span><span class="s0">&lt;/version&gt;</span>
+            <span class="s0">&lt;/plugin&gt;</span>
+
+        <span class="s0">&lt;/plugins&gt;</span>
+    <span class="s0">&lt;/build&gt;</span>
+
+<span class="s0">&lt;/project&gt;</span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,19 @@
+courseId	studentName	workload	comment
+IFT2255	Alice	3	Bon cours
+IFT1005	Alice	3	Cours intéressant pour découvrir le développement web. Beaucoup de pratique mais le rythme reste correct.
+IFT1005	Bob	4	Le cours demande du temps à cause des travaux pratiques, surtout si on n’a jamais fait de HTML/CSS avant.
+IFT1005	Clara	2	Bonne introduction au web. Les concepts sont simples et les devoirs restent raisonnables.
+IFT1015	Alice	4	Cours exigeant pour un débutant. Python est simple, mais les exercices demandent beaucoup de réflexion.
+IFT1015	Alice	4	Cours exigeant pour un débutant. Python est simple, mais les exercices demandent beaucoup de réflexion.
+IFT1015	Clara	3	Bon équilibre entre théorie et pratique. Les TP aident vraiment à comprendre.
+IFT1025	Alice	5	Cours très exigeant. Java est verbeux et les projets prennent énormément de temps.
+IFT1025	Bob	4	Bonne transition après Python, mais la charge de travail est clairement plus élevée.
+IFT1025	Clara	3	Cours intéressant pour apprendre la programmation orientée objet, mais demande de la rigueur.
+IFT2255	Bob	4	Beaucoup de documentation et de coordination. Il faut être discipliné dans le travail en groupe.
+IFT2255	Clara	3	Cours formateur qui donne une bonne vision du travail d’ingénieur logiciel.
+IFT2255	David	5	Charge de travail élevée surtout en fin de session avec les livrables du projet.
+IFT2255	Emma	4	Intéressant mais parfois trop théorique. Le projet reste la partie la plus enrichissante.
+MAT1400	Alice	4	Cours difficile avec beaucoup d’exercices à faire pour bien comprendre les notions.
+MAT1400	Bob	5	Très exigeant. Les devoirs et les examens demandent énormément de pratique.
+MAT1400	Clara	3	Matière abstraite mais bien expliquée. Il faut suivre le rythme chaque semaine.
+MAT1600	Alice	2	Facile!
