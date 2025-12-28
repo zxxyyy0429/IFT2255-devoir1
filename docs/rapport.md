@@ -2235,5 +2235,10 @@ Elle décrit l’ensemble des classes, attributs et méthodes publiques de l’a
 
 ### La documentation est accessible au chemin suivant après génération：
 
+La documentation JavaDoc du projet a été générée au format HTML et
+est consultable localement en ouvrant le fichier
+target/site/apidocs/index.html depuis l’explorateur de fichiers,
+par simple double-clic.
+
 ## 16. Démonstration (Youtube link)
 https://youtu.be/ekaEhqyMrwQ?si=_O1eRFTtPpnbcEi_ 
