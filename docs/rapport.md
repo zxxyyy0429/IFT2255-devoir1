@@ -273,11 +273,13 @@ Yu Tong Zhu (20310738):
 
 
 ### Facteurs sociaux
-   - Avis étudiants (forums, Discord, bouche-à-oreille)
+   - Avis étudiants (Discord)
 
    - Réputation des enseignants
 
-   - Niveau de stress perçu
+   - Niveau de charge de travail
+
+   - Difficultés des cours
 
 ### Sources de données
    - **Planifium API** : Catalogue officiel (codes, titres, crédits, horaires, préalables).
