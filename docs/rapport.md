@@ -85,6 +85,7 @@ Xinyan Zhang (20264873) , username Discord : Xinyan
 
 Yu Tong Zhu (20310738) , username Discord : yutong
 
+Voici le lien du Discord server: https://discord.gg/uDMGrFBn
 
 ### Distribution des tâches : 
 
