@@ -1946,7 +1946,15 @@ id = 999
 
 - Sortie attendue : Optional.empty()
 
-### Configuration Maven
+## 14. Configuration Maven
 Le projet utilise Apache Maven pour la gestion du cycle de vie.
-La configuration permet d’exécuter les tests unitaires JUnit à l’aide de la commande mvn test et de générer un fichier JAR exécutable avec mvn package.
+La configuration permet d’exécuter les tests unitaires JUnit à l’aide de la commande mvn test et de générer un fichier JAR 
+exécutable avec mvn package.
 Les tests passent avec succès et le JAR est correctement généré dans le répertoire target.
+
+## 15. Documentation du code source (JavaDoc)
+
+La documentation JavaDoc du projet a été générée à partir du code source.
+Elle décrit l’ensemble des classes, attributs et méthodes publiques de l’application.
+
+### La documentation est accessible au chemin suivant après génération：
