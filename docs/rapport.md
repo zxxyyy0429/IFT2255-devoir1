@@ -1948,23 +1948,26 @@ id = 999
 
 ### Oracle — getCoursesByProgram
 
-### Test 1 - Obtenir les cours par programme (cas succès)
+#### Test 1 - Obtenir les cours par programme (cas succès)
 
 - CU couvert : CU3 — recherche un cours 
 
 - But du test: Vérifier que lorsqu’un programId valide est fourni et que le service retourne une liste de cours, le contrôleur renvoie cette même liste en JSON.
 
 - Entrées:
-  programId = "117510"
+  * programId = "117510"
 
 - Sortie attendue:
-  IFT1015 — Programmation I
-  IFT1025 — Programmation II
+  * IFT1015 — Programmation I
+  * IFT1025 — Programmation II
       
 - Effets de bord:
 ctx.pathParam("programId") est appelé
+
 mockService.getCoursesByProgram("117510") est appelé
+
 ctx.json(listeCours) est appelé avec exactement la liste retournée
+
 Aucun appel à ctx.status(...) → aucun statut d’erreur défini
 
 ## 14. Configuration Maven
