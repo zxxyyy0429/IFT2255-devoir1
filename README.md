@@ -170,3 +170,16 @@ Ce dépôt contient l’API REST, la CLI, les tests unitaires et la documentatio
 Pour toute question d’exécution (port, dépendances, etc.), consulter les sections Installation et Exécution ci-dessus.
 
 Documentation JavaDoc : target/site/apidocs/index.html (après génération).
+
+###  Auteurs
+
+Ziyue Wang (20308297) — Discord: ZY
+
+
+Ruoxuan Hu (20304027) — Discord: rx_04
+
+
+Xinyan Zhang (20264873) — Discord: Xinyan
+
+
+Yu Tong Zhu (20310738) — Discord: yutong
