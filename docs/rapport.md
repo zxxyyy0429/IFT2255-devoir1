@@ -216,6 +216,9 @@ Yu Tong Zhu (20310738):
 - Implémentation complète du bot Discord (collecte et envoi d’avis).
 - Réalisation de la vidéo officielle (7 à 10 minutes)
 
+### Échéancier : 
+![Échéancier](docs/Echeancier3.png)
+
 
 ## 2. Analyse des exigences 
 
