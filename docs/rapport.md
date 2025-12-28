@@ -1962,6 +1962,7 @@ id = 999
   * IFT1025 — Programmation II
       
 - Effets de bord:
+  
 ctx.pathParam("programId") est appelé
 
 mockService.getCoursesByProgram("117510") est appelé
@@ -1969,6 +1970,35 @@ mockService.getCoursesByProgram("117510") est appelé
 ctx.json(listeCours) est appelé avec exactement la liste retournée
 
 Aucun appel à ctx.status(...) → aucun statut d’erreur défini
+
+#### Test 2 — Obtenir les cours par programme (aucun cours trouvé)
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que lorsque le programId fourni est valide mais qu’aucun cours n’est retourné par le service, le contrôleur renvoie un statut d’erreur 404 et un message JSON décrivant l’erreur.
+  
+- Entrées :
+* programId = "invalid-program"
+* Le service retourne une liste vide : []
+  
+- Sortie attendue :
+* "error": "Aucun cours trouvé pour ce programme."
+
+- Effets de bord :
+  
+ctx.pathParam("programId") est appelé pour récupérer l’identifiant du programme
+
+mockService.getCoursesByProgram("invalid-program") est appelé
+
+ctx.status(404) est appelé
+
+ctx.json(Map.of("error", "Aucun cours trouvé pour ce programme.")) est appelé
+
+Aucun JSON contenant une liste de cours n’est retourné
+
+Aucun statut 200 n’est renvoyé → seulement un 404
+
+
 
 ## 14. Configuration Maven
 Le projet utilise Apache Maven pour la gestion du cycle de vie.
