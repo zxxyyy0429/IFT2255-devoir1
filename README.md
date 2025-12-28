@@ -12,18 +12,17 @@ Ce système, Plateforme d'aide au choix de cours, est une plateforme web basée 
 -	par des mot-clés : lister tous les cours du département informatique : http://localhost:7070/courses/search?sigle=IFT
 - lister tous les cours où il y a le mot «programmation» dans la description : http://localhost:7070/courses/search?description=programmation 
 
-Voir les détails d’un cours :
+#### Voir les détails d’un cours :
 
 - afficher les détails d’un cours avec son id(montrer plus des informations, inclut le sigle, le nom, la description, le crédit, le trimestre disponible et le prérequis du cours) : http://localhost:7070/courses/IFT2255/details
 
-Comparer des cours :
+#### Comparer des cours :
 
 - Comparer deux cours par id (lister deux cours avec quelques simples informations et montrer le prérequis commun) : http://localhost:7070/courses/compare?id1=IFT2015&id2=IFT2255
 
 ### Test unitaire
 
 Tous les 12 tests sont situés dans le fichier :
-
 CourseControllerTest.java
 
 Ils couvrent :
@@ -38,17 +37,14 @@ mvn test
 
 ### Installation et exécution
 #### Prérequis :
-
 Java 17
 Maven 3.8 ou plus
 
 #### Installation du projet :
-
 1. Télécharger ou cloner le dépôt
 2. Installer les dépendances et compiler : mvn clean install
 
 #### Exécuter l'application REST
-
 Après compilation, exécuter : java -jar target/rest-api-1.0-SNAPSHOT.jar
 
 Le serveur démarre sur :
