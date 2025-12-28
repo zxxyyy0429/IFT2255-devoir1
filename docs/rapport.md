@@ -2213,7 +2213,7 @@ ctx.queryParam("semester") appelé
 
 ctx.queryParam("programId") appelé
 
-mockService.getAllCourses(Map.of()) appelé (fallback)
+mockService.getAllCourses(Map.of()) appelé 
 
 ctx.json(courses) appelé avec exactement la liste retournée par le service
 
