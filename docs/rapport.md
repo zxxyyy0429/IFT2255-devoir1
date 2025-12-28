@@ -2071,6 +2071,153 @@ ctx.status(404) est appelé
 ctx.json({...}) est appelé avec un map contenant "error"
 
 
+### Oracle — getCoursesBySemester
+
+#### Test 1 — Semestre manquant
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que le paramètre semester n’est pas fourni, le contrôleur ne fait aucun appel au service, retourne un statut HTTP 400 (mauvaise requête), renvoie un message d’erreur.
+
+- Entrées :
+  * query param semester = null
+  * query param programId = "117510"
+    
+- Sortie attendue :
+  * Statut HTTP 400
+  * JSON = {"error": "Le paramètre 'semester' est requis (ex: H25, A24, E24)."}
+    
+- Effets de bord attendus :
+  
+ctx.queryParam("semester") est appelé
+
+Aucun appel à mockService.getCoursesBySemester(...)
+
+ctx.status(400) est appelé
+
+ctx.json(...) est appelé avec l'objet d'erreur généré par ResponseUtil.formatError(...)
+
+
+#### Test 2 — Format de semestre invalide
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que le paramètre semester fourni est dans un format invalide, le contrôleur retourne 400 — Bad Request, renvoie un message d’erreur et explique le format attendu.
+  
+- Entrées :
+  * query param semester = "2025H" 
+  * query param programId = "117510"
+    
+- Sortie attendue :
+  * Statut HTTP 400
+  * JSON = {"error": "Format de trimestre invalide. Utilisez H25, A24 ou E24."}
+    
+- Effets de bord attendus :
+  
+ctx.queryParam("semester") est appelé
+
+ctx.queryParam("programId") est appelé
+
+Aucun appel à mockService.getCoursesBySemester(...)
+
+ctx.status(400) est appelé
+
+ctx.json(...) est appelé avec l’objet retourné par ResponseUtil.formatError(...)
+
+
+#### Test 3 — Obtenir les cours par session (cas succès)
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que semester et programId sont valides, le contrôleur appelle correctement le service et retourne la liste des cours correspondants.
+
+- Entrées :
+  * query param semester = "H25" 
+  * query param programId = "117510" 
+  * Le service retourne une liste de 2 cours :
+      * IFT1015 — Programmation I
+      * IFT1025 — Programmation II
+
+- Sortie attendue :
+  * IFT1015 — Programmation I,
+  * IFT1025 — Programmation II
+
+- Effets de bord attendus :
+  
+ctx.queryParam("semester") est appelé
+
+ctx.queryParam("programId") est appelé
+
+mockService.getCoursesBySemester("117510", "H25") est appelé
+
+ctx.json(courses) est appelé avec exactement la liste ci-dessus
+
+aucun appel à ctx.status(400) ou ctx.status(404)
+
+
+#### Test 4 — Aucun cours trouvé
+
+- CU couvert : CU3 — Recherche d’un cours
+
+- But du test : Vérifier que si programId et semester sont valides mais qu’aucun cours n’existe pour ce trimestre, le contrôleur renvoie un statut 404 et un message d’erreur.
+
+- Entrées :
+  * query param semester = "H25"
+  * query param programId = "117510"
+  * Le service retourne : [] 
+
+- Sortie attendue :
+  * Réponse JSON contenant une erreur :
+     * { "error": "Aucun cours trouvé pour ce trimestre." }
+  * Statut HTTP : 404
+
+- Effets de bord attendus :
+  
+ctx.queryParam("semester") est appelé
+
+ctx.queryParam("programId") est appelé
+
+mockService.getCoursesBySemester("117510", "H25") est appelé
+
+ctx.status(404) est appelé
+
+ctx.json(ResponseUtil.formatError("Aucun cours trouvé pour ce trimestre.")) est appelé
+
+aucun appel à ctx.json(courses) et ctx.status(200)
+
+
+#### Test 5 — Obtenir les cours par session sans programId 
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que si le paramètre programId est absent, mais que semester est valide, le contrôleur effectue un fallback vers la récupération de tous les cours au lieu de par programme, puis renvoie cette liste.
+
+- Entrées :
+  * query param semester = "A24"
+  * query param programId = null
+  * Le service retourne :
+     * IFT1015 — Programmation I
+     * IFT1025 — Programmation II
+
+- Sortie attendue : 
+  * { code: "IFT1015", titre: "Programmation I" },
+  * { code: "IFT1025", titre: "Programmation II" }
+  * Statut HTTP : 200 implicite (aucun status défini explicitement)
+
+- Effets de bord attendus :
+  
+ctx.queryParam("semester") appelé
+
+ctx.queryParam("programId") appelé
+
+mockService.getAllCourses(Map.of()) appelé (fallback)
+
+ctx.json(courses) appelé avec exactement la liste retournée par le service
+
+aucun appel à ctx.status(400) ou 404 et mockService.getCoursesBySemester(...)
+
+
+
 
 ## 14. Configuration Maven
 Le projet utilise Apache Maven pour la gestion du cycle de vie.
