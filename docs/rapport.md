@@ -1952,7 +1952,7 @@ id = 999
 
 - CU couvert : CU3 — recherche un cours 
 
-- But du test: Vérifier que lorsqu’un programId valide est fourni et que le service retourne une liste de cours, le contrôleur renvoie cette même liste en JSON.
+- But du test: Vérifier qu'un programId est valide et que le service retourne une liste de cours, le contrôleur renvoie cette même liste en JSON.
 
 - Entrées:
   * programId = "117510"
@@ -1971,18 +1971,18 @@ ctx.json(listeCours) est appelé avec exactement la liste retournée
 
 Aucun appel à ctx.status(...) → aucun statut d’erreur défini
 
-#### Test 2 — Obtenir les cours par programme (aucun cours trouvé)
+#### Test 2 — Aucun cours trouvé
 
 - CU couvert : CU3 — Recherche d’un cours
   
-- But du test : Vérifier que lorsque le programId fourni est valide mais qu’aucun cours n’est retourné par le service, le contrôleur renvoie un statut d’erreur 404 et un message JSON décrivant l’erreur.
+- But du test : Vérifier que le programId fourni est valide mais qu’aucun cours n’est retourné par le service, le contrôleur renvoie un erreur 404 et un message de l’erreur.
   
 - Entrées :
-* programId = "invalid-program"
-* Le service retourne une liste vide : []
+  * programId = "invalid-program"
+  * Le service retourne une liste vide : []
   
 - Sortie attendue :
-* "error": "Aucun cours trouvé pour ce programme."
+  * "error": "Aucun cours trouvé pour ce programme."
 
 - Effets de bord :
   
@@ -1997,6 +1997,78 @@ ctx.json(Map.of("error", "Aucun cours trouvé pour ce programme.")) est appelé
 Aucun JSON contenant une liste de cours n’est retourné
 
 Aucun statut 200 n’est renvoyé → seulement un 404
+
+#### Test 3 — programId manquant
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que lorsque aucun programId n’est fourni dans le chemin de l’URL (valeur null), le contrôleur renvoie un statut 400 – requête invalide, ainsi qu'un message d'erreur au format JSON.
+
+- Entrées :
+  * programId = null 
+
+- Sortie attendue :
+  * "error": "Le paramètre 'programId' est requis."
+
+- Effets de bord :
+  
+ctx.pathParam("programId") est appelé
+
+Aucun appel à mockService.getCoursesByProgram(...), le service ne doit pas être invoqué
+
+ctx.status(400) est exécuté pour signaler l’erreur
+
+ctx.json({...}) est appelé avec un objet contenant au moins une clé "error"
+
+
+#### Test 4 — Programme existant mais aucun cours associé
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que programId est valide, mais que le service retourne une liste vide, alors le contrôleur renvoie correctement un statut HTTP 404
+  
+- Entrées :
+  * programId = "117510"
+  * Service (getCoursesByProgram("117510")) retourne une liste vide ([])
+ 
+- Sortie attendue :
+  * Statut HTTP 404
+  * JSON contenant au minimum une clé "error"
+ 
+- Effets de bord :
+  
+ctx.pathParam("programId") est appelé
+
+mockService.getCoursesByProgram("117510") est appelé
+
+ctx.status(404) est appelé
+
+ctx.json({...}) est appelé avec un objet contenant au moins "error"
+
+
+#### Test 5 — programId vide
+
+- CU couvert : CU3 — Recherche d’un cours
+  
+- But du test : Vérifier que lorsque le programId est fourni mais vide (""), le contrôleur tente quand même d'appeler le service, ne trouve aucun cours, et renvoie un message d’erreur.
+
+- Entrées :
+  * programId = "" 
+  * mockService.getCoursesByProgram("") retourne []
+    
+- Sortie attendue :
+  * Statut HTTP 404
+  * JSON contenant un objet avec au moins une clé "error"
+ 
+- Effets de bord attendus :
+  
+ctx.pathParam("programId") est appelé
+
+mockService.getCoursesByProgram("") est appelé exactement une fois
+
+ctx.status(404) est appelé
+
+ctx.json({...}) est appelé avec un map contenant "error"
 
 
 
