@@ -1,0 +1,48 @@
+<!-- Yu Tong Zhu -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme d'Aide au Choix de Cours - UdeM</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Plateforme d'Aide au Choix de Cours</h1>
+            <p>Université de Montréal - DIRO</p>
+        </header>
+
+        <!-- Section Recherche -->
+        <section class="search-section">
+            <h2>Rechercher un cours</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search">
+                <button onclick="searchCourses()">Rechercher</button>
+            </div>
+        </section>
+
+        <!-- Résultats de recherche -->
+        <section class="results-section">
+            <h2>Cours trouvés</h2>
+            <div id="searchResults" class="results-grid">
+                <p>Entrez un cours pour commencer</p>
+            </div>
+        </section>
+
+        <!-- Panier de comparaison -->
+        <section class="comparison-section">
+            <h2>Comparaison de cours</h2>
+            <div id="comparisonCart">
+                <p>Aucun cours sélectionné pour comparaison</p>
+            </div>
+            <button onclick="viewComparison()" class="compare-btn" disabled>Voir la comparaison</button>
+        </section>
+    </div>
+
+    <!-- Charger les scripts à la fin du body -->
+    <script src="app.js"></script>
+</body>
+</html>
