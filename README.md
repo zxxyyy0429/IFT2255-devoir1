@@ -65,12 +65,13 @@ Ils couvrent :
 
 6. Comparaison basée sur les avis étudiants (GET /compare?course1=…&course2=…)
 - Compare deux cours selon les avis collectés via Discord
+- Endpoint : POST /courses/{courseId}/review
 - Renvoie un résumé comparatif :
-  * moyenne de charge de travail (workload)
+  * courseId
   * difficulté perçue
-  * charge de travail
+  * charge de travail (workload)
   * commentaires étudiants
-- Si un des cours n’a aucun avis ("Aucun avis disponible pour ce cours")
+- Si un des cours n’a aucun avis → message d'erreur
 - Gestion d’erreurs : cours introuvable → 404
 - Gestion d’erreurs : course1 ou course2 manquant → 400
 - Gestion d’erreurs : deux sigles identiques → erreur → 400
