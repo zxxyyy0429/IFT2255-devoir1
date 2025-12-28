@@ -63,8 +63,20 @@ Ils couvrent :
 - Gestion d’erreurs : id1 manquant / id2 manquant → 400
 - Gestion d’erreurs : ids identiques → erreur (statut d’erreur)
 
+6. Comparaison basée sur les avis étudiants (GET /compare?course1=…&course2=…)
+- Compare deux cours selon les avis collectés via Discord
+- Renvoie un résumé comparatif :
+  * moyenne de charge de travail (workload)
+  * difficulté perçue
+  * charge de travail
+  * commentaires étudiants
+- Si un des cours n’a aucun avis ("Aucun avis disponible pour ce cours")
+- Gestion d’erreurs : cours introuvable → 404
+- Gestion d’erreurs : course1 ou course2 manquant → 400
+- Gestion d’erreurs : deux sigles identiques → erreur → 400
+- Gestion d'erreurs : avis sans workload et/ou difficulty → 0
 
-6. Service utilisateur (UserService)
+7. Service utilisateur (UserService)
 - Récupération de la liste des utilisateurs (non nulle, taille attendue)
 - Recherche par ID existant / inexistant
 - Cas limites : ID négatif et ID = 0 → retour vide
